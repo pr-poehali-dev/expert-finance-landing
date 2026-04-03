@@ -49,11 +49,11 @@ def handler(event: dict, context) -> dict:
             ])}
 
     if method == 'POST':
-        token = (event.get('headers') or {}).get('x-admin-token', '')
+        body = json.loads(event.get('body') or '{}')
+        token = body.get('admin_token', '')
         if ADMIN_TOKEN and token != ADMIN_TOKEN:
             return {'statusCode': 403, 'headers': CORS_HEADERS, 'body': json.dumps({'error': 'Forbidden'})}
 
-        body = json.loads(event.get('body') or '{}')
         slug = body.get('slug', '').strip()
         title = body.get('title', '').strip()
         content = body.get('content', '')

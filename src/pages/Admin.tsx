@@ -81,8 +81,8 @@ export default function Admin() {
     setLegalMsg("");
     const res = await fetch(LEGAL_API_URL, {
       method: "POST",
-      headers: { "Content-Type": "application/json", "X-Admin-Token": ADMIN_PASSWORD },
-      body: JSON.stringify({ slug: legalTab, title: legalTitle, content: legalContent }),
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ slug: legalTab, title: legalTitle, content: legalContent, admin_token: ADMIN_PASSWORD }),
     });
     const data = await res.json();
     setLegalMsg(data.ok ? "Сохранено!" : "Ошибка сохранения");
