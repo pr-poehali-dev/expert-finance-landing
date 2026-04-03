@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import Icon from "@/components/ui/icon";
+import MemberModal from "@/components/MemberModal";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type IconName = any;
@@ -69,7 +70,7 @@ function StatCounter({ target, suffix, label }: { target: number; suffix: string
 }
 
 // ─── HEADER ──────────────────────────────────────────────────────────────────
-function Header() {
+function Header({ onMember }: { onMember: () => void }) {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -127,7 +128,7 @@ function Header() {
               onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.borderColor = "#e2e8f0"; }}>
               Личный кабинет
             </a>
-            <button className="btn-emerald pulse-ring px-5 py-2 text-sm font-manrope font-bold" style={{ color: "white" }}>
+            <button onClick={onMember} className="btn-emerald pulse-ring px-5 py-2 text-sm font-manrope font-bold" style={{ color: "white" }}>
               Стать пайщиком
             </button>
           </div>
@@ -150,7 +151,7 @@ function Header() {
               <a href="https://mykpk.ru" target="_blank" rel="noopener noreferrer"
                 className="font-manrope text-sm font-semibold px-4 py-2 rounded-xl flex-1 text-center"
                 style={{ border: "1.5px solid #e2e8f0", color: "#1a1a1a", textDecoration: "none" }}>Личный кабинет</a>
-              <button className="btn-emerald px-4 py-2 text-sm font-manrope font-bold flex-1" style={{ color: "white" }}>Стать пайщиком</button>
+              <button onClick={onMember} className="btn-emerald px-4 py-2 text-sm font-manrope font-bold flex-1" style={{ color: "white" }}>Стать пайщиком</button>
             </div>
           </div>
         )}
@@ -1044,9 +1045,10 @@ function Footer() {
 // ─── PAGE ─────────────────────────────────────────────────────────────────────
 export default function Index() {
   useScrollReveal();
+  const [memberOpen, setMemberOpen] = useState(false);
   return (
     <div className="font-manrope">
-      <Header />
+      <Header onMember={() => setMemberOpen(true)} />
       <Hero />
       <Loans />
       <Savings />
@@ -1054,6 +1056,7 @@ export default function Index() {
       <Documents />
       <Contacts />
       <Footer />
+      <MemberModal open={memberOpen} onClose={() => setMemberOpen(false)} />
     </div>
   );
 }
