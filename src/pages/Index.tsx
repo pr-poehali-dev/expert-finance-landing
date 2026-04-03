@@ -632,80 +632,176 @@ function Savings() {
 
 // ─── ABOUT ────────────────────────────────────────────────────────────────────
 function About() {
-  const advantages = [
-    { icon: "ShieldCheck", title: "Надёжность и законность", text: "Деятельность регулируется Банком России. Членство в СРО «Союзмикрофинанс»." },
-    { icon: "Users", title: "Пайщики — совладельцы", text: "Каждый пайщик — полноправный участник кооператива. Участвуете в управлении." },
-    { icon: "MapPin", title: "Рядом с вами", text: "Офис в центре г. Шахты. Работаем с 2015 года, знаем каждого клиента лично." },
-    { icon: "Handshake", title: "Индивидуальный подход", text: "Рассматриваем каждую ситуацию отдельно. Живой диалог, не шаблоны." },
-    { icon: "FileCheck", title: "Прозрачные условия", text: "Все документы открыты. Полная стоимость займа указана в договоре." },
-    { icon: "Clock", title: "Быстрое решение", text: "Рассматриваем заявку от 1 часа. Деньги — в день обращения." },
+  const values = [
+    { icon: "Handshake", title: "Взаимопомощь", text: "Поддерживаем членов кооператива в решении финансовых задач." },
+    { icon: "FileCheck", title: "Прозрачность", text: "Все условия, тарифы и правила чётко прописаны в Уставе и договорах." },
+    { icon: "Unlock", title: "Доступность", text: "Простые требования к вступлению, понятные процедуры без лишней бюрократии." },
+    { icon: "ShieldCheck", title: "Безопасность", text: "Строгое соблюдение ФЗ № 190 «О кредитной кооперации» и контроль Банка России." },
+    { icon: "Scale", title: "Ответственность", text: "Каждый член участвует в формировании общих фондов и несёт солидарную ответственность." },
+    { icon: "TrendingUp", title: "Доходность выше рынка", text: "Сбережения размещаются под процент выше банковских депозитов." },
+  ];
+
+  const membership = [
+    { icon: "Heart", title: "Займы на личные нужды", text: "Лечение, образование, ремонт, покупка техники и другие цели." },
+    { icon: "PiggyBank", title: "Финансовые накопления", text: "Размещайте сбережения под процент выше банковских депозитов." },
+    { icon: "MessageCircle", title: "Консультации", text: "Помощь в планировании бюджета и управлении долгами." },
+    { icon: "BookOpen", title: "Обучение", text: "Семинары и материалы по финансовой грамотности." },
+    { icon: "Briefcase", title: "Поддержка бизнеса", text: "Займы для малого предпринимательства и самозанятых." },
+    { icon: "Vote", title: "Участие в управлении", text: "Право голоса на общих собраниях и влияние на развитие кооператива." },
   ];
 
   return (
     <section id="about" className="py-20 md:py-28" style={{ background: "white" }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="grid lg:grid-cols-2 gap-16 items-center mb-16">
+
+        {/* Hero block */}
+        <div className="grid lg:grid-cols-2 gap-16 items-center mb-20">
           <div className="fade-in-up">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-manrope font-semibold mb-6"
               style={{ background: "#f0fdf9", border: "1px solid rgba(0,168,126,0.3)", color: "#00a87e" }}>
               <Icon name="Info" size={13} />О кооперативе
             </div>
             <h2 className="font-oswald text-3xl md:text-5xl font-bold leading-tight mb-6" style={{ color: "#0A1628" }}>
-              9 ЛЕТ ПОМОГАЕМ<br />
+              ФИНАНСЫ,{" "}
               <span style={{ background: "linear-gradient(135deg, #00a87e, #00C896)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
-                ЖИТЕЛЯМ ШАХТ
+                КОТОРЫЕ РАБОТАЮТ
               </span>
+              <br />НА ВАС
             </h2>
             <p className="font-manrope text-lg leading-relaxed mb-4" style={{ color: "#475569" }}>
-              КПК «Эксперт Финанс» основан в 2015 году в г. Шахты. Мы — не банк и не МФО.
-              Кооператив, где каждый пайщик — совладелец и участник.
+              КПК «Эксперт Финанс» — надёжная финансовая организация, созданная для взаимной поддержки своих членов. Мы объединяем людей и предприятия, которые ценят прозрачность, взаимопомощь и выгодные условия финансового сотрудничества.
             </p>
             <p className="font-manrope leading-relaxed mb-8" style={{ color: "#64748b" }}>
-              Кооперативная модель даёт условия лучше банковских: займы дешевле, доход по сбережениям выше.
-              Деятельность регулируется ФЗ № 190-ФЗ.
+              В отличие от банков, мы работаем исключительно в интересах своих членов, а не акционеров. Наша главная цель — финансовая взаимопомощь, а не максимизация прибыли.
             </p>
-            <div className="flex flex-wrap gap-6 p-5 rounded-2xl"
-              style={{ background: "#f8fafc", border: "1px solid #e2e8f0" }}>
+            <div className="flex flex-wrap gap-0 rounded-2xl overflow-hidden" style={{ border: "1px solid #e2e8f0" }}>
               {[
                 { value: "2015", label: "Год основания" },
                 { value: "ФЗ № 190", label: "Правовая основа" },
+                { value: "Банк России", label: "Регулятор" },
                 { value: "СРО", label: "Союзмикрофинанс" },
               ].map((item, idx) => (
-                <div key={item.value} className="flex items-center gap-4">
-                  {idx > 0 && <div className="w-px h-8" style={{ background: "#e2e8f0" }} />}
-                  <div>
-                    <div className="font-oswald text-2xl font-bold" style={{ background: "linear-gradient(135deg, #00a87e, #00C896)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>{item.value}</div>
-                    <div className="font-manrope text-xs" style={{ color: "#94a3b8" }}>{item.label}</div>
-                  </div>
+                <div key={item.value} className="flex-1 min-w-[120px] px-5 py-4 text-center"
+                  style={{ background: idx % 2 === 0 ? "#f8fafc" : "white", borderRight: idx < 3 ? "1px solid #e2e8f0" : "none" }}>
+                  <div className="font-oswald text-xl font-bold mb-0.5" style={{ background: "linear-gradient(135deg, #00a87e, #00C896)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>{item.value}</div>
+                  <div className="font-manrope text-xs" style={{ color: "#94a3b8" }}>{item.label}</div>
                 </div>
               ))}
             </div>
           </div>
 
-          <div className="fade-in-up hidden lg:block">
-            <div className="rounded-2xl overflow-hidden" style={{ boxShadow: "0 20px 50px rgba(0,0,0,0.1)" }}>
-              <img
-                src="https://cdn.poehali.dev/projects/33c1de75-9e48-4c11-87d3-f9b410f3f164/files/dbfa0296-b71f-45ed-974d-fe558fcfadd8.jpg"
-                alt="Офис Эксперт Финанс"
-                className="w-full h-72 object-cover"
-              />
+          {/* What is KPK */}
+          <div className="fade-in-up">
+            <div className="rounded-2xl p-8" style={{ background: "linear-gradient(160deg, #0A1628 0%, #0d2040 100%)", boxShadow: "0 20px 50px rgba(10,22,40,0.2)" }}>
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
+                  style={{ background: "rgba(0,200,150,0.15)" }}>
+                  <Icon name="HelpCircle" size={20} style={{ color: "#00C896" }} />
+                </div>
+                <h3 className="font-oswald text-xl font-bold text-white">Что такое КПК?</h3>
+              </div>
+              <p className="font-manrope text-sm leading-relaxed mb-5" style={{ color: "rgba(255,255,255,0.65)" }}>
+                Кредитный потребительский кооператив — некоммерческая организация, где участники:
+              </p>
+              <div className="space-y-3 mb-6">
+                {[
+                  "Вносят паевые взносы",
+                  "Получают доступ к займам на льготных условиях",
+                  "Участвуют в управлении кооперативом",
+                  "Имеют право на долю прибыли (кооперативные выплаты)",
+                ].map((item) => (
+                  <div key={item} className="flex items-start gap-3">
+                    <div className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"
+                      style={{ background: "rgba(0,200,150,0.2)" }}>
+                      <Icon name="Check" size={12} style={{ color: "#00C896" }} />
+                    </div>
+                    <span className="font-manrope text-sm" style={{ color: "rgba(255,255,255,0.75)" }}>{item}</span>
+                  </div>
+                ))}
+              </div>
+              <div className="rounded-xl p-4" style={{ background: "rgba(0,200,150,0.08)", border: "1px solid rgba(0,200,150,0.2)" }}>
+                <p className="font-manrope text-xs leading-relaxed" style={{ color: "rgba(255,255,255,0.55)" }}>
+                  Для вступления: подать заявление → оплатить вступительный взнос → внести паевой взнос (возвращается при выходе).
+                </p>
+              </div>
             </div>
           </div>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {advantages.map((adv, i) => (
-            <div key={adv.title}
-              className="fade-in-up p-6 rounded-2xl transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md"
-              style={{ background: "#f8fafc", border: "1px solid #e2e8f0", transitionDelay: `${i * 70}ms` }}>
-              <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style={{ background: "#f0fdf9" }}>
-                <Icon name={adv.icon as IconName} size={20} style={{ color: "#00a87e" }} />
-              </div>
-              <h4 className="font-manrope font-bold text-sm mb-2" style={{ color: "#0A1628" }}>{adv.title}</h4>
-              <p className="font-manrope text-sm leading-relaxed" style={{ color: "#64748b" }}>{adv.text}</p>
+        {/* Values */}
+        <div className="mb-20 fade-in-up">
+          <div className="text-center mb-10">
+            <div className="font-oswald text-2xl md:text-3xl font-bold" style={{ color: "#0A1628" }}>
+              НАШИ <span style={{ background: "linear-gradient(135deg, #00a87e, #00C896)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>ЦЕННОСТИ</span>
             </div>
-          ))}
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {values.map((v, i) => (
+              <div key={v.title}
+                className="fade-in-up p-6 rounded-2xl transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md"
+                style={{ background: "#f8fafc", border: "1px solid #e2e8f0", transitionDelay: `${i * 60}ms` }}>
+                <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style={{ background: "#f0fdf9" }}>
+                  <Icon name={v.icon as IconName} size={20} style={{ color: "#00a87e" }} />
+                </div>
+                <h4 className="font-manrope font-bold text-sm mb-2" style={{ color: "#0A1628" }}>{v.title}</h4>
+                <p className="font-manrope text-sm leading-relaxed" style={{ color: "#64748b" }}>{v.text}</p>
+              </div>
+            ))}
+          </div>
         </div>
+
+        {/* What we offer */}
+        <div className="mb-16 fade-in-up">
+          <div className="text-center mb-10">
+            <div className="font-oswald text-2xl md:text-3xl font-bold" style={{ color: "#0A1628" }}>
+              ЧЕМ МЫ <span style={{ background: "linear-gradient(135deg, #00a87e, #00C896)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>ПОМОГАЕМ</span>
+            </div>
+            <p className="font-manrope text-sm mt-2" style={{ color: "#94a3b8" }}>Для членов кооператива доступны</p>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {membership.map((m, i) => (
+              <div key={m.title}
+                className="fade-in-up flex gap-4 p-5 rounded-2xl transition-all duration-300 hover:shadow-md"
+                style={{ background: "white", border: "1px solid #e2e8f0", transitionDelay: `${i * 60}ms` }}>
+                <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: "#f0fdf9" }}>
+                  <Icon name={m.icon as IconName} size={20} style={{ color: "#00a87e" }} />
+                </div>
+                <div>
+                  <h4 className="font-manrope font-bold text-sm mb-1" style={{ color: "#0A1628" }}>{m.title}</h4>
+                  <p className="font-manrope text-sm leading-relaxed" style={{ color: "#64748b" }}>{m.text}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Mission CTA */}
+        <div className="fade-in-up rounded-2xl p-8 md:p-12 text-center"
+          style={{ background: "linear-gradient(160deg, #0A1628 0%, #0d2040 100%)" }}>
+          <div className="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-6"
+            style={{ background: "rgba(0,200,150,0.15)" }}>
+            <Icon name="Target" size={28} style={{ color: "#00C896" }} />
+          </div>
+          <h3 className="font-oswald text-2xl md:text-3xl font-bold text-white mb-4">Наша миссия</h3>
+          <p className="font-manrope text-base leading-relaxed max-w-2xl mx-auto mb-8" style={{ color: "rgba(255,255,255,0.65)" }}>
+            Мы создаём сообщество людей и предприятий, которые доверяют друг другу и совместно решают финансовые задачи. Помогаем получать выгодные займы, накапливать сбережения с доходностью выше рынка, развивать финансовую культуру и поддерживать локальный бизнес.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <button className="btn-emerald px-8 py-4 font-manrope font-bold text-base" style={{ color: "white" }}>
+              Стать членом кооператива
+            </button>
+            <button className="px-8 py-4 font-manrope font-semibold text-base rounded-xl transition-all duration-200"
+              style={{ border: "1.5px solid rgba(255,255,255,0.25)", color: "white", background: "transparent" }}
+              onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.08)"; }}
+              onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = "transparent"; }}>
+              Узнать подробнее
+            </button>
+          </div>
+          <p className="font-oswald text-sm mt-6" style={{ color: "rgba(255,255,255,0.3)" }}>
+            «КПК Эксперт Финанс»: вместе к финансовой устойчивости!
+          </p>
+        </div>
+
       </div>
     </section>
   );
