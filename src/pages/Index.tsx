@@ -242,7 +242,7 @@ function Hero({ openModal }: { openModal: OpenModal }) {
           <div className="hidden lg:block relative">
             <div className="relative rounded-2xl overflow-visible" style={{ boxShadow: "0 24px 60px rgba(0,0,0,0.1)" }}>
               <img
-                src="https://cdn.poehali.dev/projects/33c1de75-9e48-4c11-87d3-f9b410f3f164/bucket/6a6c57fe-c64e-40ce-99a1-dd74a0e7e4f8.png"
+                src="https://cdn.poehali.dev/projects/33c1de75-9e48-4c11-87d3-f9b410f3f164/bucket/3c215f63-d156-4ddc-b6ef-01c96481426f.png"
                 alt="Эксперт Финанс"
                 className="w-full h-80 object-cover rounded-2xl"
               />
