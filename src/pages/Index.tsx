@@ -490,9 +490,7 @@ function Savings() {
                   Выплата: ежемесячно или в конце срока
                 </div>
               </div>
-              <button className="btn-emerald px-6 py-3 text-sm font-manrope font-bold whitespace-nowrap" style={{ color: "white" }}>
-                Открыть сбережение
-              </button>
+              <button className="btn-emerald px-6 py-3 text-sm font-manrope font-bold whitespace-nowrap" style={{ color: "white" }}>Открыть сберегательный счет</button>
             </div>
           </div>
 
