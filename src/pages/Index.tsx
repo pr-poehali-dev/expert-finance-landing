@@ -193,10 +193,7 @@ function Hero({ openModal }: { openModal: OpenModal }) {
           {/* Left */}
           <div>
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-manrope font-semibold mb-6"
-              style={{ background: "rgba(230,51,41,0.1)", border: "1px solid rgba(194,37,27,0.25)", color: "#c2251b" }}>
-              <div className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: "#e63329" }} />
-              Работаем с 2015 года · г. Шахты, Ростовская область
-            </div>
+              style={{ background: "rgba(230,51,41,0.1)", border: "1px solid rgba(194,37,27,0.25)", color: "#c2251b" }}>Стабильно работаем с 2008 года! Потому, что ценим ваше доверие! </div>
 
             <h1 className="font-oswald text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6" style={{ color: "#1a1a1a" }}>
               РАБОТАЕМ С{" "}
