@@ -683,9 +683,8 @@ function About({ openModal }: { openModal: OpenModal }) {
             <h2 className="font-oswald text-3xl md:text-5xl font-bold leading-tight mb-6" style={{ color: "#1a1a1a" }}>
               ФИНАНСЫ,{" "}
               <span style={{ background: "linear-gradient(135deg, #c2251b, #e63329)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
-                КОТОРЫЕ РАБОТАЮТ
+                КОТОРЫЕ РАБОТАЮТ НА ВАС
               </span>
-              <br />НА ВАС
             </h2>
             <p className="font-manrope text-lg leading-relaxed mb-4" style={{ color: "#475569" }}>
               КПК «Эксперт Финанс» — надёжная финансовая организация, созданная для взаимной поддержки своих членов. Мы объединяем людей и предприятия, которые ценят прозрачность, взаимопомощь и выгодные условия финансового сотрудничества.
