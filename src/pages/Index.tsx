@@ -329,7 +329,7 @@ function Loans() {
         <div className="mt-10 fade-in-up rounded-2xl p-8 flex flex-col md:flex-row items-center justify-between gap-6"
           style={{ background: "linear-gradient(135deg, #1a1a1a, #142244)", border: "1px solid rgba(230,51,41,0.2)" }}>
           <div>
-            <h3 className="font-oswald text-2xl font-bold text-white mb-1">Не знаете, какой займ выбрать?</h3>
+            <h3 className="font-oswald text-2xl font-bold text-white mb-1">Вам не подходят стандартные кредитные программы? Позвоните или напишите нам, мы найдем индивидуальное решение для вас!</h3>
             <p className="font-manrope text-sm" style={{ color: "rgba(255,255,255,0.6)" }}>Наши специалисты бесплатно подберут оптимальные условия</p>
           </div>
           <button className="btn-emerald px-8 py-3.5 font-manrope font-bold text-sm whitespace-nowrap flex-shrink-0" style={{ color: "white" }}>
