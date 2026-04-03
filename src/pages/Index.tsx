@@ -937,16 +937,25 @@ function Contacts() {
           <p className="font-manrope text-base md:text-lg mb-6" style={{ color: "#64748b" }}>
             г. Шахты — город с богатой историей и великими спортивными традициями
           </p>
-          <a
-            href="https://yandex.ru/maps/-/CPfUjVzV"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full font-manrope font-semibold text-sm transition-all hover:opacity-80"
-            style={{ background: "linear-gradient(135deg, #c2251b, #e63329)", color: "white" }}
-          >
-            <Icon name="MapPin" size={15} />
-            Посмотреть офис на карте
-          </a>
+          <div className="relative rounded-2xl overflow-hidden mx-auto mt-8 mb-6" style={{ maxWidth: "700px", height: "280px" }}>
+            <img
+              src="https://cdn.poehali.dev/projects/33c1de75-9e48-4c11-87d3-f9b410f3f164/files/0ee16bd3-c6d7-42cf-8d34-ec747729cebb.jpg"
+              alt="Город Шахты"
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 flex items-end p-5" style={{ background: "linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 60%)" }}>
+              <a
+                href="https://yandex.ru/maps/-/CPfUjVzV"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full font-manrope font-semibold text-sm transition-all hover:opacity-80"
+                style={{ background: "linear-gradient(135deg, #c2251b, #e63329)", color: "white" }}
+              >
+                <Icon name="MapPin" size={15} />
+                Посмотреть офис на карте
+              </a>
+            </div>
+          </div>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-8">
