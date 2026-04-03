@@ -343,10 +343,11 @@ function Loans() {
 
 // ─── SAVINGS ─────────────────────────────────────────────────────────────────
 function Savings() {
-  const plans = [
-    { title: "Стандарт", rate: 12, term: "6 месяцев", minAmount: "от 30 000 ₽", desc: "Базовая программа сбережений для начинающих пайщиков", icon: "PiggyBank", highlight: false },
-    { title: "Оптимал", rate: 15, term: "12 месяцев", minAmount: "от 50 000 ₽", desc: "Оптимальное соотношение доходности и срока вклада", icon: "TrendingUp", highlight: true },
-    { title: "Максимум", rate: 18, term: "24 месяца", minAmount: "от 100 000 ₽", desc: "Максимальная доходность для долгосрочных вложений", icon: "Star", highlight: false },
+  const terms = [
+    { months: "3 мес.", rateMonthly: 15, rateEnd: 15.5 },
+    { months: "6 мес.", rateMonthly: 16, rateEnd: 16.5, highlight: true },
+    { months: "12 мес.", rateMonthly: 17, rateEnd: 17.5, highlight: true },
+    { months: "18 мес.", rateMonthly: 18, rateEnd: 18.5 },
   ];
 
   return (
@@ -362,75 +363,88 @@ function Savings() {
             <span style={{ background: "linear-gradient(135deg, #00a87e, #00C896)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>18,5% ГОДОВЫХ</span>
           </h2>
           <p className="font-manrope text-gray-500 text-lg max-w-2xl mx-auto">
-            Ваши сбережения работают эффективно. Доход начисляется ежемесячно.
+            Одна программа — гибкий выбор срока и способа выплаты процентов.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-          {plans.map((plan, i) => (
-            <div key={plan.title} className="fade-in-up relative" style={{ transitionDelay: `${i * 100}ms` }}>
-              {plan.highlight && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2 z-10 px-5 py-1 rounded-full text-xs font-manrope font-bold"
-                  style={{ background: "linear-gradient(135deg, #00a87e, #00C896)", color: "white" }}>
-                  Самый популярный
+        {/* Program card */}
+        <div className="max-w-4xl mx-auto fade-in-up">
+          <div className="rounded-2xl overflow-hidden" style={{ boxShadow: "0 8px 40px rgba(0,0,0,0.08)", border: "1px solid #e5e7eb" }}>
+            {/* Header */}
+            <div className="px-8 py-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4"
+              style={{ background: "linear-gradient(160deg, #0A1628 0%, #0d2040 100%)" }}>
+              <div>
+                <div className="font-oswald text-2xl font-bold text-white mb-1">«Динамичный доход»</div>
+                <div className="font-manrope text-sm" style={{ color: "rgba(255,255,255,0.55)" }}>
+                  Сумма: от 10 000 до 30 000 000 ₽ &nbsp;·&nbsp; Расходные операции не предусмотрены
                 </div>
-              )}
-              <div className="p-8 rounded-2xl h-full flex flex-col transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
-                style={{
-                  background: plan.highlight ? "linear-gradient(160deg, #0A1628 0%, #0d2040 100%)" : "white",
-                  border: plan.highlight ? "1px solid rgba(0,200,150,0.3)" : "1px solid #e5e7eb",
-                  boxShadow: plan.highlight ? "0 20px 60px rgba(0,168,126,0.15)" : "0 4px 20px rgba(0,0,0,0.05)",
-                }}>
-                <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-5"
-                  style={{ background: plan.highlight ? "rgba(0,200,150,0.15)" : "#f0fdf9" }}>
-                  <Icon name={plan.icon as IconName} size={24} style={{ color: "#00a87e" }} />
-                </div>
-                <h3 className="font-oswald text-xl font-bold mb-2" style={{ color: plan.highlight ? "white" : "#0A1628" }}>
-                  {plan.title}
-                </h3>
-                <div className="mb-4">
-                  <span className="font-oswald font-bold" style={{ fontSize: "3.5rem", color: "#00C896", lineHeight: 1 }}>{plan.rate}%</span>
-                  <span className="font-manrope text-sm ml-1" style={{ color: plan.highlight ? "rgba(255,255,255,0.5)" : "#9ca3af" }}>годовых</span>
-                </div>
-                <p className="font-manrope text-sm leading-relaxed mb-5 flex-1"
-                  style={{ color: plan.highlight ? "rgba(255,255,255,0.6)" : "#6b7280" }}>{plan.desc}</p>
-                <div className="space-y-2 mb-6">
-                  {[
-                    { icon: "Clock", text: `Срок: ${plan.term}` },
-                    { icon: "Wallet", text: plan.minAmount },
-                    { icon: "RefreshCw", text: "Ежемесячная выплата" },
-                  ].map((item) => (
-                    <div key={item.text} className="flex items-center gap-2.5 text-sm font-manrope"
-                      style={{ color: plan.highlight ? "rgba(255,255,255,0.7)" : "#374151" }}>
-                      <Icon name={item.icon as IconName} size={14} style={{ color: "#00a87e", flexShrink: 0 }} />
-                      {item.text}
-                    </div>
-                  ))}
-                </div>
-                <button className="w-full py-3.5 rounded-xl font-manrope font-bold text-sm transition-all duration-200 hover:opacity-90"
-                  style={plan.highlight
-                    ? { background: "linear-gradient(135deg, #00C896, #00a87e)", color: "white", boxShadow: "0 8px 25px rgba(0,200,150,0.35)" }
-                    : { background: "#0A1628", color: "white" }
-                  }>
-                  Открыть сбережение
-                </button>
+              </div>
+              <div className="flex items-center gap-2 px-4 py-2 rounded-xl flex-shrink-0"
+                style={{ background: "rgba(0,200,150,0.15)", border: "1px solid rgba(0,200,150,0.3)" }}>
+                <Icon name="PiggyBank" size={18} style={{ color: "#00C896" }} />
+                <span className="font-manrope text-sm font-semibold" style={{ color: "#00C896" }}>Единственная программа</span>
               </div>
             </div>
-          ))}
-        </div>
 
-        <div className="mt-12 fade-in-up rounded-2xl p-6 flex flex-col sm:flex-row items-center gap-4 max-w-3xl mx-auto"
-          style={{ background: "#f0fdf9", border: "1px solid rgba(0,168,126,0.2)" }}>
-          <Icon name="Calculator" size={28} style={{ color: "#00a87e", flexShrink: 0 }} />
-          <div className="flex-1">
-            <p className="font-manrope font-semibold text-sm" style={{ color: "#0A1628" }}>
-              Пример: вложите 100 000 ₽ на 12 месяцев — получите{" "}
-              <span style={{ color: "#00a87e" }}>115 000 ₽</span> по программе «Оптимал»
+            {/* Table header */}
+            <div className="grid grid-cols-3 px-8 py-3 text-xs font-manrope font-semibold uppercase tracking-wide"
+              style={{ background: "#f1f5f9", color: "#64748b", borderBottom: "1px solid #e5e7eb" }}>
+              <div>Срок</div>
+              <div className="text-center">При ежемесячной выплате</div>
+              <div className="text-center">При выплате в конце срока</div>
+            </div>
+
+            {/* Rows */}
+            {terms.map((t, i) => (
+              <div key={t.months} className="grid grid-cols-3 px-8 py-4 items-center transition-colors duration-150"
+                style={{
+                  background: t.highlight ? "#f0fdf9" : "white",
+                  borderBottom: i < terms.length - 1 ? "1px solid #f1f5f9" : "none",
+                }}>
+                <div className="font-oswald text-lg font-bold" style={{ color: "#0A1628" }}>{t.months}</div>
+                <div className="text-center">
+                  <span className="font-oswald text-2xl font-bold" style={{ color: "#00a87e" }}>{t.rateMonthly}%</span>
+                  <span className="font-manrope text-xs ml-1" style={{ color: "#94a3b8" }}>годовых</span>
+                </div>
+                <div className="text-center flex flex-col items-center gap-0.5">
+                  <div>
+                    <span className="font-oswald text-2xl font-bold" style={{ color: "#00C896" }}>{t.rateEnd}%</span>
+                    <span className="font-manrope text-xs ml-1" style={{ color: "#94a3b8" }}>годовых</span>
+                  </div>
+                  <span className="font-manrope text-xs px-2 py-0.5 rounded-full" style={{ background: "rgba(0,200,150,0.1)", color: "#00a87e" }}>
+                    +0,5% бонус
+                  </span>
+                </div>
+              </div>
+            ))}
+
+            {/* Footer */}
+            <div className="px-8 py-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4"
+              style={{ background: "#f8fafc", borderTop: "1px solid #e5e7eb" }}>
+              <div className="flex flex-wrap gap-4">
+                <div className="flex items-center gap-2 text-sm font-manrope" style={{ color: "#475569" }}>
+                  <Icon name="Wallet" size={15} style={{ color: "#00a87e" }} />
+                  Минимальная сумма: <strong>10 000 ₽</strong>
+                </div>
+                <div className="flex items-center gap-2 text-sm font-manrope" style={{ color: "#475569" }}>
+                  <Icon name="CalendarClock" size={15} style={{ color: "#00a87e" }} />
+                  Выплата: ежемесячно или в конце срока
+                </div>
+              </div>
+              <button className="btn-emerald px-6 py-3 text-sm font-manrope font-bold whitespace-nowrap" style={{ color: "white" }}>
+                Открыть сбережение
+              </button>
+            </div>
+          </div>
+
+          {/* Bonus note */}
+          <div className="mt-6 rounded-xl px-6 py-4 flex items-start gap-3 fade-in-up"
+            style={{ background: "rgba(0,200,150,0.08)", border: "1px solid rgba(0,168,126,0.2)" }}>
+            <Icon name="Info" size={18} style={{ color: "#00a87e", flexShrink: 0, marginTop: 2 }} />
+            <p className="font-manrope text-sm" style={{ color: "#475569" }}>
+              <strong style={{ color: "#0A1628" }}>Бонус +0,5%</strong> к ставке начисляется при выборе выплаты процентов в конце срока. Досрочное расторжение договора не предусмотрено.
             </p>
           </div>
-          <button className="btn-emerald px-6 py-2.5 text-sm font-manrope font-bold whitespace-nowrap" style={{ color: "white" }}>
-            Рассчитать доход
-          </button>
         </div>
       </div>
     </section>
