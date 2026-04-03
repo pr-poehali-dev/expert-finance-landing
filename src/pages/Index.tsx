@@ -929,11 +929,24 @@ function Contacts() {
             <Icon name="MapPin" size={13} />Контакты
           </div>
           <h2 className="font-oswald text-3xl md:text-5xl font-bold leading-tight mb-4" style={{ color: "#1a1a1a" }}>
-            МЫ НАХОДИМСЯ<br />
+            МЫ НАХОДИМСЯ В ГОРОДЕ<br />
             <span style={{ background: "linear-gradient(135deg, #c2251b, #e63329)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
-              В ШАХТАХ
+              ОЛИМПИЙСКИХ ЧЕМПИОНОВ
             </span>
           </h2>
+          <p className="font-manrope text-base md:text-lg mb-6" style={{ color: "#64748b" }}>
+            г. Шахты — город с богатой историей и великими спортивными традициями
+          </p>
+          <a
+            href="https://yandex.ru/maps/-/CPfUjVzV"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full font-manrope font-semibold text-sm transition-all hover:opacity-80"
+            style={{ background: "linear-gradient(135deg, #c2251b, #e63329)", color: "white" }}
+          >
+            <Icon name="MapPin" size={15} />
+            Посмотреть офис на карте
+          </a>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-8">
