@@ -359,9 +359,7 @@ function Savings() {
           </div>
           <h2 className="font-oswald text-3xl md:text-5xl font-bold leading-tight mb-4" style={{ color: "#0A1628" }}>
             СБЕРЕЖЕНИЯ ДО{" "}
-            <span style={{ background: "linear-gradient(135deg, #00a87e, #00C896)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
-              18% ГОДОВЫХ
-            </span>
+            <span style={{ background: "linear-gradient(135deg, #00a87e, #00C896)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>18,5% ГОДОВЫХ</span>
           </h2>
           <p className="font-manrope text-gray-500 text-lg max-w-2xl mx-auto">
             Ваши сбережения работают эффективно. Доход начисляется ежемесячно.
