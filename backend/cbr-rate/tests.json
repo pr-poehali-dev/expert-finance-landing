@@ -1,0 +1,12 @@
+{
+  "tests": [
+    {
+      "name": "Get CBR key rate",
+      "method": "GET",
+      "path": "/",
+      "expectedStatus": 200,
+      "expectedBody": { "source": "cbr.ru" },
+      "bodyMatcher": "partial"
+    }
+  ]
+}

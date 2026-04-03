@@ -342,13 +342,52 @@ function Loans() {
 }
 
 // ─── SAVINGS ─────────────────────────────────────────────────────────────────
+const CBR_RATE_URL = "https://functions.poehali.dev/eef9deed-19ca-4467-9a4f-0337f1ca72fb";
+
+const TERM_OPTIONS = [
+  { months: "3 мес.", monthsNum: 3, bonus: 0 },
+  { months: "6 мес.", monthsNum: 6, bonus: 1, highlight: true },
+  { months: "12 мес.", monthsNum: 12, bonus: 2, highlight: true },
+  { months: "18 мес.", monthsNum: 18, bonus: 3 },
+];
+
+function fmt(n: number) {
+  return n.toLocaleString("ru-RU");
+}
+
 function Savings() {
-  const terms = [
-    { months: "3 мес.", rateMonthly: 15, rateEnd: 15.5 },
-    { months: "6 мес.", rateMonthly: 16, rateEnd: 16.5, highlight: true },
-    { months: "12 мес.", rateMonthly: 17, rateEnd: 17.5, highlight: true },
-    { months: "18 мес.", rateMonthly: 18, rateEnd: 18.5 },
-  ];
+  const [keyRate, setKeyRate] = useState<number | null>(null);
+  const [rateDate, setRateDate] = useState("");
+  const [amount, setAmount] = useState("100000");
+  const [selectedTerm, setSelectedTerm] = useState(TERM_OPTIONS[2]);
+  const [payAtEnd, setPayAtEnd] = useState(false);
+
+  useEffect(() => {
+    fetch(CBR_RATE_URL)
+      .then((r) => r.json())
+      .then((d) => {
+        setKeyRate(d.key_rate);
+        if (d.date) setRateDate(d.date.slice(0, 10));
+      })
+      .catch(() => setKeyRate(21));
+  }, []);
+
+  const getRate = (term: typeof TERM_OPTIONS[0], atEnd: boolean) => {
+    if (keyRate === null) return null;
+    return keyRate + term.bonus + (atEnd ? 0.5 : 0);
+  };
+
+  const calcIncome = () => {
+    const rate = getRate(selectedTerm, payAtEnd);
+    if (rate === null) return null;
+    const sum = parseFloat(amount.replace(/\s/g, "")) || 0;
+    const months = selectedTerm.monthsNum;
+    const income = sum * (rate / 100) * (months / 12);
+    return { income, total: sum + income, rate };
+  };
+
+  const result = calcIncome();
+  const amountNum = parseFloat(amount.replace(/\s/g, "")) || 0;
 
   return (
     <section id="savings" className="py-20 md:py-28" style={{ background: "#f8fafc" }}>
@@ -360,16 +399,23 @@ function Savings() {
           </div>
           <h2 className="font-oswald text-3xl md:text-5xl font-bold leading-tight mb-4" style={{ color: "#0A1628" }}>
             СБЕРЕЖЕНИЯ ДО{" "}
-            <span style={{ background: "linear-gradient(135deg, #00a87e, #00C896)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>18,5% ГОДОВЫХ</span>
+            <span style={{ background: "linear-gradient(135deg, #00a87e, #00C896)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
+              {keyRate !== null ? `${keyRate + 3.5}% ГОДОВЫХ` : "…% ГОДОВЫХ"}
+            </span>
           </h2>
           <p className="font-manrope text-gray-500 text-lg max-w-2xl mx-auto">
             Одна программа — гибкий выбор срока и способа выплаты процентов.
+            {rateDate && (
+              <span className="block text-sm mt-1" style={{ color: "#94a3b8" }}>
+                Ключевая ставка ЦБ РФ: <strong style={{ color: "#00a87e" }}>{keyRate}%</strong> (актуально на {rateDate})
+              </span>
+            )}
           </p>
         </div>
 
-        {/* Program card */}
-        <div className="max-w-4xl mx-auto fade-in-up">
-          <div className="rounded-2xl overflow-hidden" style={{ boxShadow: "0 8px 40px rgba(0,0,0,0.08)", border: "1px solid #e5e7eb" }}>
+        <div className="max-w-4xl mx-auto space-y-6">
+          {/* Program card */}
+          <div className="fade-in-up rounded-2xl overflow-hidden" style={{ boxShadow: "0 8px 40px rgba(0,0,0,0.08)", border: "1px solid #e5e7eb" }}>
             {/* Header */}
             <div className="px-8 py-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4"
               style={{ background: "linear-gradient(160deg, #0A1628 0%, #0d2040 100%)" }}>
@@ -382,7 +428,7 @@ function Savings() {
               <div className="flex items-center gap-2 px-4 py-2 rounded-xl flex-shrink-0"
                 style={{ background: "rgba(0,200,150,0.15)", border: "1px solid rgba(0,200,150,0.3)" }}>
                 <Icon name="PiggyBank" size={18} style={{ color: "#00C896" }} />
-                <span className="font-manrope text-sm font-semibold" style={{ color: "#00C896" }}>Единственная программа</span>
+                <span className="font-manrope text-sm font-semibold" style={{ color: "#00C896" }}>Ставка = ключевая ЦБ + %</span>
               </div>
             </div>
 
@@ -395,28 +441,41 @@ function Savings() {
             </div>
 
             {/* Rows */}
-            {terms.map((t, i) => (
-              <div key={t.months} className="grid grid-cols-3 px-8 py-4 items-center transition-colors duration-150"
-                style={{
-                  background: t.highlight ? "#f0fdf9" : "white",
-                  borderBottom: i < terms.length - 1 ? "1px solid #f1f5f9" : "none",
-                }}>
-                <div className="font-oswald text-lg font-bold" style={{ color: "#0A1628" }}>{t.months}</div>
-                <div className="text-center">
-                  <span className="font-oswald text-2xl font-bold" style={{ color: "#00a87e" }}>{t.rateMonthly}%</span>
-                  <span className="font-manrope text-xs ml-1" style={{ color: "#94a3b8" }}>годовых</span>
-                </div>
-                <div className="text-center flex flex-col items-center gap-0.5">
+            {TERM_OPTIONS.map((t, i) => {
+              const rM = getRate(t, false);
+              const rE = getRate(t, true);
+              return (
+                <div key={t.months} className="grid grid-cols-3 px-8 py-4 items-center transition-colors duration-150"
+                  style={{
+                    background: t.highlight ? "#f0fdf9" : "white",
+                    borderBottom: i < TERM_OPTIONS.length - 1 ? "1px solid #f1f5f9" : "none",
+                  }}>
                   <div>
-                    <span className="font-oswald text-2xl font-bold" style={{ color: "#00C896" }}>{t.rateEnd}%</span>
+                    <div className="font-oswald text-lg font-bold" style={{ color: "#0A1628" }}>{t.months}</div>
+                    <div className="font-manrope text-xs" style={{ color: "#94a3b8" }}>
+                      ключевая {t.bonus > 0 ? `+${t.bonus}%` : ""}
+                    </div>
+                  </div>
+                  <div className="text-center">
+                    <span className="font-oswald text-2xl font-bold" style={{ color: "#00a87e" }}>
+                      {rM !== null ? `${rM}%` : "…"}
+                    </span>
                     <span className="font-manrope text-xs ml-1" style={{ color: "#94a3b8" }}>годовых</span>
                   </div>
-                  <span className="font-manrope text-xs px-2 py-0.5 rounded-full" style={{ background: "rgba(0,200,150,0.1)", color: "#00a87e" }}>
-                    +0,5% бонус
-                  </span>
+                  <div className="text-center flex flex-col items-center gap-0.5">
+                    <div>
+                      <span className="font-oswald text-2xl font-bold" style={{ color: "#00C896" }}>
+                        {rE !== null ? `${rE}%` : "…"}
+                      </span>
+                      <span className="font-manrope text-xs ml-1" style={{ color: "#94a3b8" }}>годовых</span>
+                    </div>
+                    <span className="font-manrope text-xs px-2 py-0.5 rounded-full" style={{ background: "rgba(0,200,150,0.1)", color: "#00a87e" }}>
+                      +0,5% бонус
+                    </span>
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
 
             {/* Footer */}
             <div className="px-8 py-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4"
@@ -437,8 +496,128 @@ function Savings() {
             </div>
           </div>
 
+          {/* Calculator */}
+          <div className="fade-in-up rounded-2xl overflow-hidden" style={{ boxShadow: "0 8px 40px rgba(0,0,0,0.06)", border: "1px solid #e5e7eb" }}>
+            <div className="px-8 py-5 flex items-center gap-3"
+              style={{ background: "white", borderBottom: "1px solid #f1f5f9" }}>
+              <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
+                style={{ background: "#f0fdf9" }}>
+                <Icon name="Calculator" size={20} style={{ color: "#00a87e" }} />
+              </div>
+              <div>
+                <div className="font-oswald text-lg font-bold" style={{ color: "#0A1628" }}>Калькулятор дохода</div>
+                <div className="font-manrope text-xs" style={{ color: "#94a3b8" }}>Расчёт на основе актуальной ключевой ставки ЦБ РФ</div>
+              </div>
+            </div>
+
+            <div className="p-8 bg-white">
+              <div className="grid md:grid-cols-3 gap-6 mb-6">
+                {/* Amount */}
+                <div>
+                  <label className="block font-manrope text-sm font-semibold mb-2" style={{ color: "#374151" }}>
+                    Сумма вложения (₽)
+                  </label>
+                  <input
+                    type="number"
+                    value={amount}
+                    onChange={(e) => setAmount(e.target.value)}
+                    min={10000}
+                    max={30000000}
+                    className="w-full px-4 py-3 rounded-xl font-manrope text-base outline-none transition-all"
+                    style={{ border: "1.5px solid #e5e7eb", color: "#0A1628" }}
+                    onFocus={(e) => (e.currentTarget.style.borderColor = "#00C896")}
+                    onBlur={(e) => (e.currentTarget.style.borderColor = "#e5e7eb")}
+                  />
+                  {amountNum > 0 && amountNum < 10000 && (
+                    <p className="font-manrope text-xs mt-1" style={{ color: "#ef4444" }}>Минимум 10 000 ₽</p>
+                  )}
+                </div>
+
+                {/* Term */}
+                <div>
+                  <label className="block font-manrope text-sm font-semibold mb-2" style={{ color: "#374151" }}>
+                    Срок
+                  </label>
+                  <div className="grid grid-cols-2 gap-2">
+                    {TERM_OPTIONS.map((t) => (
+                      <button
+                        key={t.months}
+                        onClick={() => setSelectedTerm(t)}
+                        className="py-2.5 rounded-xl font-manrope text-sm font-semibold transition-all duration-150"
+                        style={selectedTerm.months === t.months
+                          ? { background: "linear-gradient(135deg, #00C896, #00a87e)", color: "white", border: "1.5px solid transparent" }
+                          : { background: "white", color: "#374151", border: "1.5px solid #e5e7eb" }
+                        }
+                      >
+                        {t.months}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Pay type */}
+                <div>
+                  <label className="block font-manrope text-sm font-semibold mb-2" style={{ color: "#374151" }}>
+                    Выплата процентов
+                  </label>
+                  <div className="space-y-2">
+                    {[
+                      { label: "Ежемесячно", value: false },
+                      { label: "В конце срока (+0,5%)", value: true },
+                    ].map((opt) => (
+                      <button
+                        key={opt.label}
+                        onClick={() => setPayAtEnd(opt.value)}
+                        className="w-full py-3 px-4 rounded-xl font-manrope text-sm font-semibold text-left transition-all duration-150"
+                        style={payAtEnd === opt.value
+                          ? { background: "linear-gradient(135deg, #00C896, #00a87e)", color: "white", border: "1.5px solid transparent" }
+                          : { background: "white", color: "#374151", border: "1.5px solid #e5e7eb" }
+                        }
+                      >
+                        {opt.label}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Result */}
+              {result && amountNum >= 10000 ? (
+                <div className="rounded-2xl p-6 grid sm:grid-cols-3 gap-4"
+                  style={{ background: "linear-gradient(160deg, #0A1628 0%, #0d2040 100%)" }}>
+                  <div className="text-center">
+                    <div className="font-manrope text-xs mb-1" style={{ color: "rgba(255,255,255,0.5)" }}>Ставка</div>
+                    <div className="font-oswald text-3xl font-bold" style={{ color: "#00C896" }}>{result.rate}%</div>
+                    <div className="font-manrope text-xs" style={{ color: "rgba(255,255,255,0.4)" }}>годовых</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="font-manrope text-xs mb-1" style={{ color: "rgba(255,255,255,0.5)" }}>Доход за {selectedTerm.months}</div>
+                    <div className="font-oswald text-3xl font-bold" style={{ color: "#00C896" }}>+{fmt(Math.round(result.income))} ₽</div>
+                    <div className="font-manrope text-xs" style={{ color: "rgba(255,255,255,0.4)" }}>чистая прибыль</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="font-manrope text-xs mb-1" style={{ color: "rgba(255,255,255,0.5)" }}>Итого получите</div>
+                    <div className="font-oswald text-3xl font-bold text-white">{fmt(Math.round(result.total))} ₽</div>
+                    <div className="font-manrope text-xs" style={{ color: "rgba(255,255,255,0.4)" }}>вложение + доход</div>
+                  </div>
+                </div>
+              ) : (
+                <div className="rounded-2xl p-6 text-center"
+                  style={{ background: "#f8fafc", border: "1.5px dashed #e5e7eb" }}>
+                  <p className="font-manrope text-sm" style={{ color: "#94a3b8" }}>
+                    {keyRate === null ? "Загружаем ставку ЦБ РФ…" : "Введите сумму от 10 000 ₽, чтобы увидеть расчёт"}
+                  </p>
+                </div>
+              )}
+
+              <p className="font-manrope text-xs mt-3" style={{ color: "#cbd5e1" }}>
+                * Расчёт ориентировочный. Ставки привязаны к ключевой ставке ЦБ РФ и могут меняться. Точные условия — в договоре.
+              </p>
+            </div>
+          </div>
+
           {/* Bonus note */}
-          <div className="mt-6 rounded-xl px-6 py-4 flex items-start gap-3 fade-in-up"
+          <div className="rounded-xl px-6 py-4 flex items-start gap-3 fade-in-up"
             style={{ background: "rgba(0,200,150,0.08)", border: "1px solid rgba(0,168,126,0.2)" }}>
             <Icon name="Info" size={18} style={{ color: "#00a87e", flexShrink: 0, marginTop: 2 }} />
             <p className="font-manrope text-sm" style={{ color: "#475569" }}>
