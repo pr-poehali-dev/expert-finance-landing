@@ -6,6 +6,10 @@ const API_URL = "https://functions.poehali.dev/e26c970b-1482-4b9c-9b6a-f48a7072e
 interface Props {
   open: boolean;
   onClose: () => void;
+  title?: string;
+  subtitle?: string;
+  buttonLabel?: string;
+  source?: string;
 }
 
 function formatPhone(value: string): string {
@@ -26,7 +30,14 @@ function validateEmail(email: string): boolean {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
 
-export default function MemberModal({ open, onClose }: Props) {
+export default function MemberModal({
+  open,
+  onClose,
+  title = "Стать пайщиком",
+  subtitle = "Заполните форму — мы свяжемся с вами",
+  buttonLabel = "Отправить заявку",
+  source = "",
+}: Props) {
   const [fio, setFio] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
@@ -66,7 +77,14 @@ export default function MemberModal({ open, onClose }: Props) {
       const res = await fetch(API_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ fio, phone, email, source_url: window.location.href }),
+        body: JSON.stringify({
+          fio,
+          phone,
+          email,
+          source_url: window.location.href,
+          button_label: title,
+          button_source: source,
+        }),
       });
       const data = await res.json();
       if (data.ok) setStatus("success");
@@ -88,9 +106,9 @@ export default function MemberModal({ open, onClose }: Props) {
         <div className="p-6" style={{ background: "linear-gradient(135deg, #e63329, #c2251b)" }}>
           <div className="flex items-center justify-between">
             <div>
-              <h2 className="font-oswald text-2xl font-bold text-white">Стать пайщиком</h2>
+              <h2 className="font-oswald text-2xl font-bold text-white">{title}</h2>
               <p className="font-manrope text-sm mt-1" style={{ color: "rgba(255,255,255,0.75)" }}>
-                Заполните форму — мы свяжемся с вами
+                {subtitle}
               </p>
             </div>
             <button onClick={onClose} className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-white/20 transition-colors">
@@ -173,7 +191,7 @@ export default function MemberModal({ open, onClose }: Props) {
                 className="w-full py-3.5 rounded-xl font-manrope font-bold text-sm mt-2 transition-opacity"
                 style={{ background: "linear-gradient(135deg, #e63329, #c2251b)", color: "white", opacity: status === "loading" ? 0.7 : 1 }}
               >
-                {status === "loading" ? "Отправляем..." : "Отправить заявку"}
+                {status === "loading" ? "Отправляем..." : buttonLabel}
               </button>
               <p className="font-manrope text-xs text-center" style={{ color: "#94a3b8" }}>
                 Нажимая кнопку, вы соглашаетесь с политикой обработки персональных данных

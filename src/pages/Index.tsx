@@ -161,7 +161,9 @@ function Header({ onMember }: { onMember: () => void }) {
 }
 
 // ─── HERO ─────────────────────────────────────────────────────────────────────
-function Hero() {
+type OpenModal = (title: string, subtitle: string, buttonLabel: string, source: string) => void;
+
+function Hero({ openModal }: { openModal: OpenModal }) {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden" style={{
       paddingTop: "80px",
@@ -210,17 +212,16 @@ function Hero() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <a href="#loans">
-                <button className="btn-emerald pulse-ring px-8 py-4 text-base font-manrope font-bold w-full sm:w-auto" style={{ color: "white" }}>
-                  Получить займ
-                </button>
-              </a>
-              <a href="#savings">
-                <button className="px-8 py-4 text-base font-manrope font-semibold w-full sm:w-auto flex items-center justify-center gap-2 rounded-xl transition-all duration-200"
-                  style={{ border: "2px solid #1a1a1a", color: "#1a1a1a", background: "transparent" }}
-                  onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = "#1a1a1a"; (e.currentTarget as HTMLElement).style.color = "white"; }}
-                  onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = "transparent"; (e.currentTarget as HTMLElement).style.color = "#1a1a1a"; }}>Открыть сберегательный счет</button>
-              </a>
+              <button onClick={() => openModal("Получить займ", "Укажите контакты — подберём программу займа", "Подать заявку", "Главный экран — кнопка «Получить займ»")}
+                className="btn-emerald pulse-ring px-8 py-4 text-base font-manrope font-bold w-full sm:w-auto" style={{ color: "white" }}>
+                Получить займ
+              </button>
+              <button onClick={() => openModal("Открыть сберегательный счет", "Укажите контакты — расскажем об условиях вклада", "Открыть счёт", "Главный экран — кнопка «Открыть сберегательный счет»")}
+                className="px-8 py-4 text-base font-manrope font-semibold w-full sm:w-auto flex items-center justify-center gap-2 rounded-xl transition-all duration-200"
+                style={{ border: "2px solid #1a1a1a", color: "#1a1a1a", background: "transparent" }}
+                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = "#1a1a1a"; (e.currentTarget as HTMLElement).style.color = "white"; }}
+                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = "transparent"; (e.currentTarget as HTMLElement).style.color = "#1a1a1a"; }}>Открыть сберегательный счет
+              </button>
             </div>
 
             <div className="flex flex-wrap items-center gap-6 mt-10">
@@ -263,7 +264,7 @@ function Hero() {
 }
 
 // ─── LOANS ────────────────────────────────────────────────────────────────────
-function Loans() {
+function Loans({ openModal }: { openModal: OpenModal }) {
   const products = [
     { title: "Потребительский займ", period: "до 60 мес.", amount: "до 300 000 ₽", icon: "CreditCard", features: ["Без залога", "Досрочное погашение", "Без скрытых комиссий"], badge: "Популярный", color: "#c2251b", bg: "#fff8f8" },
     { title: "Под залог недвижимости", period: "до 180 мес.", amount: "до 3 000 000 ₽", icon: "Home", features: ["Крупные суммы", "Длительный срок", "Индивидуальный подход"], badge: "Выгодно", color: "#c2251b", bg: "#f8fafc" },
@@ -321,7 +322,8 @@ function Loans() {
                   </li>
                 ))}
               </ul>
-              <button className="w-full py-3 rounded-xl font-manrope font-bold text-sm transition-all duration-200 hover:opacity-90"
+              <button onClick={() => openModal("Подать заявку", `Заявка на продукт: ${p.title}`, "Подать заявку", `Раздел «Кредитные продукты» — карточка «${p.title}»`)}
+                className="w-full py-3 rounded-xl font-manrope font-bold text-sm transition-all duration-200 hover:opacity-90"
                 style={{ background: p.color, color: "white", boxShadow: `0 4px 16px ${p.color}40` }}>
                 Подать заявку
               </button>
@@ -335,7 +337,8 @@ function Loans() {
             <h3 className="font-oswald text-2xl font-bold text-white mb-1">Вам не подходят стандартные кредитные программы? Позвоните или напишите нам, мы найдем индивидуальное решение для вас!</h3>
             <p className="font-manrope text-sm" style={{ color: "rgba(255,255,255,0.6)" }}>Наши специалисты бесплатно подберут оптимальные условия</p>
           </div>
-          <button className="btn-emerald px-8 py-3.5 font-manrope font-bold text-sm whitespace-nowrap flex-shrink-0" style={{ color: "white" }}>
+          <button onClick={() => openModal("Получить консультацию", "Расскажем об индивидуальных условиях займа", "Записаться на консультацию", "Раздел «Кредитные продукты» — баннер «Индивидуальное решение»")}
+            className="btn-emerald px-8 py-3.5 font-manrope font-bold text-sm whitespace-nowrap flex-shrink-0" style={{ color: "white" }}>
             Получить консультацию
           </button>
         </div>
@@ -358,7 +361,7 @@ function fmt(n: number) {
   return n.toLocaleString("ru-RU");
 }
 
-function Savings() {
+function Savings({ openModal }: { openModal: OpenModal }) {
   const [keyRate, setKeyRate] = useState<number | null>(null);
   const [rateDate, setRateDate] = useState("");
   const [amount, setAmount] = useState("100000");
@@ -493,7 +496,8 @@ function Savings() {
                   Выплата: ежемесячно или в конце срока
                 </div>
               </div>
-              <button className="btn-emerald px-6 py-3 text-sm font-manrope font-bold whitespace-nowrap" style={{ color: "white" }}>Открыть сберегательный счет</button>
+              <button onClick={() => openModal("Открыть сберегательный счет", "Укажите контакты — оформим вклад на выгодных условиях", "Открыть счёт", "Раздел «Сбережения» — таблица ставок")}
+                className="btn-emerald px-6 py-3 text-sm font-manrope font-bold whitespace-nowrap" style={{ color: "white" }}>Открыть сберегательный счет</button>
             </div>
           </div>
 
@@ -611,6 +615,16 @@ function Savings() {
                 </div>
               )}
 
+              {result && (
+                <button
+                  onClick={() => openModal("Открыть счет сейчас", `Сумма: ${fmt(Number(amount))} ₽ · Срок: ${selectedTerm.label} · Доход: +${fmt(Math.round(result.income))} ₽`, "Открыть счёт", "Раздел «Сбережения» — калькулятор доходности")}
+                  className="w-full mt-4 py-3.5 rounded-xl font-manrope font-bold text-sm"
+                  style={{ background: "linear-gradient(135deg, #e63329, #c2251b)", color: "white" }}
+                >
+                  Открыть счет сейчас
+                </button>
+              )}
+
               <p className="font-manrope text-xs mt-3" style={{ color: "#cbd5e1" }}>
                 * Расчёт ориентировочный. Ставки привязаны к ключевой ставке ЦБ РФ и могут меняться. Точные условия — в договоре.
               </p>
@@ -632,7 +646,7 @@ function Savings() {
 }
 
 // ─── ABOUT ────────────────────────────────────────────────────────────────────
-function About() {
+function About({ openModal }: { openModal: OpenModal }) {
   const values = [
     { icon: "Handshake", title: "Взаимопомощь", text: "Поддерживаем членов кооператива в решении финансовых задач." },
     { icon: "FileCheck", title: "Прозрачность", text: "Все условия, тарифы и правила чётко прописаны в Уставе и договорах." },
@@ -833,7 +847,8 @@ function About() {
             Мы создаём сообщество людей и предприятий, которые доверяют друг другу и совместно решают финансовые задачи. Помогаем получать выгодные займы, накапливать сбережения с доходностью выше рынка, развивать финансовую культуру и поддерживать локальный бизнес.
           </p>
           <div className="flex justify-center">
-            <button className="btn-emerald px-8 py-4 font-manrope font-bold text-base" style={{ color: "white" }}>
+            <button onClick={() => openModal("Стать членом кооператива", "Заполните форму — поможем оформить членство в КПК", "Вступить в кооператив", "Раздел «О нас» — блок «Наша миссия»")}
+              className="btn-emerald px-8 py-4 font-manrope font-bold text-base" style={{ color: "white" }}>
               Стать членом кооператива
             </button>
           </div>
@@ -1045,18 +1060,29 @@ function Footer() {
 // ─── PAGE ─────────────────────────────────────────────────────────────────────
 export default function Index() {
   useScrollReveal();
-  const [memberOpen, setMemberOpen] = useState(false);
+  const [modal, setModal] = useState<{ title: string; subtitle: string; buttonLabel: string; source: string } | null>(null);
+
+  const openModal = (title: string, subtitle: string, buttonLabel: string, source: string) =>
+    setModal({ title, subtitle, buttonLabel, source });
+
   return (
     <div className="font-manrope">
-      <Header onMember={() => setMemberOpen(true)} />
-      <Hero />
-      <Loans />
-      <Savings />
-      <About />
+      <Header onMember={() => openModal("Стать пайщиком", "Заполните форму — мы свяжемся с вами", "Отправить заявку", "Шапка сайта")} />
+      <Hero openModal={openModal} />
+      <Loans openModal={openModal} />
+      <Savings openModal={openModal} />
+      <About openModal={openModal} />
       <Documents />
       <Contacts />
       <Footer />
-      <MemberModal open={memberOpen} onClose={() => setMemberOpen(false)} />
+      <MemberModal
+        open={!!modal}
+        onClose={() => setModal(null)}
+        title={modal?.title}
+        subtitle={modal?.subtitle}
+        buttonLabel={modal?.buttonLabel}
+        source={modal?.source}
+      />
     </div>
   );
 }
