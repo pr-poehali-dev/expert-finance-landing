@@ -57,7 +57,7 @@ function StatCounter({ target, suffix, label }: { target: number; suffix: string
   return (
     <div ref={ref} className="text-center">
       <div className="font-oswald text-4xl md:text-5xl font-bold leading-none mb-1" style={{
-        background: "linear-gradient(135deg, #00a87e, #00C896)",
+        background: "linear-gradient(135deg, #c2251b, #e63329)",
         WebkitBackgroundClip: "text",
         WebkitTextFillColor: "transparent",
       }}>
@@ -99,11 +99,11 @@ function Header() {
         <div className="flex items-center justify-between h-16">
           <a href="#" className="flex items-center gap-2.5">
             <div className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0"
-              style={{ background: "linear-gradient(135deg, #00C896, #00a87e)" }}>
+              style={{ background: "linear-gradient(135deg, #e63329, #c2251b)" }}>
               <Icon name="Shield" size={18} style={{ color: "white" }} />
             </div>
             <div>
-              <div className="font-oswald text-base font-semibold leading-tight tracking-wide" style={{ color: "#0A1628" }}>ЭКСПЕРТ ФИНАНС</div>
+              <div className="font-oswald text-base font-semibold leading-tight tracking-wide" style={{ color: "#1a1a1a" }}>ЭКСПЕРТ ФИНАНС</div>
               <div className="font-manrope text-xs leading-none" style={{ color: "#94a3b8" }}>Кредитный кооператив</div>
             </div>
           </a>
@@ -113,7 +113,7 @@ function Header() {
               <a key={l.href} href={l.href}
                 className="font-manrope text-sm font-medium transition-colors duration-200"
                 style={{ color: "#475569" }}
-                onMouseEnter={(e) => (e.currentTarget.style.color = "#00a87e")}
+                onMouseEnter={(e) => (e.currentTarget.style.color = "#c2251b")}
                 onMouseLeave={(e) => (e.currentTarget.style.color = "#475569")}
               >{l.label}</a>
             ))}
@@ -121,8 +121,8 @@ function Header() {
 
           <div className="hidden md:flex items-center gap-3">
             <button className="font-manrope text-sm font-semibold px-4 py-2 rounded-xl transition-all duration-200"
-              style={{ border: "1.5px solid #e2e8f0", color: "#0A1628", background: "white" }}
-              onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.borderColor = "#00C896"; }}
+              style={{ border: "1.5px solid #e2e8f0", color: "#1a1a1a", background: "white" }}
+              onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.borderColor = "#e63329"; }}
               onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.borderColor = "#e2e8f0"; }}>
               Личный кабинет
             </button>
@@ -131,7 +131,7 @@ function Header() {
             </button>
           </div>
 
-          <button className="lg:hidden p-2" style={{ color: "#0A1628" }} onClick={() => setMenuOpen(!menuOpen)}>
+          <button className="lg:hidden p-2" style={{ color: "#1a1a1a" }} onClick={() => setMenuOpen(!menuOpen)}>
             <Icon name={menuOpen ? "X" : "Menu"} size={22} />
           </button>
         </div>
@@ -147,7 +147,7 @@ function Header() {
             ))}
             <div className="flex gap-3 mt-4">
               <button className="font-manrope text-sm font-semibold px-4 py-2 rounded-xl flex-1"
-                style={{ border: "1.5px solid #e2e8f0", color: "#0A1628" }}>Личный кабинет</button>
+                style={{ border: "1.5px solid #e2e8f0", color: "#1a1a1a" }}>Личный кабинет</button>
               <button className="btn-emerald px-4 py-2 text-sm font-manrope font-bold flex-1" style={{ color: "white" }}>Стать пайщиком</button>
             </div>
           </div>
@@ -162,12 +162,12 @@ function Hero() {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden" style={{
       paddingTop: "80px",
-      background: "linear-gradient(160deg, #f0fdf9 0%, #ecfdf5 30%, #f8faff 70%, #eff6ff 100%)",
+      background: "linear-gradient(160deg, #fff5f5 0%, #fff0f0 30%, #f8faff 70%, #eff6ff 100%)",
     }}>
       {/* Soft orbs */}
       <div className="absolute rounded-full" style={{
         width: "600px", height: "600px",
-        background: "radial-gradient(circle, rgba(0,200,150,0.12) 0%, transparent 70%)",
+        background: "radial-gradient(circle, rgba(230,51,41,0.12) 0%, transparent 70%)",
         top: "-100px", right: "-100px", pointerEvents: "none",
       }} />
       <div className="absolute rounded-full" style={{
@@ -177,7 +177,7 @@ function Hero() {
       }} />
       {/* Dot grid */}
       <div className="absolute inset-0" style={{
-        backgroundImage: "radial-gradient(circle, rgba(0,200,150,0.18) 1px, transparent 1px)",
+        backgroundImage: "radial-gradient(circle, rgba(230,51,41,0.18) 1px, transparent 1px)",
         backgroundSize: "40px 40px",
         opacity: 0.4,
         pointerEvents: "none",
@@ -188,14 +188,14 @@ function Hero() {
           {/* Left */}
           <div>
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-manrope font-semibold mb-6"
-              style={{ background: "rgba(0,200,150,0.1)", border: "1px solid rgba(0,168,126,0.25)", color: "#00a87e" }}>
-              <div className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: "#00C896" }} />
+              style={{ background: "rgba(230,51,41,0.1)", border: "1px solid rgba(194,37,27,0.25)", color: "#c2251b" }}>
+              <div className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: "#e63329" }} />
               Работаем с 2015 года · г. Шахты, Ростовская область
             </div>
 
-            <h1 className="font-oswald text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6" style={{ color: "#0A1628" }}>
+            <h1 className="font-oswald text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6" style={{ color: "#1a1a1a" }}>
               РАБОТАЕМ С{" "}
-              <span style={{ background: "linear-gradient(135deg, #00a87e, #00C896)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
+              <span style={{ background: "linear-gradient(135deg, #c2251b, #e63329)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
                 ФИНАНСАМИ,
               </span>
               <br />ДУМАЕМ О ЛЮДЯХ
@@ -203,7 +203,7 @@ function Hero() {
 
             <p className="font-manrope text-lg md:text-xl leading-relaxed mb-8 max-w-xl" style={{ color: "#475569" }}>
               Финансовые решения для людей, которые считают деньги.<br />
-              <span className="font-bold" style={{ color: "#0A1628" }}>Займы выгоднее банков. Сбережения — тоже!</span>
+              <span className="font-bold" style={{ color: "#1a1a1a" }}>Займы выгоднее банков. Сбережения — тоже!</span>
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
@@ -214,9 +214,9 @@ function Hero() {
               </a>
               <a href="#savings">
                 <button className="px-8 py-4 text-base font-manrope font-semibold w-full sm:w-auto flex items-center justify-center gap-2 rounded-xl transition-all duration-200"
-                  style={{ border: "2px solid #0A1628", color: "#0A1628", background: "transparent" }}
-                  onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = "#0A1628"; (e.currentTarget as HTMLElement).style.color = "white"; }}
-                  onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = "transparent"; (e.currentTarget as HTMLElement).style.color = "#0A1628"; }}>Открыть сберегательный счет</button>
+                  style={{ border: "2px solid #1a1a1a", color: "#1a1a1a", background: "transparent" }}
+                  onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = "#1a1a1a"; (e.currentTarget as HTMLElement).style.color = "white"; }}
+                  onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = "transparent"; (e.currentTarget as HTMLElement).style.color = "#1a1a1a"; }}>Открыть сберегательный счет</button>
               </a>
             </div>
 
@@ -227,7 +227,7 @@ function Hero() {
                 { icon: "Users", text: "900+ пайщиков" },
               ].map((badge) => (
                 <div key={badge.text} className="flex items-center gap-2 text-sm font-manrope" style={{ color: "#64748b" }}>
-                  <Icon name={badge.icon as IconName} size={15} style={{ color: "#00a87e", flexShrink: 0 }} />
+                  <Icon name={badge.icon as IconName} size={15} style={{ color: "#c2251b", flexShrink: 0 }} />
                   {badge.text}
                 </div>
               ))}
@@ -262,11 +262,11 @@ function Hero() {
 // ─── LOANS ────────────────────────────────────────────────────────────────────
 function Loans() {
   const products = [
-    { title: "Потребительский займ", period: "до 60 мес.", amount: "до 300 000 ₽", icon: "CreditCard", features: ["Без залога", "Досрочное погашение", "Без скрытых комиссий"], badge: "Популярный", color: "#00a87e", bg: "#f0fdf9" },
+    { title: "Потребительский займ", period: "до 60 мес.", amount: "до 300 000 ₽", icon: "CreditCard", features: ["Без залога", "Досрочное погашение", "Без скрытых комиссий"], badge: "Популярный", color: "#c2251b", bg: "#fff5f5" },
     { title: "Под залог недвижимости", period: "до 180 мес.", amount: "до 3 000 000 ₽", icon: "Home", features: ["Крупные суммы", "Длительный срок", "Индивидуальный подход"], badge: "Выгодно", color: "#0284c7", bg: "#f0f9ff" },
     { title: "Ипотечный займ", period: "до 180 мес.", amount: "до 3 000 000 ₽", icon: "Building2", features: ["Покупка жилья", "Длительный срок", "Гибкие условия"], badge: "Ипотека", color: "#7c3aed", bg: "#faf5ff" },
     { title: "Займ на авто", period: "до 84 мес.", amount: "до 2 000 000 ₽", icon: "Car", features: ["Покупка авто", "Под залог своего авто", "Быстрое решение"], badge: "Авто", color: "#d97706", bg: "#fffbeb" },
-    { title: "Рефинансирование", period: "до 180 мес.", amount: "до 3 000 000 ₽", icon: "RefreshCcw", features: ["Снижение ставки", "Объединение займов", "Уменьшение платежа"], badge: "Выгодно", color: "#0891b2", bg: "#f0fdff" },
+    { title: "Рефинансирование", period: "до 180 мес.", amount: "до 3 000 000 ₽", icon: "RefreshCcw", features: ["Снижение ставки", "Объединение займов", "Уменьшение платежа"], badge: "Выгодно", color: "#0891b2", bg: "#fff5f5" },
     { title: "Займ для самозанятых", period: "до 60 мес.", amount: "до 1 000 000 ₽", icon: "Briefcase", features: ["Для самозанятых", "На развитие бизнеса", "Справка о доходах НПД"], badge: "Бизнес", color: "#be185d", bg: "#fff1f2" },
   ];
 
@@ -275,12 +275,12 @@ function Loans() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="text-center mb-14 fade-in-up">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-manrope font-semibold mb-4"
-            style={{ background: "#f0fdf9", border: "1px solid rgba(0,168,126,0.3)", color: "#00a87e" }}>
+            style={{ background: "#fff5f5", border: "1px solid rgba(194,37,27,0.3)", color: "#c2251b" }}>
             <Icon name="Percent" size={13} />Кредитные продукты
           </div>
-          <h2 className="font-oswald text-3xl md:text-5xl font-bold leading-tight mb-4" style={{ color: "#0A1628" }}>
+          <h2 className="font-oswald text-3xl md:text-5xl font-bold leading-tight mb-4" style={{ color: "#1a1a1a" }}>
             ЗАЙМЫ БЕЗ{" "}
-            <span style={{ background: "linear-gradient(135deg, #00a87e, #00C896)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
+            <span style={{ background: "linear-gradient(135deg, #c2251b, #e63329)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
               ЛИШНИХ УСЛОВИЙ
             </span>
           </h2>
@@ -301,7 +301,7 @@ function Loans() {
                 <span className="text-xs font-manrope font-bold px-3 py-1 rounded-full"
                   style={{ background: `${p.color}15`, color: p.color }}>{p.badge}</span>
               </div>
-              <h3 className="font-manrope font-bold text-base mb-3 leading-snug" style={{ color: "#0A1628" }}>{p.title}</h3>
+              <h3 className="font-manrope font-bold text-base mb-3 leading-snug" style={{ color: "#1a1a1a" }}>{p.title}</h3>
               <div className="mb-4 flex items-center gap-2 px-3 py-2 rounded-xl" style={{ background: `${p.color}10` }}>
                 <Icon name="Info" size={14} style={{ color: p.color, flexShrink: 0 }} />
                 <span className="font-manrope text-sm font-semibold" style={{ color: p.color }}>Ставка индивидуальна</span>
@@ -327,7 +327,7 @@ function Loans() {
         </div>
 
         <div className="mt-10 fade-in-up rounded-2xl p-8 flex flex-col md:flex-row items-center justify-between gap-6"
-          style={{ background: "linear-gradient(135deg, #0A1628, #142244)", border: "1px solid rgba(0,200,150,0.2)" }}>
+          style={{ background: "linear-gradient(135deg, #1a1a1a, #142244)", border: "1px solid rgba(230,51,41,0.2)" }}>
           <div>
             <h3 className="font-oswald text-2xl font-bold text-white mb-1">Не знаете, какой займ выбрать?</h3>
             <p className="font-manrope text-sm" style={{ color: "rgba(255,255,255,0.6)" }}>Наши специалисты бесплатно подберут оптимальные условия</p>
@@ -394,12 +394,12 @@ function Savings() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="text-center mb-14 fade-in-up">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-manrope font-semibold mb-4"
-            style={{ background: "#f0fdf9", border: "1px solid rgba(0,168,126,0.3)", color: "#00a87e" }}>
+            style={{ background: "#fff5f5", border: "1px solid rgba(194,37,27,0.3)", color: "#c2251b" }}>
             <Icon name="TrendingUp" size={13} />Программы накопления
           </div>
-          <h2 className="font-oswald text-3xl md:text-5xl font-bold leading-tight mb-4" style={{ color: "#0A1628" }}>
+          <h2 className="font-oswald text-3xl md:text-5xl font-bold leading-tight mb-4" style={{ color: "#1a1a1a" }}>
             СБЕРЕЖЕНИЯ ДО{" "}
-            <span style={{ background: "linear-gradient(135deg, #00a87e, #00C896)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
+            <span style={{ background: "linear-gradient(135deg, #c2251b, #e63329)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
               {keyRate !== null ? `${keyRate + 3.5}% ГОДОВЫХ` : "…% ГОДОВЫХ"}
             </span>
           </h2>
@@ -407,7 +407,7 @@ function Savings() {
             Одна программа — гибкий выбор срока и способа выплаты процентов.
             {rateDate && (
               <span className="block text-sm mt-1" style={{ color: "#94a3b8" }}>
-                Ключевая ставка ЦБ РФ: <strong style={{ color: "#00a87e" }}>{keyRate}%</strong> (актуально на {rateDate})
+                Ключевая ставка ЦБ РФ: <strong style={{ color: "#c2251b" }}>{keyRate}%</strong> (актуально на {rateDate})
               </span>
             )}
           </p>
@@ -418,7 +418,7 @@ function Savings() {
           <div className="fade-in-up rounded-2xl overflow-hidden" style={{ boxShadow: "0 8px 40px rgba(0,0,0,0.08)", border: "1px solid #e5e7eb" }}>
             {/* Header */}
             <div className="px-8 py-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4"
-              style={{ background: "linear-gradient(160deg, #0A1628 0%, #0d2040 100%)" }}>
+              style={{ background: "linear-gradient(160deg, #1a1a1a 0%, #2d2d2d 100%)" }}>
               <div>
                 <div className="font-oswald text-2xl font-bold text-white mb-1">«Динамичный доход»</div>
                 <div className="font-manrope text-sm" style={{ color: "rgba(255,255,255,0.55)" }}>
@@ -426,9 +426,9 @@ function Savings() {
                 </div>
               </div>
               <div className="flex items-center gap-2 px-4 py-2 rounded-xl flex-shrink-0"
-                style={{ background: "rgba(0,200,150,0.15)", border: "1px solid rgba(0,200,150,0.3)" }}>
-                <Icon name="PiggyBank" size={18} style={{ color: "#00C896" }} />
-                <span className="font-manrope text-sm font-semibold" style={{ color: "#00C896" }}>Ставка растёт вместе с ключевой, но не снижается при её уменьшении</span>
+                style={{ background: "rgba(230,51,41,0.15)", border: "1px solid rgba(230,51,41,0.3)" }}>
+                <Icon name="PiggyBank" size={18} style={{ color: "#e63329" }} />
+                <span className="font-manrope text-sm font-semibold" style={{ color: "#e63329" }}>Ставка растёт вместе с ключевой, но не снижается при её уменьшении</span>
               </div>
             </div>
 
@@ -447,29 +447,29 @@ function Savings() {
               return (
                 <div key={t.months} className="grid grid-cols-3 px-8 py-4 items-center transition-colors duration-150"
                   style={{
-                    background: t.highlight ? "#f0fdf9" : "white",
+                    background: t.highlight ? "#fff5f5" : "white",
                     borderBottom: i < TERM_OPTIONS.length - 1 ? "1px solid #f1f5f9" : "none",
                   }}>
                   <div>
-                    <div className="font-oswald text-lg font-bold" style={{ color: "#0A1628" }}>{t.months}</div>
+                    <div className="font-oswald text-lg font-bold" style={{ color: "#1a1a1a" }}>{t.months}</div>
                     <div className="font-manrope text-xs" style={{ color: "#94a3b8" }}>
                       ключевая {t.bonus > 0 ? `+${t.bonus}%` : ""}
                     </div>
                   </div>
                   <div className="text-center">
-                    <span className="font-oswald text-2xl font-bold" style={{ color: "#00a87e" }}>
+                    <span className="font-oswald text-2xl font-bold" style={{ color: "#c2251b" }}>
                       {rM !== null ? `${rM}%` : "…"}
                     </span>
                     <span className="font-manrope text-xs ml-1" style={{ color: "#94a3b8" }}>годовых</span>
                   </div>
                   <div className="text-center flex flex-col items-center gap-0.5">
                     <div>
-                      <span className="font-oswald text-2xl font-bold" style={{ color: "#00C896" }}>
+                      <span className="font-oswald text-2xl font-bold" style={{ color: "#e63329" }}>
                         {rE !== null ? `${rE}%` : "…"}
                       </span>
                       <span className="font-manrope text-xs ml-1" style={{ color: "#94a3b8" }}>годовых</span>
                     </div>
-                    <span className="font-manrope text-xs px-2 py-0.5 rounded-full" style={{ background: "rgba(0,200,150,0.1)", color: "#00a87e" }}>
+                    <span className="font-manrope text-xs px-2 py-0.5 rounded-full" style={{ background: "rgba(230,51,41,0.1)", color: "#c2251b" }}>
                       +0,5% бонус
                     </span>
                   </div>
@@ -482,11 +482,11 @@ function Savings() {
               style={{ background: "#f8fafc", borderTop: "1px solid #e5e7eb" }}>
               <div className="flex flex-wrap gap-4">
                 <div className="flex items-center gap-2 text-sm font-manrope" style={{ color: "#475569" }}>
-                  <Icon name="Wallet" size={15} style={{ color: "#00a87e" }} />
+                  <Icon name="Wallet" size={15} style={{ color: "#c2251b" }} />
                   Минимальная сумма: <strong>50 000 ₽</strong>
                 </div>
                 <div className="flex items-center gap-2 text-sm font-manrope" style={{ color: "#475569" }}>
-                  <Icon name="CalendarClock" size={15} style={{ color: "#00a87e" }} />
+                  <Icon name="CalendarClock" size={15} style={{ color: "#c2251b" }} />
                   Выплата: ежемесячно или в конце срока
                 </div>
               </div>
@@ -501,11 +501,11 @@ function Savings() {
             <div className="px-8 py-5 flex items-center gap-3"
               style={{ background: "white", borderBottom: "1px solid #f1f5f9" }}>
               <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
-                style={{ background: "#f0fdf9" }}>
-                <Icon name="Calculator" size={20} style={{ color: "#00a87e" }} />
+                style={{ background: "#fff5f5" }}>
+                <Icon name="Calculator" size={20} style={{ color: "#c2251b" }} />
               </div>
               <div>
-                <div className="font-oswald text-lg font-bold" style={{ color: "#0A1628" }}>Калькулятор дохода</div>
+                <div className="font-oswald text-lg font-bold" style={{ color: "#1a1a1a" }}>Калькулятор дохода</div>
                 <div className="font-manrope text-xs" style={{ color: "#94a3b8" }}>Расчёт на основе актуальной ключевой ставки ЦБ РФ</div>
               </div>
             </div>
@@ -524,8 +524,8 @@ function Savings() {
                     min={10000}
                     max={30000000}
                     className="w-full px-4 py-3 rounded-xl font-manrope text-base outline-none transition-all"
-                    style={{ border: "1.5px solid #e5e7eb", color: "#0A1628" }}
-                    onFocus={(e) => (e.currentTarget.style.borderColor = "#00C896")}
+                    style={{ border: "1.5px solid #e5e7eb", color: "#1a1a1a" }}
+                    onFocus={(e) => (e.currentTarget.style.borderColor = "#e63329")}
                     onBlur={(e) => (e.currentTarget.style.borderColor = "#e5e7eb")}
                   />
                   {amountNum > 0 && amountNum < 10000 && (
@@ -545,7 +545,7 @@ function Savings() {
                         onClick={() => setSelectedTerm(t)}
                         className="py-2.5 rounded-xl font-manrope text-sm font-semibold transition-all duration-150"
                         style={selectedTerm.months === t.months
-                          ? { background: "linear-gradient(135deg, #00C896, #00a87e)", color: "white", border: "1.5px solid transparent" }
+                          ? { background: "linear-gradient(135deg, #e63329, #c2251b)", color: "white", border: "1.5px solid transparent" }
                           : { background: "white", color: "#374151", border: "1.5px solid #e5e7eb" }
                         }
                       >
@@ -570,7 +570,7 @@ function Savings() {
                         onClick={() => setPayAtEnd(opt.value)}
                         className="w-full py-3 px-4 rounded-xl font-manrope text-sm font-semibold text-left transition-all duration-150"
                         style={payAtEnd === opt.value
-                          ? { background: "linear-gradient(135deg, #00C896, #00a87e)", color: "white", border: "1.5px solid transparent" }
+                          ? { background: "linear-gradient(135deg, #e63329, #c2251b)", color: "white", border: "1.5px solid transparent" }
                           : { background: "white", color: "#374151", border: "1.5px solid #e5e7eb" }
                         }
                       >
@@ -584,15 +584,15 @@ function Savings() {
               {/* Result */}
               {result && amountNum >= 10000 ? (
                 <div className="rounded-2xl p-6 grid sm:grid-cols-3 gap-4"
-                  style={{ background: "linear-gradient(160deg, #0A1628 0%, #0d2040 100%)" }}>
+                  style={{ background: "linear-gradient(160deg, #1a1a1a 0%, #2d2d2d 100%)" }}>
                   <div className="text-center">
                     <div className="font-manrope text-xs mb-1" style={{ color: "rgba(255,255,255,0.5)" }}>Ставка</div>
-                    <div className="font-oswald text-3xl font-bold" style={{ color: "#00C896" }}>{result.rate}%</div>
+                    <div className="font-oswald text-3xl font-bold" style={{ color: "#e63329" }}>{result.rate}%</div>
                     <div className="font-manrope text-xs" style={{ color: "rgba(255,255,255,0.4)" }}>годовых</div>
                   </div>
                   <div className="text-center">
                     <div className="font-manrope text-xs mb-1" style={{ color: "rgba(255,255,255,0.5)" }}>Доход за {selectedTerm.months}</div>
-                    <div className="font-oswald text-3xl font-bold" style={{ color: "#00C896" }}>+{fmt(Math.round(result.income))} ₽</div>
+                    <div className="font-oswald text-3xl font-bold" style={{ color: "#e63329" }}>+{fmt(Math.round(result.income))} ₽</div>
                     <div className="font-manrope text-xs" style={{ color: "rgba(255,255,255,0.4)" }}>чистая прибыль</div>
                   </div>
                   <div className="text-center">
@@ -618,10 +618,10 @@ function Savings() {
 
           {/* Bonus note */}
           <div className="rounded-xl px-6 py-4 flex items-start gap-3 fade-in-up"
-            style={{ background: "rgba(0,200,150,0.08)", border: "1px solid rgba(0,168,126,0.2)" }}>
-            <Icon name="Info" size={18} style={{ color: "#00a87e", flexShrink: 0, marginTop: 2 }} />
+            style={{ background: "rgba(230,51,41,0.08)", border: "1px solid rgba(194,37,27,0.2)" }}>
+            <Icon name="Info" size={18} style={{ color: "#c2251b", flexShrink: 0, marginTop: 2 }} />
             <p className="font-manrope text-sm" style={{ color: "#475569" }}>
-              <strong style={{ color: "#0A1628" }}>Бонус +0,5%</strong> к ставке начисляется при выборе выплаты процентов в конце срока. Досрочное расторжение договора не предусмотрено.
+              <strong style={{ color: "#1a1a1a" }}>Бонус +0,5%</strong> к ставке начисляется при выборе выплаты процентов в конце срока. Досрочное расторжение договора не предусмотрено.
             </p>
           </div>
         </div>
@@ -658,12 +658,12 @@ function About() {
         <div className="grid lg:grid-cols-2 gap-16 items-center mb-20">
           <div className="fade-in-up">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-manrope font-semibold mb-6"
-              style={{ background: "#f0fdf9", border: "1px solid rgba(0,168,126,0.3)", color: "#00a87e" }}>
+              style={{ background: "#fff5f5", border: "1px solid rgba(194,37,27,0.3)", color: "#c2251b" }}>
               <Icon name="Info" size={13} />О кооперативе
             </div>
-            <h2 className="font-oswald text-3xl md:text-5xl font-bold leading-tight mb-6" style={{ color: "#0A1628" }}>
+            <h2 className="font-oswald text-3xl md:text-5xl font-bold leading-tight mb-6" style={{ color: "#1a1a1a" }}>
               ФИНАНСЫ,{" "}
-              <span style={{ background: "linear-gradient(135deg, #00a87e, #00C896)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
+              <span style={{ background: "linear-gradient(135deg, #c2251b, #e63329)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
                 КОТОРЫЕ РАБОТАЮТ
               </span>
               <br />НА ВАС
@@ -683,12 +683,12 @@ function About() {
               ].map((item, idx) => (
                 <div key={item.value} className="flex-1 min-w-[120px] px-5 py-4 text-center"
                   style={{ background: idx % 2 === 0 ? "#f8fafc" : "white", borderRight: idx < 3 ? "1px solid #e2e8f0" : "none" }}>
-                  <div className="font-oswald text-xl font-bold mb-0.5" style={{ background: "linear-gradient(135deg, #00a87e, #00C896)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>{item.value}</div>
+                  <div className="font-oswald text-xl font-bold mb-0.5" style={{ background: "linear-gradient(135deg, #c2251b, #e63329)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>{item.value}</div>
                   <div className="font-manrope text-xs" style={{ color: "#94a3b8" }}>{item.label}</div>
                   {item.href && (
                     <a href={item.href} target="_blank" rel="noopener noreferrer"
                       className="font-manrope text-xs underline underline-offset-2 mt-0.5 inline-block"
-                      style={{ color: "#00a87e" }}>
+                      style={{ color: "#c2251b" }}>
                       Реестр →
                     </a>
                   )}
@@ -699,11 +699,11 @@ function About() {
 
           {/* What is KPK */}
           <div className="fade-in-up">
-            <div className="rounded-2xl p-8" style={{ background: "linear-gradient(160deg, #0A1628 0%, #0d2040 100%)", boxShadow: "0 20px 50px rgba(10,22,40,0.2)" }}>
+            <div className="rounded-2xl p-8" style={{ background: "linear-gradient(160deg, #1a1a1a 0%, #2d2d2d 100%)", boxShadow: "0 20px 50px rgba(26,26,26,0.2)" }}>
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
-                  style={{ background: "rgba(0,200,150,0.15)" }}>
-                  <Icon name="HelpCircle" size={20} style={{ color: "#00C896" }} />
+                  style={{ background: "rgba(230,51,41,0.15)" }}>
+                  <Icon name="HelpCircle" size={20} style={{ color: "#e63329" }} />
                 </div>
                 <h3 className="font-oswald text-xl font-bold text-white">Что такое КПК?</h3>
               </div>
@@ -719,14 +719,14 @@ function About() {
                 ].map((item) => (
                   <div key={item} className="flex items-start gap-3">
                     <div className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"
-                      style={{ background: "rgba(0,200,150,0.2)" }}>
-                      <Icon name="Check" size={12} style={{ color: "#00C896" }} />
+                      style={{ background: "rgba(230,51,41,0.2)" }}>
+                      <Icon name="Check" size={12} style={{ color: "#e63329" }} />
                     </div>
                     <span className="font-manrope text-sm" style={{ color: "rgba(255,255,255,0.75)" }}>{item}</span>
                   </div>
                 ))}
               </div>
-              <div className="rounded-xl p-4" style={{ background: "rgba(0,200,150,0.08)", border: "1px solid rgba(0,200,150,0.2)" }}>
+              <div className="rounded-xl p-4" style={{ background: "rgba(230,51,41,0.08)", border: "1px solid rgba(230,51,41,0.2)" }}>
                 <p className="font-manrope text-xs leading-relaxed" style={{ color: "rgba(255,255,255,0.55)" }}>
                   Для вступления: подать заявление → оплатить вступительный взнос → внести паевой взнос (возвращается при выходе).
                 </p>
@@ -738,8 +738,8 @@ function About() {
         {/* Values */}
         <div className="mb-20 fade-in-up">
           <div className="text-center mb-10">
-            <div className="font-oswald text-2xl md:text-3xl font-bold" style={{ color: "#0A1628" }}>
-              НАШИ <span style={{ background: "linear-gradient(135deg, #00a87e, #00C896)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>ЦЕННОСТИ</span>
+            <div className="font-oswald text-2xl md:text-3xl font-bold" style={{ color: "#1a1a1a" }}>
+              НАШИ <span style={{ background: "linear-gradient(135deg, #c2251b, #e63329)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>ЦЕННОСТИ</span>
             </div>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -747,10 +747,10 @@ function About() {
               <div key={v.title}
                 className="fade-in-up p-6 rounded-2xl transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md"
                 style={{ background: "#f8fafc", border: "1px solid #e2e8f0", transitionDelay: `${i * 60}ms` }}>
-                <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style={{ background: "#f0fdf9" }}>
-                  <Icon name={v.icon as IconName} size={20} style={{ color: "#00a87e" }} />
+                <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style={{ background: "#fff5f5" }}>
+                  <Icon name={v.icon as IconName} size={20} style={{ color: "#c2251b" }} />
                 </div>
-                <h4 className="font-manrope font-bold text-sm mb-2" style={{ color: "#0A1628" }}>{v.title}</h4>
+                <h4 className="font-manrope font-bold text-sm mb-2" style={{ color: "#1a1a1a" }}>{v.title}</h4>
                 <p className="font-manrope text-sm leading-relaxed" style={{ color: "#64748b" }}>{v.text}</p>
               </div>
             ))}
@@ -760,8 +760,8 @@ function About() {
         {/* What we offer */}
         <div className="mb-16 fade-in-up">
           <div className="text-center mb-10">
-            <div className="font-oswald text-2xl md:text-3xl font-bold" style={{ color: "#0A1628" }}>
-              ЧЕМ МЫ <span style={{ background: "linear-gradient(135deg, #00a87e, #00C896)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>ПОМОГАЕМ</span>
+            <div className="font-oswald text-2xl md:text-3xl font-bold" style={{ color: "#1a1a1a" }}>
+              ЧЕМ МЫ <span style={{ background: "linear-gradient(135deg, #c2251b, #e63329)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>ПОМОГАЕМ</span>
             </div>
             <p className="font-manrope text-sm mt-2" style={{ color: "#94a3b8" }}>Для членов кооператива доступны</p>
           </div>
@@ -770,11 +770,11 @@ function About() {
               <div key={m.title}
                 className="fade-in-up flex gap-4 p-5 rounded-2xl transition-all duration-300 hover:shadow-md"
                 style={{ background: "white", border: "1px solid #e2e8f0", transitionDelay: `${i * 60}ms` }}>
-                <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: "#f0fdf9" }}>
-                  <Icon name={m.icon as IconName} size={20} style={{ color: "#00a87e" }} />
+                <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: "#fff5f5" }}>
+                  <Icon name={m.icon as IconName} size={20} style={{ color: "#c2251b" }} />
                 </div>
                 <div>
-                  <h4 className="font-manrope font-bold text-sm mb-1" style={{ color: "#0A1628" }}>{m.title}</h4>
+                  <h4 className="font-manrope font-bold text-sm mb-1" style={{ color: "#1a1a1a" }}>{m.title}</h4>
                   <p className="font-manrope text-sm leading-relaxed" style={{ color: "#64748b" }}>{m.text}</p>
                 </div>
               </div>
@@ -785,21 +785,21 @@ function About() {
         {/* Membership conditions */}
         <div className="fade-in-up mb-8 rounded-2xl overflow-hidden" style={{ border: "1px solid #e2e8f0" }}>
           <div className="px-6 py-5 flex items-center gap-3" style={{ background: "#f8fafc", borderBottom: "1px solid #e2e8f0" }}>
-            <div className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: "#f0fdf9" }}>
-              <Icon name="UserCheck" size={18} style={{ color: "#00a87e" }} />
+            <div className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: "#fff5f5" }}>
+              <Icon name="UserCheck" size={18} style={{ color: "#c2251b" }} />
             </div>
-            <h3 className="font-oswald text-lg font-bold" style={{ color: "#0A1628" }}>Условия членства в кооперативе</h3>
+            <h3 className="font-oswald text-lg font-bold" style={{ color: "#1a1a1a" }}>Условия членства в кооперативе</h3>
           </div>
           <div className="grid md:grid-cols-2 gap-0">
             <div className="px-6 py-5" style={{ borderRight: "1px solid #e2e8f0" }}>
               <p className="font-manrope text-sm leading-relaxed mb-4" style={{ color: "#475569" }}>
                 Чтобы получить финансовую услугу в КПК, необходимо стать членом кооператива (пайщиком). Членство оформляется после оплаты вступительного и обязательного паевого взноса —{" "}
-                <strong style={{ color: "#0A1628" }}>всего 2 500 ₽</strong>.
+                <strong style={{ color: "#1a1a1a" }}>всего 2 500 ₽</strong>.
               </p>
               <div className="flex items-center gap-3 px-4 py-3 rounded-xl"
-                style={{ background: "rgba(0,200,150,0.08)", border: "1px solid rgba(0,168,126,0.2)" }}>
-                <Icon name="CreditCard" size={18} style={{ color: "#00a87e", flexShrink: 0 }} />
-                <span className="font-manrope text-sm font-semibold" style={{ color: "#0A1628" }}>Вступительный + паевой взнос = 2 500 ₽</span>
+                style={{ background: "rgba(230,51,41,0.08)", border: "1px solid rgba(194,37,27,0.2)" }}>
+                <Icon name="CreditCard" size={18} style={{ color: "#c2251b", flexShrink: 0 }} />
+                <span className="font-manrope text-sm font-semibold" style={{ color: "#1a1a1a" }}>Вступительный + паевой взнос = 2 500 ₽</span>
               </div>
             </div>
             <div className="px-6 py-5">
@@ -822,10 +822,10 @@ function About() {
 
         {/* Mission CTA */}
         <div className="fade-in-up rounded-2xl p-8 md:p-12 text-center"
-          style={{ background: "linear-gradient(160deg, #0A1628 0%, #0d2040 100%)" }}>
+          style={{ background: "linear-gradient(160deg, #1a1a1a 0%, #2d2d2d 100%)" }}>
           <div className="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-6"
-            style={{ background: "rgba(0,200,150,0.15)" }}>
-            <Icon name="Target" size={28} style={{ color: "#00C896" }} />
+            style={{ background: "rgba(230,51,41,0.15)" }}>
+            <Icon name="Target" size={28} style={{ color: "#e63329" }} />
           </div>
           <h3 className="font-oswald text-2xl md:text-3xl font-bold text-white mb-4">Наша миссия</h3>
           <p className="font-manrope text-base leading-relaxed max-w-2xl mx-auto mb-8" style={{ color: "rgba(255,255,255,0.65)" }}>
@@ -864,12 +864,12 @@ function Documents() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="text-center mb-14 fade-in-up">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-manrope font-semibold mb-4"
-            style={{ background: "#f0fdf9", border: "1px solid rgba(0,168,126,0.3)", color: "#00a87e" }}>
+            style={{ background: "#fff5f5", border: "1px solid rgba(194,37,27,0.3)", color: "#c2251b" }}>
             <Icon name="FolderOpen" size={13} />Правовые документы
           </div>
-          <h2 className="font-oswald text-3xl md:text-5xl font-bold leading-tight mb-4" style={{ color: "#0A1628" }}>
+          <h2 className="font-oswald text-3xl md:text-5xl font-bold leading-tight mb-4" style={{ color: "#1a1a1a" }}>
             ПРОЗРАЧНОСТЬ —<br />
-            <span style={{ background: "linear-gradient(135deg, #00a87e, #00C896)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
+            <span style={{ background: "linear-gradient(135deg, #c2251b, #e63329)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
               НАШ ПРИНЦИП
             </span>
           </h2>
@@ -884,18 +884,18 @@ function Documents() {
               className="fade-in-up group flex items-start gap-3.5 p-5 rounded-2xl cursor-pointer transition-all duration-200 hover:-translate-y-0.5"
               style={{ background: "white", border: "1px solid #e5e7eb", boxShadow: "0 2px 8px rgba(0,0,0,0.04)", transitionDelay: `${i * 50}ms` }}
               onMouseEnter={(e) => {
-                (e.currentTarget as HTMLElement).style.borderColor = "rgba(0,168,126,0.4)";
-                (e.currentTarget as HTMLElement).style.boxShadow = "0 8px 30px rgba(0,168,126,0.1)";
+                (e.currentTarget as HTMLElement).style.borderColor = "rgba(194,37,27,0.4)";
+                (e.currentTarget as HTMLElement).style.boxShadow = "0 8px 30px rgba(194,37,27,0.1)";
               }}
               onMouseLeave={(e) => {
                 (e.currentTarget as HTMLElement).style.borderColor = "#e5e7eb";
                 (e.currentTarget as HTMLElement).style.boxShadow = "0 2px 8px rgba(0,0,0,0.04)";
               }}>
-              <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5" style={{ background: "#f0fdf9" }}>
-                <Icon name={doc.icon as IconName} size={18} style={{ color: "#00a87e" }} />
+              <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5" style={{ background: "#fff5f5" }}>
+                <Icon name={doc.icon as IconName} size={18} style={{ color: "#c2251b" }} />
               </div>
               <div className="flex-1 min-w-0">
-                <p className="font-manrope font-semibold text-sm leading-snug mb-1" style={{ color: "#0A1628" }}>{doc.title}</p>
+                <p className="font-manrope font-semibold text-sm leading-snug mb-1" style={{ color: "#1a1a1a" }}>{doc.title}</p>
                 <div className="flex items-center gap-2">
                   <span className="text-xs text-gray-400 font-manrope">{doc.type}</span>
                   <span className="text-gray-300">·</span>
@@ -908,8 +908,8 @@ function Documents() {
         </div>
 
         <div className="fade-in-up mt-8 p-5 rounded-2xl flex items-start gap-4"
-          style={{ background: "#f0fdf9", border: "1px solid rgba(0,168,126,0.15)" }}>
-          <Icon name="Info" size={18} style={{ color: "#00a87e", flexShrink: 0, marginTop: "2px" }} />
+          style={{ background: "#fff5f5", border: "1px solid rgba(194,37,27,0.15)" }}>
+          <Icon name="Info" size={18} style={{ color: "#c2251b", flexShrink: 0, marginTop: "2px" }} />
           <p className="font-manrope text-gray-500 text-sm leading-relaxed">
             КПК «Эксперт Финанс» состоит в СРО «Союзмикрофинанс» и осуществляет деятельность в соответствии с
             Федеральным законом от 18.07.2009 № 190-ФЗ «О кредитной кооперации». Надзор — Банк России.
@@ -927,12 +927,12 @@ function Contacts() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="text-center mb-14 fade-in-up">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-manrope font-semibold mb-4"
-            style={{ background: "#f0fdf9", border: "1px solid rgba(0,168,126,0.3)", color: "#00a87e" }}>
+            style={{ background: "#fff5f5", border: "1px solid rgba(194,37,27,0.3)", color: "#c2251b" }}>
             <Icon name="MapPin" size={13} />Контакты
           </div>
-          <h2 className="font-oswald text-3xl md:text-5xl font-bold leading-tight mb-4" style={{ color: "#0A1628" }}>
+          <h2 className="font-oswald text-3xl md:text-5xl font-bold leading-tight mb-4" style={{ color: "#1a1a1a" }}>
             МЫ НАХОДИМСЯ<br />
-            <span style={{ background: "linear-gradient(135deg, #00a87e, #00C896)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
+            <span style={{ background: "linear-gradient(135deg, #c2251b, #e63329)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
               В ШАХТАХ
             </span>
           </h2>
@@ -949,12 +949,12 @@ function Contacts() {
               <div key={item.title} className="p-5 flex items-center gap-4 rounded-2xl transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md"
                 style={{ background: "#f8fafc", border: "1px solid #e2e8f0" }}>
                 <div className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
-                  style={{ background: "linear-gradient(135deg, #0A1628, #142244)" }}>
-                  <Icon name={item.icon as IconName} size={20} style={{ color: "#00C896" }} />
+                  style={{ background: "linear-gradient(135deg, #1a1a1a, #142244)" }}>
+                  <Icon name={item.icon as IconName} size={20} style={{ color: "#e63329" }} />
                 </div>
                 <div>
                   <div className="font-manrope text-xs mb-0.5" style={{ color: "#94a3b8" }}>{item.title}</div>
-                  <div className="font-manrope font-bold" style={{ color: "#0A1628" }}>{item.value}</div>
+                  <div className="font-manrope font-bold" style={{ color: "#1a1a1a" }}>{item.value}</div>
                   <div className="font-manrope text-sm" style={{ color: "#64748b" }}>{item.sub}</div>
                 </div>
               </div>
@@ -962,7 +962,7 @@ function Contacts() {
           </div>
 
           <div className="fade-in-up rounded-2xl p-8"
-            style={{ background: "linear-gradient(160deg, #0A1628 0%, #0d2040 100%)", border: "1px solid rgba(0,200,150,0.2)" }}>
+            style={{ background: "linear-gradient(160deg, #1a1a1a 0%, #2d2d2d 100%)", border: "1px solid rgba(230,51,41,0.2)" }}>
             <h3 className="font-oswald text-2xl font-bold text-white mb-2">Оставьте заявку</h3>
             <p className="font-manrope text-sm mb-6" style={{ color: "rgba(255,255,255,0.5)" }}>Перезвоним в течение 30 минут в рабочее время</p>
             <div className="space-y-4">
@@ -975,7 +975,7 @@ function Contacts() {
                   <input type={field.type} placeholder={field.placeholder}
                     className="w-full rounded-xl px-4 py-3 font-manrope text-sm outline-none transition-all"
                     style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.12)", color: "white" }}
-                    onFocus={(e) => (e.target.style.borderColor = "rgba(0,200,150,0.5)")}
+                    onFocus={(e) => (e.target.style.borderColor = "rgba(230,51,41,0.5)")}
                     onBlur={(e) => (e.target.style.borderColor = "rgba(255,255,255,0.12)")}
                   />
                 </div>
@@ -984,11 +984,11 @@ function Contacts() {
                 <label className="block font-manrope text-xs mb-2" style={{ color: "rgba(255,255,255,0.6)" }}>Меня интересует</label>
                 <select className="w-full rounded-xl px-4 py-3 font-manrope text-sm outline-none"
                   style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.12)", color: "rgba(255,255,255,0.7)" }}>
-                  <option style={{ background: "#0d2040" }} value="">Выберите тему</option>
-                  <option style={{ background: "#0d2040" }} value="loan">Получить займ</option>
-                  <option style={{ background: "#0d2040" }} value="savings">Открыть сбережение</option>
-                  <option style={{ background: "#0d2040" }} value="member">Вступить в кооператив</option>
-                  <option style={{ background: "#0d2040" }} value="other">Другой вопрос</option>
+                  <option style={{ background: "#2d2d2d" }} value="">Выберите тему</option>
+                  <option style={{ background: "#2d2d2d" }} value="loan">Получить займ</option>
+                  <option style={{ background: "#2d2d2d" }} value="savings">Открыть сбережение</option>
+                  <option style={{ background: "#2d2d2d" }} value="member">Вступить в кооператив</option>
+                  <option style={{ background: "#2d2d2d" }} value="other">Другой вопрос</option>
                 </select>
               </div>
               <button className="btn-emerald w-full py-4 font-manrope font-bold text-base mt-2" style={{ color: "white" }}>
@@ -1008,13 +1008,13 @@ function Contacts() {
 // ─── FOOTER ───────────────────────────────────────────────────────────────────
 function Footer() {
   return (
-    <footer style={{ background: "#0A1628", borderTop: "1px solid rgba(0,200,150,0.1)" }}>
+    <footer style={{ background: "#1a1a1a", borderTop: "1px solid rgba(230,51,41,0.1)" }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12">
         <div className="grid md:grid-cols-4 gap-10">
           <div>
             <div className="flex items-center gap-2.5 mb-4">
               <div className="w-9 h-9 rounded-xl flex items-center justify-center"
-                style={{ background: "linear-gradient(135deg, #00C896, #00a87e)" }}>
+                style={{ background: "linear-gradient(135deg, #e63329, #c2251b)" }}>
                 <Icon name="Shield" size={18} style={{ color: "white" }} />
               </div>
               <div>
