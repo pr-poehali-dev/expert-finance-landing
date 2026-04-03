@@ -194,17 +194,16 @@ function Hero() {
             </div>
 
             <h1 className="font-oswald text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6" style={{ color: "#0A1628" }}>
-              ДЕНЬГИ{" "}
+              РАБОТАЕМ С{" "}
               <span style={{ background: "linear-gradient(135deg, #00a87e, #00C896)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
-                РАБОТАЮТ
+                ФИНАНСАМИ,
               </span>
-              <br />НА ВАС
+              <br />ДУМАЕМ О ЛЮДЯХ
             </h1>
 
             <p className="font-manrope text-lg md:text-xl leading-relaxed mb-8 max-w-xl" style={{ color: "#475569" }}>
-              Займы от <span className="font-bold" style={{ color: "#0A1628" }}>9,9% годовых</span> и сбережения
-              до <span className="font-bold" style={{ color: "#0A1628" }}>18% годовых</span> для пайщиков кооператива.
-              Без скрытых комиссий.
+              Финансовые решения для людей, которые считают деньги.<br />
+              <span className="font-bold" style={{ color: "#0A1628" }}>Займы выгоднее банков. Сбережения — тоже!</span>
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
@@ -261,12 +260,11 @@ function Hero() {
         </div>
 
         {/* Stats bar */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 px-8 py-8 mb-8 rounded-2xl"
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 px-8 py-8 mb-8 rounded-2xl"
           style={{ background: "white", border: "1px solid #e2e8f0", boxShadow: "0 4px 24px rgba(0,0,0,0.06)" }}>
           <StatCounter target={900} suffix="+" label="Пайщиков" />
-          <StatCounter target={9} suffix=" лет" label="На рынке" />
-          <StatCounter target={250} suffix=" млн" label="Выдано займов (руб.)" />
-          <StatCounter target={18} suffix="%" label="Макс. доход по сбережениям" />
+          <StatCounter target={17} suffix=" лет" label="На рынке" />
+          <StatCounter target={290} suffix=" млн" label="Выдано займов (руб.)" />
         </div>
       </div>
     </section>
