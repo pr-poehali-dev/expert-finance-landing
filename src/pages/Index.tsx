@@ -364,6 +364,16 @@ function Savings({ openModal }: { openModal: OpenModal }) {
   const [keyRate, setKeyRate] = useState<number | null>(null);
   const [rateDate, setRateDate] = useState("");
   const [amount, setAmount] = useState("100000");
+  const [amountDisplay, setAmountDisplay] = useState("100 000");
+
+  const handleAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const raw = e.target.value.replace(/\D/g, "");
+    if (raw === "") { setAmount(""); setAmountDisplay(""); return; }
+    const num = parseInt(raw, 10);
+    if (num > 30000000) return;
+    setAmount(raw);
+    setAmountDisplay(num.toLocaleString("ru-RU"));
+  };
   const [selectedTerm, setSelectedTerm] = useState(TERM_OPTIONS[2]);
   const [payAtEnd, setPayAtEnd] = useState(false);
 
@@ -523,17 +533,20 @@ function Savings({ openModal }: { openModal: OpenModal }) {
                   <label className="block font-manrope text-sm font-semibold mb-2" style={{ color: "#374151" }}>
                     Сумма вложения (₽)
                   </label>
-                  <input
-                    type="number"
-                    value={amount}
-                    onChange={(e) => setAmount(e.target.value)}
-                    min={10000}
-                    max={30000000}
-                    className="w-full px-4 py-3 rounded-xl font-manrope text-base outline-none transition-all min-h-[48px]"
-                    style={{ border: "1.5px solid #e5e7eb", color: "#1a1a1a", fontSize: "16px" }}
-                    onFocus={(e) => (e.currentTarget.style.borderColor = "#e63329")}
-                    onBlur={(e) => (e.currentTarget.style.borderColor = "#e5e7eb")}
-                  />
+                  <div className="relative">
+                    <input
+                      type="text"
+                      inputMode="numeric"
+                      value={amountDisplay}
+                      onChange={handleAmountChange}
+                      placeholder="100 000"
+                      className="w-full px-4 py-3 pr-8 rounded-xl font-manrope text-base outline-none transition-all min-h-[48px]"
+                      style={{ border: "1.5px solid #e5e7eb", color: "#1a1a1a", fontSize: "16px" }}
+                      onFocus={(e) => (e.currentTarget.style.borderColor = "#e63329")}
+                      onBlur={(e) => (e.currentTarget.style.borderColor = "#e5e7eb")}
+                    />
+                    <span className="absolute right-3 top-1/2 -translate-y-1/2 font-manrope text-sm pointer-events-none" style={{ color: "#94a3b8" }}>₽</span>
+                  </div>
                   {amountNum > 0 && amountNum < 10000 && (
                     <p className="font-manrope text-xs mt-1" style={{ color: "#ef4444" }}>Минимум 10 000 ₽</p>
                   )}
