@@ -676,15 +676,22 @@ function About() {
             </p>
             <div className="flex flex-wrap gap-0 rounded-2xl overflow-hidden" style={{ border: "1px solid #e2e8f0" }}>
               {[
-                { value: "2015", label: "Год основания" },
-                { value: "ФЗ № 190", label: "Правовая основа" },
-                { value: "Банк России", label: "Регулятор" },
-                { value: "СРО", label: "Союзмикрофинанс" },
+                { value: "2008", label: "Год основания", href: null },
+                { value: "ФЗ № 190", label: "Правовая основа", href: null },
+                { value: "Банк России", label: "Регулятор", href: "https://cbr.ru/finorg/foinfo/?ogrn=1084307001041" },
+                { value: "СРО", label: "Кооперативные финансы", href: "https://coopfin.ru/cpage/6200" },
               ].map((item, idx) => (
                 <div key={item.value} className="flex-1 min-w-[120px] px-5 py-4 text-center"
                   style={{ background: idx % 2 === 0 ? "#f8fafc" : "white", borderRight: idx < 3 ? "1px solid #e2e8f0" : "none" }}>
                   <div className="font-oswald text-xl font-bold mb-0.5" style={{ background: "linear-gradient(135deg, #00a87e, #00C896)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>{item.value}</div>
                   <div className="font-manrope text-xs" style={{ color: "#94a3b8" }}>{item.label}</div>
+                  {item.href && (
+                    <a href={item.href} target="_blank" rel="noopener noreferrer"
+                      className="font-manrope text-xs underline underline-offset-2 mt-0.5 inline-block"
+                      style={{ color: "#00a87e" }}>
+                      Реестр →
+                    </a>
+                  )}
                 </div>
               ))}
             </div>
