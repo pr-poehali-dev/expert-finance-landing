@@ -483,7 +483,7 @@ function Savings() {
               <div className="flex flex-wrap gap-4">
                 <div className="flex items-center gap-2 text-sm font-manrope" style={{ color: "#475569" }}>
                   <Icon name="Wallet" size={15} style={{ color: "#00a87e" }} />
-                  Минимальная сумма: <strong>10 000 ₽</strong>
+                  Минимальная сумма: <strong>50 000 ₽</strong>
                 </div>
                 <div className="flex items-center gap-2 text-sm font-manrope" style={{ color: "#475569" }}>
                   <Icon name="CalendarClock" size={15} style={{ color: "#00a87e" }} />
