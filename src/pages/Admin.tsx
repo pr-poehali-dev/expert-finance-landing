@@ -2,7 +2,14 @@ import { useState, useEffect, useRef } from "react";
 import Icon from "@/components/ui/icon";
 
 const API_URL = "https://functions.poehali.dev/7cfc3d1e-2f04-4728-a6a6-a1d225adb303";
+const LEGAL_API_URL = "https://functions.poehali.dev/ba998b52-dcd4-4120-9d03-40b5ab1e2311";
 const ADMIN_PASSWORD = "Aa346500";
+
+const LEGAL_PAGES = [
+  { slug: "policy", label: "Политика конфиденциальности" },
+  { slug: "complaints", label: "Требования к содержанию обращений" },
+  { slug: "personal-data", label: "Политика обработки персональных данных" },
+];
 
 const ICON_OPTIONS = [
   "FileText", "Shield", "FileCheck", "FileLock2", "Scale",
@@ -30,6 +37,13 @@ export default function Admin() {
   const [docs, setDocs] = useState<Doc[]>([]);
   const [loading, setLoading] = useState(false);
 
+  const [legalTab, setLegalTab] = useState("policy");
+  const [legalTitle, setLegalTitle] = useState("");
+  const [legalContent, setLegalContent] = useState("");
+  const [legalLoading, setLegalLoading] = useState(false);
+  const [legalSaving, setLegalSaving] = useState(false);
+  const [legalMsg, setLegalMsg] = useState("");
+
   const [title, setTitle] = useState("");
   const [icon, setIcon] = useState("FileText");
   const [file, setFile] = useState<File | null>(null);
@@ -48,6 +62,32 @@ export default function Admin() {
   useEffect(() => {
     if (authed) fetchDocs();
   }, [authed]);
+
+  const loadLegalPage = (slug: string) => {
+    setLegalLoading(true);
+    setLegalMsg("");
+    fetch(`${LEGAL_API_URL}?slug=${slug}`)
+      .then((r) => r.json())
+      .then((d) => { setLegalTitle(d.title || ""); setLegalContent(d.content || ""); })
+      .finally(() => setLegalLoading(false));
+  };
+
+  useEffect(() => {
+    if (authed) loadLegalPage(legalTab);
+  }, [authed, legalTab]);
+
+  const saveLegalPage = async () => {
+    setLegalSaving(true);
+    setLegalMsg("");
+    const res = await fetch(LEGAL_API_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "X-Admin-Token": ADMIN_PASSWORD },
+      body: JSON.stringify({ slug: legalTab, title: legalTitle, content: legalContent }),
+    });
+    const data = await res.json();
+    setLegalMsg(data.ok ? "Сохранено!" : "Ошибка сохранения");
+    setLegalSaving(false);
+  };
 
   const login = () => {
     if (password === ADMIN_PASSWORD) {
@@ -213,6 +253,81 @@ export default function Admin() {
           >
             {uploading ? "Загрузка..." : "Загрузить документ"}
           </button>
+        </div>
+
+        {/* Юридические страницы */}
+        <div className="p-6 rounded-2xl mb-8" style={{ background: "white", border: "1px solid #e2e8f0" }}>
+          <h2 className="font-oswald font-bold text-lg mb-5" style={{ color: "#1a1a1a" }}>Юридические страницы</h2>
+
+          {/* Tabs */}
+          <div className="flex flex-wrap gap-2 mb-5">
+            {LEGAL_PAGES.map((p) => (
+              <button
+                key={p.slug}
+                onClick={() => setLegalTab(p.slug)}
+                className="px-4 py-2 rounded-xl font-manrope text-sm font-semibold transition-all"
+                style={legalTab === p.slug
+                  ? { background: "linear-gradient(135deg, #e63329, #c2251b)", color: "white" }
+                  : { background: "#f1f5f9", color: "#475569", border: "1.5px solid #e2e8f0" }}
+              >
+                {p.label}
+              </button>
+            ))}
+          </div>
+
+          {legalLoading ? (
+            <p className="font-manrope text-sm" style={{ color: "#94a3b8" }}>Загрузка...</p>
+          ) : (
+            <div className="space-y-4">
+              <div>
+                <label className="block font-manrope text-xs mb-1.5 font-semibold" style={{ color: "#64748b" }}>Заголовок страницы</label>
+                <input
+                  type="text"
+                  value={legalTitle}
+                  onChange={(e) => setLegalTitle(e.target.value)}
+                  className="w-full rounded-xl px-4 py-3 font-manrope text-sm outline-none"
+                  style={{ border: "1.5px solid #e2e8f0", color: "#1a1a1a" }}
+                />
+              </div>
+              <div>
+                <label className="block font-manrope text-xs mb-1.5 font-semibold" style={{ color: "#64748b" }}>
+                  Содержимое (HTML)
+                  <span className="ml-2 font-normal" style={{ color: "#94a3b8" }}>— можно использовать &lt;h2&gt;, &lt;p&gt;, &lt;ul&gt;, &lt;li&gt;, &lt;strong&gt;</span>
+                </label>
+                <textarea
+                  value={legalContent}
+                  onChange={(e) => setLegalContent(e.target.value)}
+                  rows={14}
+                  className="w-full rounded-xl px-4 py-3 font-manrope text-sm outline-none resize-y"
+                  style={{ border: "1.5px solid #e2e8f0", color: "#1a1a1a", fontFamily: "monospace", fontSize: "13px" }}
+                />
+              </div>
+              <div className="flex items-center gap-4">
+                <button
+                  onClick={saveLegalPage}
+                  disabled={legalSaving}
+                  className="px-6 py-3 rounded-xl font-manrope font-bold text-sm"
+                  style={{ background: "linear-gradient(135deg, #e63329, #c2251b)", color: "white", opacity: legalSaving ? 0.7 : 1 }}
+                >
+                  {legalSaving ? "Сохраняем..." : "Сохранить"}
+                </button>
+                <a
+                  href={`/legal/${legalTab}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-manrope text-sm flex items-center gap-1.5"
+                  style={{ color: "#64748b" }}
+                >
+                  <Icon name="ExternalLink" size={13} /> Открыть страницу
+                </a>
+                {legalMsg && (
+                  <p className="font-manrope text-sm" style={{ color: legalMsg === "Сохранено!" ? "#16a34a" : "#e63329" }}>
+                    {legalMsg}
+                  </p>
+                )}
+              </div>
+            </div>
+          )}
         </div>
 
         {/* Список документов */}

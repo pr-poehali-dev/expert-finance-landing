@@ -332,6 +332,38 @@ textarea {
 
 /* ─── END MOBILE RESPONSIVE ─────────────────────────────────────── */
 
+/* ─── LEGAL PAGE CONTENT ─────────────────────────────────────────── */
+.legal-content h1,
+.legal-content h2,
+.legal-content h3 {
+  font-family: "Oswald", sans-serif;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 1.5em 0 0.5em;
+}
+.legal-content h2 {
+  font-size: 1.4rem;
+}
+.legal-content h3 {
+  font-size: 1.15rem;
+}
+.legal-content p {
+  margin: 0 0 1em;
+}
+.legal-content ul,
+.legal-content ol {
+  margin: 0 0 1em 1.5em;
+}
+.legal-content li {
+  margin-bottom: 0.4em;
+}
+.legal-content a {
+  color: #c2251b;
+}
+.legal-content strong {
+  font-weight: 700;
+}
+
 /* Scrollbar */
 ::-webkit-scrollbar {
   width: 6px;

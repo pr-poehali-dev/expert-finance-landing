@@ -1073,7 +1073,30 @@ function Footer() {
           </div>
 
         </div>
-        <div className="mt-10 pt-6 flex flex-col md:flex-row items-center justify-between gap-4"
+        {/* Legal links */}
+        <div className="mt-8 pt-6 pb-4" style={{ borderTop: "1px solid #e2e8f0" }}>
+          <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-6">
+            {[
+              { slug: "policy", label: "Политика конфиденциальности" },
+              { slug: "complaints", label: "Требования к содержанию обращений" },
+              { slug: "personal-data", label: "Политика обработки персональных данных" },
+            ].map((link) => (
+              <a
+                key={link.slug}
+                href={`/legal/${link.slug}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-manrope text-sm min-h-[44px] flex items-center gap-1.5 hover:underline"
+                style={{ color: "#64748b" }}
+              >
+                <Icon name="FileText" size={13} style={{ color: "#c2251b", flexShrink: 0 }} />
+                {link.label}
+              </a>
+            ))}
+          </div>
+        </div>
+
+        <div className="pt-5 flex flex-col md:flex-row items-center justify-between gap-4"
           style={{ borderTop: "1px solid #e2e8f0" }}>
           <p className="font-manrope text-xs text-center md:text-left" style={{ color: "#94a3b8" }}>
             © 2008–2026 КПК «Эксперт Финанс». Деятельность по ФЗ № 190-ФЗ. Под надзором Банка России.

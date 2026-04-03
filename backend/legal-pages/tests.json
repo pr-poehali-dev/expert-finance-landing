@@ -1,0 +1,18 @@
+{
+  "tests": [
+    {
+      "name": "OPTIONS preflight",
+      "method": "OPTIONS",
+      "path": "/",
+      "expectedStatus": 200
+    },
+    {
+      "name": "GET policy page",
+      "method": "GET",
+      "path": "/?slug=policy",
+      "expectedStatus": 200,
+      "expectedBody": {"slug": "policy"},
+      "bodyMatcher": "partial"
+    }
+  ]
+}
