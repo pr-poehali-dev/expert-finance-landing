@@ -275,6 +275,7 @@ function Loans() {
     { title: "Под залог недвижимости", period: "до 60 мес.", amount: "до 3 000 000 ₽", icon: "Home", features: ["Крупные суммы", "Длительный срок", "Индивидуальный подход"], badge: "Выгодно", color: "#0284c7", bg: "#f0f9ff" },
     { title: "Ипотечный займ", period: "до 180 мес.", amount: "до 10 000 000 ₽", icon: "Building2", features: ["Покупка жилья", "Длительный срок", "Гибкие условия"], badge: "Ипотека", color: "#7c3aed", bg: "#faf5ff" },
     { title: "Займ на авто", period: "до 60 мес.", amount: "до 2 000 000 ₽", icon: "Car", features: ["Покупка авто", "Под залог своего авто", "Быстрое решение"], badge: "Авто", color: "#d97706", bg: "#fffbeb" },
+    { title: "Рефинансирование", period: "до 60 мес.", amount: "до 3 000 000 ₽", icon: "RefreshCcw", features: ["Снижение ставки", "Объединение займов", "Уменьшение платежа"], badge: "Выгодно", color: "#0891b2", bg: "#f0fdff" },
   ];
 
   return (
@@ -296,7 +297,7 @@ function Loans() {
           </p>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {products.map((p, i) => (
             <div key={p.title}
               className="fade-in-up p-6 flex flex-col rounded-2xl transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
