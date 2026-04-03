@@ -939,10 +939,11 @@ function Contacts() {
         <div className="grid lg:grid-cols-2 gap-8">
           <div className="space-y-4 fade-in-up">
             {[
-              { icon: "MapPin", title: "Адрес офиса", value: "г. Шахты, ул. Советская, д. 1", sub: "Ростовская область, 346500" },
-              { icon: "Phone", title: "Телефон", value: "+7 (8636) 00-00-00", sub: "Пн–Пт: 9:00–18:00, Сб: 9:00–14:00" },
-              { icon: "Mail", title: "Электронная почта", value: "info@expert-finance.ru", sub: "Ответим в течение рабочего дня" },
-              { icon: "MessageCircle", title: "WhatsApp / Telegram", value: "+7 (900) 000-00-00", sub: "Онлайн консультация" },
+              { icon: "MapPin", title: "Адрес офиса", value: "Ростовская обл., г. Шахты, пр-кт Пушкина 29А", sub: "" },
+              { icon: "Phone", title: "Телефон", value: "+7 (800) 700-89-09", sub: "Бесплатный звонок" },
+              { icon: "Clock", title: "Режим работы", value: "Пн–Пт: 9:00–18:00", sub: "Перерыв 13:00–14:00 · Сб, Вс — выходной" },
+              { icon: "Mail", title: "Электронная почта", value: "info@sll-expert.ru", sub: "Ответим в течение рабочего дня" },
+              { icon: "MessageCircle", title: "Макс / Telegram", value: "+7 (961) 303-27-56", sub: "Онлайн консультация" },
             ].map((item) => (
               <div key={item.title} className="p-5 flex items-center gap-4 rounded-2xl transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md"
                 style={{ background: "#f8fafc", border: "1px solid #e2e8f0" }}>
@@ -953,49 +954,21 @@ function Contacts() {
                 <div>
                   <div className="font-manrope text-xs mb-0.5" style={{ color: "#94a3b8" }}>{item.title}</div>
                   <div className="font-manrope font-bold" style={{ color: "#1a1a1a" }}>{item.value}</div>
-                  <div className="font-manrope text-sm" style={{ color: "#64748b" }}>{item.sub}</div>
+                  {item.sub && <div className="font-manrope text-sm" style={{ color: "#64748b" }}>{item.sub}</div>}
                 </div>
               </div>
             ))}
           </div>
 
-          <div className="fade-in-up rounded-2xl p-8"
-            style={{ background: "#f4f4f5", border: "1px solid #e4e4e7" }}>
-            <h3 className="font-oswald text-2xl font-bold mb-2" style={{ color: "#1a1a1a" }}>Оставьте заявку</h3>
-            <p className="font-manrope text-sm mb-6" style={{ color: "#64748b" }}>Перезвоним в течение 30 минут в рабочее время</p>
-            <div className="space-y-4">
-              {[
-                { label: "Ваше имя", type: "text", placeholder: "Иван Иванов" },
-                { label: "Телефон", type: "tel", placeholder: "+7 (___) ___-__-__" },
-              ].map((field) => (
-                <div key={field.label}>
-                  <label className="block font-manrope text-xs mb-2" style={{ color: "#64748b" }}>{field.label}</label>
-                  <input type={field.type} placeholder={field.placeholder}
-                    className="w-full rounded-xl px-4 py-3 font-manrope text-sm outline-none transition-all"
-                    style={{ background: "white", border: "1.5px solid #e2e8f0", color: "#1a1a1a" }}
-                    onFocus={(e) => (e.target.style.borderColor = "#e63329")}
-                    onBlur={(e) => (e.target.style.borderColor = "#e2e8f0")}
-                  />
-                </div>
-              ))}
-              <div>
-                <label className="block font-manrope text-xs mb-2" style={{ color: "#64748b" }}>Меня интересует</label>
-                <select className="w-full rounded-xl px-4 py-3 font-manrope text-sm outline-none"
-                  style={{ background: "white", border: "1.5px solid #e2e8f0", color: "#475569" }}>
-                  <option value="">Выберите тему</option>
-                  <option value="loan">Получить займ</option>
-                  <option value="savings">Открыть сбережение</option>
-                  <option value="member">Вступить в кооператив</option>
-                  <option value="other">Другой вопрос</option>
-                </select>
-              </div>
-              <button className="btn-emerald w-full py-4 font-manrope font-bold text-base mt-2" style={{ color: "white" }}>
-                Отправить заявку
-              </button>
-              <p className="font-manrope text-xs text-center" style={{ color: "#94a3b8" }}>
-                Нажимая кнопку, вы соглашаетесь с политикой обработки персональных данных
-              </p>
-            </div>
+          <div className="fade-in-up rounded-2xl overflow-hidden" style={{ border: "1px solid #e2e8f0", minHeight: "420px" }}>
+            <iframe
+              src="https://yandex.ru/map-widget/v1/?um=constructor%3Af051c9f453cc82a4f69ba35eb217752100a9a5c087d814a95b316978e226c567&source=constructorLink"
+              width="100%"
+              height="100%"
+              style={{ minHeight: "420px", border: "none", display: "block" }}
+              allowFullScreen
+              title="Карта офисов КПК"
+            />
           </div>
         </div>
       </div>
