@@ -242,16 +242,7 @@ function Hero() {
                 alt="Эксперт Финанс"
                 className="w-full h-80 object-cover rounded-2xl"
               />
-              <div className="absolute -bottom-6 -left-8 px-5 py-4 rounded-2xl"
-                style={{ background: "white", boxShadow: "0 8px 30px rgba(0,0,0,0.1)", border: "1px solid #e2e8f0" }}>
-                <div className="font-oswald text-3xl font-bold" style={{ background: "linear-gradient(135deg, #00a87e, #00C896)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>9,9%</div>
-                <div className="font-manrope text-xs mt-0.5" style={{ color: "#64748b" }}>мин. ставка по займам</div>
-              </div>
-              <div className="absolute -top-5 -right-5 px-5 py-4 rounded-2xl"
-                style={{ background: "white", boxShadow: "0 8px 30px rgba(0,0,0,0.1)", border: "1px solid #e2e8f0" }}>
-                <div className="font-oswald text-3xl font-bold" style={{ background: "linear-gradient(135deg, #00a87e, #00C896)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>18%</div>
-                <div className="font-manrope text-xs mt-0.5" style={{ color: "#64748b" }}>доход по сбережениям</div>
-              </div>
+
             </div>
           </div>
         </div>
