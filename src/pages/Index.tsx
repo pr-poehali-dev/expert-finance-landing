@@ -271,10 +271,10 @@ function Hero() {
 // ─── LOANS ────────────────────────────────────────────────────────────────────
 function Loans() {
   const products = [
-    { title: "Потребительский займ", rate: "9,9", period: "до 36 мес.", amount: "до 500 000 ₽", icon: "CreditCard", features: ["Без залога", "Досрочное погашение", "Без скрытых комиссий"], badge: "Популярный", color: "#00a87e", bg: "#f0fdf9" },
-    { title: "Займ под залог недвижимости", rate: "11", period: "до 60 мес.", amount: "до 3 000 000 ₽", icon: "Home", features: ["Крупные суммы", "Длительный срок", "Индивидуальный подход"], badge: "Выгодно", color: "#0284c7", bg: "#f0f9ff" },
-    { title: "Пенсионный займ", rate: "10,5", period: "до 24 мес.", amount: "до 200 000 ₽", icon: "Heart", features: ["Для пенсионеров", "Упрощённый пакет", "Без справок"], badge: "Льготный", color: "#7c3aed", bg: "#faf5ff" },
-    { title: "Экспресс займ", rate: "14", period: "до 6 мес.", amount: "до 50 000 ₽", icon: "Zap", features: ["Решение за 1 час", "Минимум документов", "Онлайн заявка"], badge: "Быстрый", color: "#d97706", bg: "#fffbeb" },
+    { title: "Потребительский займ", period: "до 36 мес.", amount: "до 500 000 ₽", icon: "CreditCard", features: ["Без залога", "Досрочное погашение", "Без скрытых комиссий"], badge: "Популярный", color: "#00a87e", bg: "#f0fdf9" },
+    { title: "Под залог недвижимости", period: "до 60 мес.", amount: "до 3 000 000 ₽", icon: "Home", features: ["Крупные суммы", "Длительный срок", "Индивидуальный подход"], badge: "Выгодно", color: "#0284c7", bg: "#f0f9ff" },
+    { title: "Ипотечный займ", period: "до 180 мес.", amount: "до 10 000 000 ₽", icon: "Building2", features: ["Покупка жилья", "Длительный срок", "Гибкие условия"], badge: "Ипотека", color: "#7c3aed", bg: "#faf5ff" },
+    { title: "Займ на авто", period: "до 60 мес.", amount: "до 2 000 000 ₽", icon: "Car", features: ["Покупка авто", "Под залог своего авто", "Быстрое решение"], badge: "Авто", color: "#d97706", bg: "#fffbeb" },
   ];
 
   return (
@@ -286,13 +286,13 @@ function Loans() {
             <Icon name="Percent" size={13} />Кредитные продукты
           </div>
           <h2 className="font-oswald text-3xl md:text-5xl font-bold leading-tight mb-4" style={{ color: "#0A1628" }}>
-            ЗАЙМЫ ОТ{" "}
+            ЗАЙМЫ БЕЗ{" "}
             <span style={{ background: "linear-gradient(135deg, #00a87e, #00C896)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
-              9,9% ГОДОВЫХ
+              ЛИШНИХ УСЛОВИЙ
             </span>
           </h2>
           <p className="font-manrope text-gray-500 text-lg max-w-2xl mx-auto">
-            Выберите подходящую программу. Все условия прозрачны — никаких скрытых платежей и комиссий.
+            Выберите подходящую программу. Все условия прозрачны — никаких скрытых платежей.
           </p>
         </div>
 
@@ -309,9 +309,9 @@ function Loans() {
                   style={{ background: `${p.color}15`, color: p.color }}>{p.badge}</span>
               </div>
               <h3 className="font-manrope font-bold text-base mb-3 leading-snug" style={{ color: "#0A1628" }}>{p.title}</h3>
-              <div className="mb-4">
-                <span className="font-oswald text-5xl font-bold leading-none" style={{ color: p.color }}>{p.rate}%</span>
-                <span className="font-manrope text-gray-400 text-sm ml-1">годовых</span>
+              <div className="mb-4 flex items-center gap-2 px-3 py-2 rounded-xl" style={{ background: `${p.color}10` }}>
+                <Icon name="Info" size={14} style={{ color: p.color, flexShrink: 0 }} />
+                <span className="font-manrope text-sm font-semibold" style={{ color: p.color }}>Ставка индивидуальна</span>
               </div>
               <div className="flex gap-2 mb-4 flex-wrap">
                 <span className="text-xs font-manrope px-3 py-1 rounded-full" style={{ background: "rgba(0,0,0,0.05)", color: "#475569" }}>{p.period}</span>
