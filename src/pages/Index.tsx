@@ -501,7 +501,7 @@ function Savings({ openModal }: { openModal: OpenModal }) {
                 </div>
               </div>
               <button onClick={() => openModal("Открыть сберегательный счет", "Укажите контакты — оформим вклад на выгодных условиях", "Открыть счёт", "Раздел «Сбережения» — таблица ставок")}
-                className="btn-emerald px-6 py-3 text-sm font-manrope font-bold whitespace-nowrap" style={{ color: "white" }}>Открыть сберегательный счет</button>
+                className="btn-emerald px-6 py-3 text-sm font-manrope font-bold whitespace-nowrap" style={{ color: "white" }}>Открыть счет</button>
             </div>
           </div>
 
