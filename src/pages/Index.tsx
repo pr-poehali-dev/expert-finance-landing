@@ -120,12 +120,13 @@ function Header() {
           </nav>
 
           <div className="hidden md:flex items-center gap-3">
-            <button className="font-manrope text-sm font-semibold px-4 py-2 rounded-xl transition-all duration-200"
-              style={{ border: "1.5px solid #e2e8f0", color: "#1a1a1a", background: "white" }}
+            <a href="https://mykpk.ru" target="_blank" rel="noopener noreferrer"
+              className="font-manrope text-sm font-semibold px-4 py-2 rounded-xl transition-all duration-200"
+              style={{ border: "1.5px solid #e2e8f0", color: "#1a1a1a", background: "white", textDecoration: "none" }}
               onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.borderColor = "#e63329"; }}
               onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.borderColor = "#e2e8f0"; }}>
               Личный кабинет
-            </button>
+            </a>
             <button className="btn-emerald pulse-ring px-5 py-2 text-sm font-manrope font-bold" style={{ color: "white" }}>
               Стать пайщиком
             </button>
@@ -146,8 +147,9 @@ function Header() {
               >{l.label}</a>
             ))}
             <div className="flex gap-3 mt-4">
-              <button className="font-manrope text-sm font-semibold px-4 py-2 rounded-xl flex-1"
-                style={{ border: "1.5px solid #e2e8f0", color: "#1a1a1a" }}>Личный кабинет</button>
+              <a href="https://mykpk.ru" target="_blank" rel="noopener noreferrer"
+                className="font-manrope text-sm font-semibold px-4 py-2 rounded-xl flex-1 text-center"
+                style={{ border: "1.5px solid #e2e8f0", color: "#1a1a1a", textDecoration: "none" }}>Личный кабинет</a>
               <button className="btn-emerald px-4 py-2 text-sm font-manrope font-bold flex-1" style={{ color: "white" }}>Стать пайщиком</button>
             </div>
           </div>
