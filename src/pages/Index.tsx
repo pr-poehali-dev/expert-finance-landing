@@ -845,17 +845,25 @@ function About() {
 }
 
 // ─── DOCUMENTS ────────────────────────────────────────────────────────────────
+const DOCS_API = "https://functions.poehali.dev/7cfc3d1e-2f04-4728-a6a6-a1d225adb303";
+
+interface DocItem {
+  id: number;
+  title: string;
+  file_url: string;
+  file_size: string;
+  file_type: string;
+  icon: string;
+}
+
 function Documents() {
-  const docs = [
-    { icon: "FileText", title: "Устав КПК «Эксперт Финанс»", type: "PDF", size: "1.2 МБ" },
-    { icon: "Shield", title: "Свидетельство о членстве в СРО", type: "PDF", size: "0.8 МБ" },
-    { icon: "FileCheck", title: "Правила займов пайщикам", type: "PDF", size: "2.1 МБ" },
-    { icon: "FileLock2", title: "Правила привлечения сбережений", type: "PDF", size: "1.8 МБ" },
-    { icon: "Scale", title: "Положение о паевых взносах", type: "PDF", size: "0.9 МБ" },
-    { icon: "BookOpen", title: "Финансовая отчётность 2024 г.", type: "PDF", size: "3.4 МБ" },
-    { icon: "UserCheck", title: "Политика обработки персональных данных", type: "PDF", size: "0.6 МБ" },
-    { icon: "AlertCircle", title: "Базовый стандарт СРО", type: "PDF", size: "4.2 МБ" },
-  ];
+  const [docs, setDocs] = useState<DocItem[]>([]);
+
+  useEffect(() => {
+    fetch(DOCS_API)
+      .then((r) => r.json())
+      .then((data) => setDocs(data.documents || []));
+  }, []);
 
   return (
     <section id="documents" className="py-20 md:py-28" style={{ background: "#f8fafc" }}>
@@ -876,43 +884,41 @@ function Documents() {
           </p>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {docs.map((doc, i) => (
-            <div key={doc.title}
-              className="fade-in-up group flex items-start gap-3.5 p-5 rounded-2xl cursor-pointer transition-all duration-200 hover:-translate-y-0.5"
-              style={{ background: "white", border: "1px solid #e5e7eb", boxShadow: "0 2px 8px rgba(0,0,0,0.04)", transitionDelay: `${i * 50}ms` }}
-              onMouseEnter={(e) => {
-                (e.currentTarget as HTMLElement).style.borderColor = "rgba(194,37,27,0.4)";
-                (e.currentTarget as HTMLElement).style.boxShadow = "0 8px 30px rgba(194,37,27,0.1)";
-              }}
-              onMouseLeave={(e) => {
-                (e.currentTarget as HTMLElement).style.borderColor = "#e5e7eb";
-                (e.currentTarget as HTMLElement).style.boxShadow = "0 2px 8px rgba(0,0,0,0.04)";
-              }}>
-              <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5" style={{ background: "#fff5f5" }}>
-                <Icon name={doc.icon as IconName} size={18} style={{ color: "#c2251b" }} />
-              </div>
-              <div className="flex-1 min-w-0">
-                <p className="font-manrope font-semibold text-sm leading-snug mb-1" style={{ color: "#1a1a1a" }}>{doc.title}</p>
-                <div className="flex items-center gap-2">
-                  <span className="text-xs text-gray-400 font-manrope">{doc.type}</span>
-                  <span className="text-gray-300">·</span>
-                  <span className="text-xs text-gray-400 font-manrope">{doc.size}</span>
+        {docs.length === 0 ? (
+          <p className="text-center font-manrope text-gray-400">Документы скоро появятся</p>
+        ) : (
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {docs.map((doc, i) => (
+              <a key={doc.id} href={doc.file_url} target="_blank" rel="noopener noreferrer"
+                className="fade-in-up group flex items-start gap-3.5 p-5 rounded-2xl cursor-pointer transition-all duration-200 hover:-translate-y-0.5 no-underline"
+                style={{ background: "white", border: "1px solid #e5e7eb", boxShadow: "0 2px 8px rgba(0,0,0,0.04)", transitionDelay: `${i * 50}ms` }}
+                onMouseEnter={(e) => {
+                  (e.currentTarget as HTMLElement).style.borderColor = "rgba(194,37,27,0.4)";
+                  (e.currentTarget as HTMLElement).style.boxShadow = "0 8px 30px rgba(194,37,27,0.1)";
+                }}
+                onMouseLeave={(e) => {
+                  (e.currentTarget as HTMLElement).style.borderColor = "#e5e7eb";
+                  (e.currentTarget as HTMLElement).style.boxShadow = "0 2px 8px rgba(0,0,0,0.04)";
+                }}>
+                <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5" style={{ background: "#fff5f5" }}>
+                  <Icon name={doc.icon as IconName} size={18} style={{ color: "#c2251b" }} />
                 </div>
-              </div>
-              <Icon name="Download" size={15} style={{ color: "#d1d5db", flexShrink: 0 }} />
-            </div>
-          ))}
-        </div>
+                <div className="flex-1 min-w-0">
+                  <p className="font-manrope font-semibold text-sm leading-snug mb-1" style={{ color: "#1a1a1a" }}>{doc.title}</p>
+                  <div className="flex items-center gap-2">
+                    <span className="text-xs text-gray-400 font-manrope">{doc.file_type}</span>
+                    <span className="text-gray-300">·</span>
+                    <span className="text-xs text-gray-400 font-manrope">{doc.file_size}</span>
+                  </div>
+                </div>
+                <Icon name="Download" size={15} style={{ color: "#d1d5db", flexShrink: 0 }} />
+              </a>
+            ))}
+          </div>
+        )}
 
-        <div className="fade-in-up mt-8 p-5 rounded-2xl flex items-start gap-4"
-          style={{ background: "#fff5f5", border: "1px solid rgba(194,37,27,0.15)" }}>
-          <Icon name="Info" size={18} style={{ color: "#c2251b", flexShrink: 0, marginTop: "2px" }} />
-          <p className="font-manrope text-gray-500 text-sm leading-relaxed">
-            КПК «Эксперт Финанс» состоит в СРО «Союзмикрофинанс» и осуществляет деятельность в соответствии с
-            Федеральным законом от 18.07.2009 № 190-ФЗ «О кредитной кооперации». Надзор — Банк России.
-          </p>
-        </div>
+
+
       </div>
     </section>
   );
