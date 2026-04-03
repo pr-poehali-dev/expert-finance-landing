@@ -254,6 +254,84 @@
   animation: float 6s ease-in-out infinite;
 }
 
+/* ─── MOBILE RESPONSIVE ──────────────────────────────────────────── */
+
+/* Prevent horizontal scroll globally */
+html,
+body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+/* All images responsive by default */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Prevent iOS auto-zoom on input focus */
+input,
+select,
+textarea {
+  font-size: 16px;
+}
+
+/* Section padding: tight on mobile */
+@media (max-width: 480px) {
+  section {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  /* Container never overflows */
+  .container,
+  [class*="max-w-"] {
+    max-width: 100% !important;
+  }
+
+  /* Decorative orbs — reduce size to avoid overflow */
+  .orb-hero-1 {
+    width: 260px !important;
+    height: 260px !important;
+  }
+  .orb-hero-2 {
+    width: 200px !important;
+    height: 200px !important;
+  }
+
+  /* Hero title: readable on tiny screens */
+  .hero-title {
+    font-size: clamp(2rem, 9vw, 3.5rem) !important;
+  }
+
+  /* Form inputs — comfortable on phone */
+  input[type="text"],
+  input[type="tel"],
+  input[type="email"],
+  input[type="number"] {
+    font-size: 16px !important; /* Prevents iOS zoom on focus */
+    min-height: 48px;
+  }
+
+  /* Savings table: compact px */
+  .savings-table-row {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+/* Tablet adjustments */
+@media (min-width: 481px) and (max-width: 1024px) {
+  input[type="text"],
+  input[type="tel"],
+  input[type="email"],
+  input[type="number"] {
+    font-size: 16px !important;
+  }
+}
+
+/* ─── END MOBILE RESPONSIVE ─────────────────────────────────────── */
+
 /* Scrollbar */
 ::-webkit-scrollbar {
   width: 6px;

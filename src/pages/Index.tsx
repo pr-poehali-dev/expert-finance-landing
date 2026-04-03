@@ -122,18 +122,18 @@ function Header({ onMember }: { onMember: () => void }) {
 
           <div className="hidden md:flex items-center gap-3">
             <a href="https://mykpk.ru" target="_blank" rel="noopener noreferrer"
-              className="font-manrope text-sm font-semibold px-4 py-2 rounded-xl transition-all duration-200"
+              className="font-manrope text-sm font-semibold px-4 py-2.5 rounded-xl transition-all duration-200 min-h-[44px] flex items-center"
               style={{ border: "1.5px solid #e2e8f0", color: "#1a1a1a", background: "white", textDecoration: "none" }}
               onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.borderColor = "#e63329"; }}
               onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.borderColor = "#e2e8f0"; }}>
               Личный кабинет
             </a>
-            <button onClick={onMember} className="btn-emerald pulse-ring px-5 py-2 text-sm font-manrope font-bold" style={{ color: "white" }}>
+            <button onClick={onMember} className="btn-emerald pulse-ring px-5 py-2.5 text-sm font-manrope font-bold min-h-[44px]" style={{ color: "white" }}>
               Стать пайщиком
             </button>
           </div>
 
-          <button className="lg:hidden p-2" style={{ color: "#1a1a1a" }} onClick={() => setMenuOpen(!menuOpen)}>
+          <button className="lg:hidden p-3 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-xl" style={{ color: "#1a1a1a" }} onClick={() => setMenuOpen(!menuOpen)}>
             <Icon name={menuOpen ? "X" : "Menu"} size={22} />
           </button>
         </div>
@@ -142,16 +142,16 @@ function Header({ onMember }: { onMember: () => void }) {
           <div className="lg:hidden py-4 bg-white" style={{ borderTop: "1px solid #e2e8f0" }}>
             {navLinks.map((l) => (
               <a key={l.href} href={l.href}
-                className="block py-3 font-manrope text-sm font-medium"
+                className="block py-3 font-manrope text-base font-medium min-h-[44px] flex items-center"
                 style={{ color: "#475569" }}
                 onClick={() => setMenuOpen(false)}
               >{l.label}</a>
             ))}
             <div className="flex gap-3 mt-4">
               <a href="https://mykpk.ru" target="_blank" rel="noopener noreferrer"
-                className="font-manrope text-sm font-semibold px-4 py-2 rounded-xl flex-1 text-center"
+                className="font-manrope text-base font-semibold px-4 py-3 rounded-xl flex-1 text-center min-h-[44px] flex items-center justify-center"
                 style={{ border: "1.5px solid #e2e8f0", color: "#1a1a1a", textDecoration: "none" }}>Личный кабинет</a>
-              <button onClick={onMember} className="btn-emerald px-4 py-2 text-sm font-manrope font-bold flex-1" style={{ color: "white" }}>Стать пайщиком</button>
+              <button onClick={onMember} className="btn-emerald px-4 py-3 text-base font-manrope font-bold flex-1 min-h-[44px]" style={{ color: "white" }}>Стать пайщиком</button>
             </div>
           </div>
         )}
@@ -245,6 +245,8 @@ function Hero({ openModal }: { openModal: OpenModal }) {
                 src="https://cdn.poehali.dev/projects/33c1de75-9e48-4c11-87d3-f9b410f3f164/bucket/3c215f63-d156-4ddc-b6ef-01c96481426f.png"
                 alt="Эксперт Финанс"
                 className="w-full h-80 object-cover rounded-2xl"
+                loading="lazy"
+                style={{ maxWidth: "100%" }}
               />
 
             </div>
@@ -252,7 +254,7 @@ function Hero({ openModal }: { openModal: OpenModal }) {
         </div>
 
         {/* Stats bar */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 px-8 py-8 mb-8 rounded-2xl"
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 px-4 sm:px-8 py-6 sm:py-8 mb-8 rounded-2xl"
           style={{ background: "white", border: "1px solid #e2e8f0", boxShadow: "0 4px 24px rgba(0,0,0,0.06)" }}>
           <StatCounter target={900} suffix="+" label="Пайщиков" />
           <StatCounter target={new Date().getFullYear() - 2008} suffix=" лет" label="На рынке" />
@@ -439,11 +441,13 @@ function Savings({ openModal }: { openModal: OpenModal }) {
             </div>
 
             {/* Table header */}
-            <div className="grid grid-cols-3 px-8 py-3 text-xs font-manrope font-semibold uppercase tracking-wide"
+            <div className="grid grid-cols-3 px-4 sm:px-8 py-3 text-xs font-manrope font-semibold uppercase tracking-wide"
               style={{ background: "#f1f5f9", color: "#64748b", borderBottom: "1px solid #e5e7eb" }}>
               <div>Срок</div>
-              <div className="text-center">При ежемесячной выплате</div>
-              <div className="text-center">При выплате в конце срока</div>
+              <div className="text-center hidden sm:block">При ежемесячной выплате</div>
+              <div className="text-center sm:hidden">Ежемес.</div>
+              <div className="text-center hidden sm:block">При выплате в конце срока</div>
+              <div className="text-center sm:hidden">В конце</div>
             </div>
 
             {/* Rows */}
@@ -451,7 +455,7 @@ function Savings({ openModal }: { openModal: OpenModal }) {
               const rM = getRate(t, false);
               const rE = getRate(t, true);
               return (
-                <div key={t.months} className="grid grid-cols-3 px-8 py-4 items-center transition-colors duration-150"
+                <div key={t.months} className="grid grid-cols-3 px-4 sm:px-8 py-3 sm:py-4 items-center transition-colors duration-150"
                   style={{
                     background: t.highlight ? "#fff5f5" : "white",
                     borderBottom: i < TERM_OPTIONS.length - 1 ? "1px solid #f1f5f9" : "none",
@@ -463,17 +467,17 @@ function Savings({ openModal }: { openModal: OpenModal }) {
                     </div>
                   </div>
                   <div className="text-center">
-                    <span className="font-oswald text-2xl font-bold" style={{ color: "#c2251b" }}>
+                    <span className="font-oswald text-xl sm:text-2xl font-bold" style={{ color: "#c2251b" }}>
                       {rM !== null ? `${rM}%` : "…"}
                     </span>
-                    <span className="font-manrope text-xs ml-1" style={{ color: "#94a3b8" }}>годовых</span>
+                    <span className="font-manrope text-xs ml-1 hidden sm:inline" style={{ color: "#94a3b8" }}>годовых</span>
                   </div>
                   <div className="text-center flex flex-col items-center gap-0.5">
                     <div>
-                      <span className="font-oswald text-2xl font-bold" style={{ color: "#e63329" }}>
+                      <span className="font-oswald text-xl sm:text-2xl font-bold" style={{ color: "#e63329" }}>
                         {rE !== null ? `${rE}%` : "…"}
                       </span>
-                      <span className="font-manrope text-xs ml-1" style={{ color: "#94a3b8" }}>годовых</span>
+                      <span className="font-manrope text-xs ml-1 hidden sm:inline" style={{ color: "#94a3b8" }}>годовых</span>
                     </div>
                     <span className="font-manrope text-xs px-2 py-0.5 rounded-full" style={{ background: "rgba(230,51,41,0.1)", color: "#c2251b" }}>
                       +0,5% бонус
@@ -515,7 +519,7 @@ function Savings({ openModal }: { openModal: OpenModal }) {
               </div>
             </div>
 
-            <div className="p-8 bg-white">
+            <div className="p-4 sm:p-8 bg-white">
               <div className="grid md:grid-cols-3 gap-6 mb-6">
                 {/* Amount */}
                 <div>
@@ -528,8 +532,8 @@ function Savings({ openModal }: { openModal: OpenModal }) {
                     onChange={(e) => setAmount(e.target.value)}
                     min={10000}
                     max={30000000}
-                    className="w-full px-4 py-3 rounded-xl font-manrope text-base outline-none transition-all"
-                    style={{ border: "1.5px solid #e5e7eb", color: "#1a1a1a" }}
+                    className="w-full px-4 py-3 rounded-xl font-manrope text-base outline-none transition-all min-h-[48px]"
+                    style={{ border: "1.5px solid #e5e7eb", color: "#1a1a1a", fontSize: "16px" }}
                     onFocus={(e) => (e.currentTarget.style.borderColor = "#e63329")}
                     onBlur={(e) => (e.currentTarget.style.borderColor = "#e5e7eb")}
                   />
@@ -548,7 +552,7 @@ function Savings({ openModal }: { openModal: OpenModal }) {
                       <button
                         key={t.months}
                         onClick={() => setSelectedTerm(t)}
-                        className="py-2.5 rounded-xl font-manrope text-sm font-semibold transition-all duration-150"
+                        className="py-3 rounded-xl font-manrope text-sm font-semibold transition-all duration-150 min-h-[44px]"
                         style={selectedTerm.months === t.months
                           ? { background: "linear-gradient(135deg, #e63329, #c2251b)", color: "white", border: "1.5px solid transparent" }
                           : { background: "white", color: "#374151", border: "1.5px solid #e5e7eb" }
@@ -689,15 +693,15 @@ function About({ openModal }: { openModal: OpenModal }) {
             <p className="font-manrope leading-relaxed mb-8" style={{ color: "#64748b" }}>
               В отличие от банков, мы работаем исключительно в интересах своих членов, а не акционеров. Наша главная цель — финансовая взаимопомощь, а не максимизация прибыли.
             </p>
-            <div className="flex flex-wrap gap-0 rounded-2xl overflow-hidden" style={{ border: "1px solid #e2e8f0" }}>
+            <div className="grid grid-cols-2 sm:grid-cols-4 rounded-2xl overflow-hidden" style={{ border: "1px solid #e2e8f0" }}>
               {[
                 { value: "2008", label: "Год основания", href: null },
                 { value: "ФЗ № 190", label: "Правовая основа", href: null },
                 { value: "Банк России", label: "Регулятор", href: "https://cbr.ru/finorg/foinfo/?ogrn=1084307001041" },
                 { value: "СРО", label: "Кооперативные финансы", href: "https://coopfin.ru/cpage/6200" },
               ].map((item, idx) => (
-                <div key={item.value} className="flex-1 min-w-[120px] px-5 py-4 text-center"
-                  style={{ background: idx % 2 === 0 ? "#f8fafc" : "white", borderRight: idx < 3 ? "1px solid #e2e8f0" : "none" }}>
+                <div key={item.value} className="px-4 py-4 text-center"
+                  style={{ background: idx % 2 === 0 ? "#f8fafc" : "white", borderRight: idx % 2 === 0 ? "1px solid #e2e8f0" : "none", borderBottom: idx < 2 ? "1px solid #e2e8f0" : "none" }}>
                   <div className="font-oswald text-xl font-bold mb-0.5" style={{ background: "linear-gradient(135deg, #c2251b, #e63329)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>{item.value}</div>
                   <div className="font-manrope text-xs" style={{ color: "#94a3b8" }}>{item.label}</div>
                   {item.href && (
@@ -961,11 +965,13 @@ function Contacts() {
           <p className="font-manrope text-base md:text-lg mb-6" style={{ color: "#64748b" }}>
             г. Шахты — город с богатой историей и великими спортивными традициями
           </p>
-          <div className="relative rounded-2xl overflow-hidden mx-auto mt-8 mb-6" style={{ maxWidth: "700px", height: "280px" }}>
+          <div className="relative rounded-2xl overflow-hidden mx-auto mt-8 mb-6" style={{ maxWidth: "700px", height: "clamp(180px, 40vw, 280px)" }}>
             <img
               src="https://cdn.poehali.dev/projects/33c1de75-9e48-4c11-87d3-f9b410f3f164/bucket/f6ca8ec3-2ec2-4a63-a9fd-61f483b49b5f.png"
               alt="Город Шахты"
               className="w-full h-full object-cover"
+              loading="lazy"
+              style={{ maxWidth: "100%" }}
             />
             <div className="absolute inset-0 flex items-end p-5" style={{ background: "linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 60%)" }}>
               <a

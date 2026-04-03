@@ -127,7 +127,7 @@ export default function MemberModal({
               <p className="font-manrope text-sm mb-6" style={{ color: "#64748b" }}>
                 Наш специалист свяжется с вами в ближайшее рабочее время
               </p>
-              <button onClick={onClose} className="px-6 py-3 rounded-xl font-manrope font-bold text-sm"
+              <button onClick={onClose} className="px-6 py-3 rounded-xl font-manrope font-bold text-sm min-h-[44px]"
                 style={{ background: "linear-gradient(135deg, #e63329, #c2251b)", color: "white" }}>
                 Закрыть
               </button>
@@ -143,8 +143,8 @@ export default function MemberModal({
                   value={fio}
                   onChange={(e) => { setFio(e.target.value); setErrors((p) => ({ ...p, fio: undefined })); }}
                   placeholder="Иванов Иван Иванович"
-                  className="w-full rounded-xl px-4 py-3 font-manrope text-sm outline-none transition-all"
-                  style={{ border: `1.5px solid ${errors.fio ? "#e63329" : "#e2e8f0"}`, color: "#1a1a1a" }}
+                  className="w-full rounded-xl px-4 py-3 font-manrope text-sm outline-none transition-all min-h-[48px]"
+                  style={{ border: `1.5px solid ${errors.fio ? "#e63329" : "#e2e8f0"}`, color: "#1a1a1a", fontSize: "16px" }}
                 />
                 {errors.fio && <p className="font-manrope text-xs mt-1" style={{ color: "#e63329" }}>{errors.fio}</p>}
               </div>
@@ -158,8 +158,8 @@ export default function MemberModal({
                   value={phone}
                   onChange={handlePhone}
                   placeholder="+7 (___) ___-__-__"
-                  className="w-full rounded-xl px-4 py-3 font-manrope text-sm outline-none transition-all"
-                  style={{ border: `1.5px solid ${errors.phone ? "#e63329" : "#e2e8f0"}`, color: "#1a1a1a" }}
+                  className="w-full rounded-xl px-4 py-3 font-manrope text-sm outline-none transition-all min-h-[48px]"
+                  style={{ border: `1.5px solid ${errors.phone ? "#e63329" : "#e2e8f0"}`, color: "#1a1a1a", fontSize: "16px" }}
                 />
                 {errors.phone && <p className="font-manrope text-xs mt-1" style={{ color: "#e63329" }}>{errors.phone}</p>}
               </div>
@@ -173,8 +173,8 @@ export default function MemberModal({
                   value={email}
                   onChange={(e) => { setEmail(e.target.value); setErrors((p) => ({ ...p, email: undefined })); }}
                   placeholder="example@mail.ru"
-                  className="w-full rounded-xl px-4 py-3 font-manrope text-sm outline-none transition-all"
-                  style={{ border: `1.5px solid ${errors.email ? "#e63329" : "#e2e8f0"}`, color: "#1a1a1a" }}
+                  className="w-full rounded-xl px-4 py-3 font-manrope text-sm outline-none transition-all min-h-[48px]"
+                  style={{ border: `1.5px solid ${errors.email ? "#e63329" : "#e2e8f0"}`, color: "#1a1a1a", fontSize: "16px" }}
                 />
                 {errors.email && <p className="font-manrope text-xs mt-1" style={{ color: "#e63329" }}>{errors.email}</p>}
               </div>
@@ -188,7 +188,7 @@ export default function MemberModal({
               <button
                 onClick={submit}
                 disabled={status === "loading"}
-                className="w-full py-3.5 rounded-xl font-manrope font-bold text-sm mt-2 transition-opacity"
+                className="w-full py-3.5 rounded-xl font-manrope font-bold text-base mt-2 transition-opacity min-h-[48px]"
                 style={{ background: "linear-gradient(135deg, #e63329, #c2251b)", color: "white", opacity: status === "loading" ? 0.7 : 1 }}
               >
                 {status === "loading" ? "Отправляем..." : buttonLabel}
