@@ -216,10 +216,7 @@ function Hero() {
                 <button className="px-8 py-4 text-base font-manrope font-semibold w-full sm:w-auto flex items-center justify-center gap-2 rounded-xl transition-all duration-200"
                   style={{ border: "2px solid #0A1628", color: "#0A1628", background: "transparent" }}
                   onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = "#0A1628"; (e.currentTarget as HTMLElement).style.color = "white"; }}
-                  onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = "transparent"; (e.currentTarget as HTMLElement).style.color = "#0A1628"; }}>
-                  <Icon name="TrendingUp" size={18} />
-                  Сберечь и приумножить
-                </button>
+                  onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = "transparent"; (e.currentTarget as HTMLElement).style.color = "#0A1628"; }}>Открыть сберегательный счет</button>
               </a>
             </div>
 
