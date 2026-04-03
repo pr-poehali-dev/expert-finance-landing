@@ -1044,9 +1044,7 @@ function Footer() {
                 <div className="font-manrope text-xs" style={{ color: "#94a3b8" }}>Кредитный кооператив</div>
               </div>
             </div>
-            <p className="font-manrope text-sm leading-relaxed" style={{ color: "#64748b" }}>
-              КПК «Эксперт Финанс» — надёжный кооператив для жителей г. Шахты с 2008 года.
-            </p>
+            <p className="font-manrope text-sm leading-relaxed" style={{ color: "#64748b" }}>КПК «Эксперт Финанс» — надёжный кооператив с историей стабильности которая длится с 2008 года.</p>
           </div>
 
         </div>
