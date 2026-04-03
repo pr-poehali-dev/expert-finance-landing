@@ -418,17 +418,17 @@ function Savings() {
           <div className="fade-in-up rounded-2xl overflow-hidden" style={{ boxShadow: "0 8px 40px rgba(0,0,0,0.08)", border: "1px solid #e5e7eb" }}>
             {/* Header */}
             <div className="px-8 py-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4"
-              style={{ background: "linear-gradient(160deg, #1a1a1a 0%, #2d2d2d 100%)" }}>
+              style={{ background: "linear-gradient(160deg, #e63329 0%, #c2251b 100%)" }}>
               <div>
                 <div className="font-oswald text-2xl font-bold text-white mb-1">«Динамичный доход»</div>
-                <div className="font-manrope text-sm" style={{ color: "rgba(255,255,255,0.55)" }}>
+                <div className="font-manrope text-sm" style={{ color: "rgba(255,255,255,0.75)" }}>
                   Сумма: от 10 000 до 30 000 000 ₽ &nbsp;·&nbsp; Расходные операции не предусмотрены
                 </div>
               </div>
               <div className="flex items-center gap-2 px-4 py-2 rounded-xl flex-shrink-0"
-                style={{ background: "rgba(230,51,41,0.15)", border: "1px solid rgba(230,51,41,0.3)" }}>
-                <Icon name="PiggyBank" size={18} style={{ color: "#e63329" }} />
-                <span className="font-manrope text-sm font-semibold" style={{ color: "#e63329" }}>Ставка растёт вместе с ключевой, но не снижается при её уменьшении</span>
+                style={{ background: "rgba(255,255,255,0.15)", border: "1px solid rgba(255,255,255,0.3)" }}>
+                <Icon name="PiggyBank" size={18} style={{ color: "white" }} />
+                <span className="font-manrope text-sm font-semibold" style={{ color: "white" }}>Ставка растёт вместе с ключевой, но не снижается при её уменьшении</span>
               </div>
             </div>
 
@@ -699,15 +699,15 @@ function About() {
 
           {/* What is KPK */}
           <div className="fade-in-up">
-            <div className="rounded-2xl p-8" style={{ background: "linear-gradient(160deg, #1a1a1a 0%, #2d2d2d 100%)", boxShadow: "0 20px 50px rgba(26,26,26,0.2)" }}>
+            <div className="rounded-2xl p-8" style={{ background: "#f4f4f5", border: "1px solid #e4e4e7", boxShadow: "0 8px 30px rgba(0,0,0,0.06)" }}>
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
-                  style={{ background: "rgba(230,51,41,0.15)" }}>
+                  style={{ background: "rgba(230,51,41,0.1)" }}>
                   <Icon name="HelpCircle" size={20} style={{ color: "#e63329" }} />
                 </div>
-                <h3 className="font-oswald text-xl font-bold text-white">Что такое КПК?</h3>
+                <h3 className="font-oswald text-xl font-bold" style={{ color: "#1a1a1a" }}>Что такое КПК?</h3>
               </div>
-              <p className="font-manrope text-sm leading-relaxed mb-5" style={{ color: "rgba(255,255,255,0.65)" }}>
+              <p className="font-manrope text-sm leading-relaxed mb-5" style={{ color: "#64748b" }}>
                 Кредитный потребительский кооператив — некоммерческая организация, где участники:
               </p>
               <div className="space-y-3 mb-6">
@@ -719,15 +719,15 @@ function About() {
                 ].map((item) => (
                   <div key={item} className="flex items-start gap-3">
                     <div className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"
-                      style={{ background: "rgba(230,51,41,0.2)" }}>
+                      style={{ background: "rgba(230,51,41,0.15)" }}>
                       <Icon name="Check" size={12} style={{ color: "#e63329" }} />
                     </div>
-                    <span className="font-manrope text-sm" style={{ color: "rgba(255,255,255,0.75)" }}>{item}</span>
+                    <span className="font-manrope text-sm" style={{ color: "#475569" }}>{item}</span>
                   </div>
                 ))}
               </div>
-              <div className="rounded-xl p-4" style={{ background: "rgba(230,51,41,0.08)", border: "1px solid rgba(230,51,41,0.2)" }}>
-                <p className="font-manrope text-xs leading-relaxed" style={{ color: "rgba(255,255,255,0.55)" }}>
+              <div className="rounded-xl p-4" style={{ background: "rgba(230,51,41,0.06)", border: "1px solid rgba(230,51,41,0.15)" }}>
+                <p className="font-manrope text-xs leading-relaxed" style={{ color: "#64748b" }}>
                   Для вступления: подать заявление → оплатить вступительный взнос → внести паевой взнос (возвращается при выходе).
                 </p>
               </div>
@@ -822,13 +822,13 @@ function About() {
 
         {/* Mission CTA */}
         <div className="fade-in-up rounded-2xl p-8 md:p-12 text-center"
-          style={{ background: "linear-gradient(160deg, #1a1a1a 0%, #2d2d2d 100%)" }}>
+          style={{ background: "#f4f4f5", border: "1px solid #e4e4e7" }}>
           <div className="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-6"
-            style={{ background: "rgba(230,51,41,0.15)" }}>
+            style={{ background: "rgba(230,51,41,0.1)" }}>
             <Icon name="Target" size={28} style={{ color: "#e63329" }} />
           </div>
-          <h3 className="font-oswald text-2xl md:text-3xl font-bold text-white mb-4">Наша миссия</h3>
-          <p className="font-manrope text-base leading-relaxed max-w-2xl mx-auto mb-8" style={{ color: "rgba(255,255,255,0.65)" }}>
+          <h3 className="font-oswald text-2xl md:text-3xl font-bold mb-4" style={{ color: "#1a1a1a" }}>Наша миссия</h3>
+          <p className="font-manrope text-base leading-relaxed max-w-2xl mx-auto mb-8" style={{ color: "#64748b" }}>
             Мы создаём сообщество людей и предприятий, которые доверяют друг другу и совместно решают финансовые задачи. Помогаем получать выгодные займы, накапливать сбережения с доходностью выше рынка, развивать финансовую культуру и поддерживать локальный бизнес.
           </p>
           <div className="flex justify-center">
@@ -836,7 +836,7 @@ function About() {
               Стать членом кооператива
             </button>
           </div>
-          <p className="font-oswald text-sm mt-6" style={{ color: "rgba(255,255,255,0.3)" }}>
+          <p className="font-oswald text-sm mt-6" style={{ color: "#94a3b8" }}>
             «КПК Эксперт Финанс»: вместе к финансовой устойчивости!
           </p>
         </div>
@@ -949,8 +949,8 @@ function Contacts() {
               <div key={item.title} className="p-5 flex items-center gap-4 rounded-2xl transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md"
                 style={{ background: "#f8fafc", border: "1px solid #e2e8f0" }}>
                 <div className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
-                  style={{ background: "linear-gradient(135deg, #1a1a1a, #142244)" }}>
-                  <Icon name={item.icon as IconName} size={20} style={{ color: "#e63329" }} />
+                  style={{ background: "linear-gradient(135deg, #e63329, #c2251b)" }}>
+                  <Icon name={item.icon as IconName} size={20} style={{ color: "white" }} />
                 </div>
                 <div>
                   <div className="font-manrope text-xs mb-0.5" style={{ color: "#94a3b8" }}>{item.title}</div>
@@ -962,39 +962,39 @@ function Contacts() {
           </div>
 
           <div className="fade-in-up rounded-2xl p-8"
-            style={{ background: "linear-gradient(160deg, #1a1a1a 0%, #2d2d2d 100%)", border: "1px solid rgba(230,51,41,0.2)" }}>
-            <h3 className="font-oswald text-2xl font-bold text-white mb-2">Оставьте заявку</h3>
-            <p className="font-manrope text-sm mb-6" style={{ color: "rgba(255,255,255,0.5)" }}>Перезвоним в течение 30 минут в рабочее время</p>
+            style={{ background: "#f4f4f5", border: "1px solid #e4e4e7" }}>
+            <h3 className="font-oswald text-2xl font-bold mb-2" style={{ color: "#1a1a1a" }}>Оставьте заявку</h3>
+            <p className="font-manrope text-sm mb-6" style={{ color: "#64748b" }}>Перезвоним в течение 30 минут в рабочее время</p>
             <div className="space-y-4">
               {[
                 { label: "Ваше имя", type: "text", placeholder: "Иван Иванов" },
                 { label: "Телефон", type: "tel", placeholder: "+7 (___) ___-__-__" },
               ].map((field) => (
                 <div key={field.label}>
-                  <label className="block font-manrope text-xs mb-2" style={{ color: "rgba(255,255,255,0.6)" }}>{field.label}</label>
+                  <label className="block font-manrope text-xs mb-2" style={{ color: "#64748b" }}>{field.label}</label>
                   <input type={field.type} placeholder={field.placeholder}
                     className="w-full rounded-xl px-4 py-3 font-manrope text-sm outline-none transition-all"
-                    style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.12)", color: "white" }}
-                    onFocus={(e) => (e.target.style.borderColor = "rgba(230,51,41,0.5)")}
-                    onBlur={(e) => (e.target.style.borderColor = "rgba(255,255,255,0.12)")}
+                    style={{ background: "white", border: "1.5px solid #e2e8f0", color: "#1a1a1a" }}
+                    onFocus={(e) => (e.target.style.borderColor = "#e63329")}
+                    onBlur={(e) => (e.target.style.borderColor = "#e2e8f0")}
                   />
                 </div>
               ))}
               <div>
-                <label className="block font-manrope text-xs mb-2" style={{ color: "rgba(255,255,255,0.6)" }}>Меня интересует</label>
+                <label className="block font-manrope text-xs mb-2" style={{ color: "#64748b" }}>Меня интересует</label>
                 <select className="w-full rounded-xl px-4 py-3 font-manrope text-sm outline-none"
-                  style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.12)", color: "rgba(255,255,255,0.7)" }}>
-                  <option style={{ background: "#2d2d2d" }} value="">Выберите тему</option>
-                  <option style={{ background: "#2d2d2d" }} value="loan">Получить займ</option>
-                  <option style={{ background: "#2d2d2d" }} value="savings">Открыть сбережение</option>
-                  <option style={{ background: "#2d2d2d" }} value="member">Вступить в кооператив</option>
-                  <option style={{ background: "#2d2d2d" }} value="other">Другой вопрос</option>
+                  style={{ background: "white", border: "1.5px solid #e2e8f0", color: "#475569" }}>
+                  <option value="">Выберите тему</option>
+                  <option value="loan">Получить займ</option>
+                  <option value="savings">Открыть сбережение</option>
+                  <option value="member">Вступить в кооператив</option>
+                  <option value="other">Другой вопрос</option>
                 </select>
               </div>
               <button className="btn-emerald w-full py-4 font-manrope font-bold text-base mt-2" style={{ color: "white" }}>
                 Отправить заявку
               </button>
-              <p className="font-manrope text-xs text-center" style={{ color: "rgba(255,255,255,0.3)" }}>
+              <p className="font-manrope text-xs text-center" style={{ color: "#94a3b8" }}>
                 Нажимая кнопку, вы соглашаетесь с политикой обработки персональных данных
               </p>
             </div>
@@ -1008,7 +1008,7 @@ function Contacts() {
 // ─── FOOTER ───────────────────────────────────────────────────────────────────
 function Footer() {
   return (
-    <footer style={{ background: "#1a1a1a", borderTop: "1px solid rgba(230,51,41,0.1)" }}>
+    <footer style={{ background: "#f4f4f5", borderTop: "1px solid #e4e4e7" }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12">
         <div className="grid md:grid-cols-4 gap-10">
           <div>
@@ -1018,12 +1018,12 @@ function Footer() {
                 <Icon name="Shield" size={18} style={{ color: "white" }} />
               </div>
               <div>
-                <div className="font-oswald text-white text-sm font-semibold leading-tight">ЭКСПЕРТ ФИНАНС</div>
-                <div className="font-manrope text-xs" style={{ color: "rgba(255,255,255,0.3)" }}>Кредитный кооператив</div>
+                <div className="font-oswald text-sm font-semibold leading-tight" style={{ color: "#1a1a1a" }}>ЭКСПЕРТ ФИНАНС</div>
+                <div className="font-manrope text-xs" style={{ color: "#94a3b8" }}>Кредитный кооператив</div>
               </div>
             </div>
-            <p className="font-manrope text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.35)" }}>
-              КПК «Эксперт Финанс» — надёжный кооператив для жителей г. Шахты с 2015 года.
+            <p className="font-manrope text-sm leading-relaxed" style={{ color: "#64748b" }}>
+              КПК «Эксперт Финанс» — надёжный кооператив для жителей г. Шахты с 2008 года.
             </p>
           </div>
           {[
@@ -1032,16 +1032,16 @@ function Footer() {
             { title: "Поддержка", links: ["Контакты", "Вопросы и ответы", "Офис", "Режим работы"] },
           ].map((col) => (
             <div key={col.title}>
-              <h4 className="font-manrope font-bold text-xs uppercase tracking-widest mb-4" style={{ color: "rgba(255,255,255,0.4)" }}>
+              <h4 className="font-manrope font-bold text-xs uppercase tracking-widest mb-4" style={{ color: "#94a3b8" }}>
                 {col.title}
               </h4>
               <ul className="space-y-2.5">
                 {col.links.map((link) => (
                   <li key={link}>
                     <a href="#" className="font-manrope text-sm transition-colors duration-200"
-                      style={{ color: "rgba(255,255,255,0.35)" }}
-                      onMouseEnter={(e) => (e.currentTarget.style.color = "white")}
-                      onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.35)")}
+                      style={{ color: "#64748b" }}
+                      onMouseEnter={(e) => (e.currentTarget.style.color = "#e63329")}
+                      onMouseLeave={(e) => (e.currentTarget.style.color = "#64748b")}
                     >{link}</a>
                   </li>
                 ))}
@@ -1050,11 +1050,11 @@ function Footer() {
           ))}
         </div>
         <div className="mt-10 pt-6 flex flex-col md:flex-row items-center justify-between gap-4"
-          style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}>
-          <p className="font-manrope text-xs text-center md:text-left" style={{ color: "rgba(255,255,255,0.2)" }}>
-            © 2015–2026 КПК «Эксперт Финанс». Деятельность по ФЗ № 190-ФЗ. Под надзором Банка России.
+          style={{ borderTop: "1px solid #e2e8f0" }}>
+          <p className="font-manrope text-xs text-center md:text-left" style={{ color: "#94a3b8" }}>
+            © 2008–2026 КПК «Эксперт Финанс». Деятельность по ФЗ № 190-ФЗ. Под надзором Банка России.
           </p>
-          <p className="font-manrope text-xs" style={{ color: "rgba(255,255,255,0.15)" }}>Не является банком. Не является МФО.</p>
+          <p className="font-manrope text-xs" style={{ color: "#94a3b8" }}>Не является банком. Не является МФО.</p>
         </div>
       </div>
     </footer>
