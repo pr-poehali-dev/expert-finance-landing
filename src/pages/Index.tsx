@@ -428,7 +428,7 @@ function Savings() {
               <div className="flex items-center gap-2 px-4 py-2 rounded-xl flex-shrink-0"
                 style={{ background: "rgba(0,200,150,0.15)", border: "1px solid rgba(0,200,150,0.3)" }}>
                 <Icon name="PiggyBank" size={18} style={{ color: "#00C896" }} />
-                <span className="font-manrope text-sm font-semibold" style={{ color: "#00C896" }}>Ставка = ключевая ЦБ + %</span>
+                <span className="font-manrope text-sm font-semibold" style={{ color: "#00C896" }}>Ставка растёт вместе с ключевой, но не снижается при её уменьшении</span>
               </div>
             </div>
 
