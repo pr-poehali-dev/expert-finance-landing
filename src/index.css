@@ -80,7 +80,7 @@
   /* Gradient button */
   .btn-emerald {
     background: linear-gradient(135deg, #00c896 0%, #00a87e 100%);
-    color: #0a1628;
+    color: white;
     font-weight: 700;
     border-radius: 12px;
     transition: all 0.3s ease;
