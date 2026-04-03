@@ -257,7 +257,7 @@ function Hero({ openModal }: { openModal: OpenModal }) {
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 px-4 sm:px-8 py-6 sm:py-8 mb-8 rounded-2xl"
           style={{ background: "white", border: "1px solid #e2e8f0", boxShadow: "0 4px 24px rgba(0,0,0,0.06)" }}>
           <StatCounter target={900} suffix="+" label="Пайщиков" />
-          <StatCounter target={new Date().getFullYear() - 2008} suffix=" лет" label="На рынке" />
+          <StatCounter target={17} suffix="+" label="Лет на рынке" />
           <StatCounter target={290} suffix="+ млн" label="Выдано займов (руб.)" />
         </div>
       </div>
