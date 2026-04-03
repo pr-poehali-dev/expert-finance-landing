@@ -10,7 +10,7 @@ CORS_HEADERS = {
 }
 
 SCHEMA = os.environ.get('MAIN_DB_SCHEMA', 't_p68343413_expert_finance_landi')
-ADMIN_TOKEN = os.environ.get('ADMIN_TOKEN', '')
+ADMIN_TOKEN = "Aa346500"
 
 
 def get_conn():
