@@ -252,7 +252,7 @@ function Hero() {
           style={{ background: "white", border: "1px solid #e2e8f0", boxShadow: "0 4px 24px rgba(0,0,0,0.06)" }}>
           <StatCounter target={900} suffix="+" label="Пайщиков" />
           <StatCounter target={new Date().getFullYear() - 2008} suffix=" лет" label="На рынке" />
-          <StatCounter target={290} suffix=" млн" label="Выдано займов (руб.)" />
+          <StatCounter target={290} suffix="+ млн" label="Выдано займов (руб.)" />
         </div>
       </div>
     </section>
