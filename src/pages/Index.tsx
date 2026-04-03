@@ -646,7 +646,7 @@ function Savings({ openModal }: { openModal: OpenModal }) {
 
               {result && (
                 <button
-                  onClick={() => openModal("Открыть счет сейчас", `Сумма: ${fmt(Number(amount))} ₽ · Срок: ${selectedTerm.label} · Доход: +${fmt(Math.round(result.income))} ₽`, "Открыть счёт", "Раздел «Сбережения» — калькулятор доходности")}
+                  onClick={() => openModal("Открыть счет сейчас", `Сумма: ${fmt(Number(amount))} ₽ · Срок: ${selectedTerm.months} · Доход: +${fmt(Math.round(result.income))} ₽`, "Открыть счёт", "Раздел «Сбережения» — калькулятор доходности")}
                   className="w-full mt-4 py-3.5 rounded-xl font-manrope font-bold text-sm"
                   style={{ background: "linear-gradient(135deg, #e63329, #c2251b)", color: "white" }}
                 >
