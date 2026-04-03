@@ -831,15 +831,9 @@ function About() {
           <p className="font-manrope text-base leading-relaxed max-w-2xl mx-auto mb-8" style={{ color: "rgba(255,255,255,0.65)" }}>
             Мы создаём сообщество людей и предприятий, которые доверяют друг другу и совместно решают финансовые задачи. Помогаем получать выгодные займы, накапливать сбережения с доходностью выше рынка, развивать финансовую культуру и поддерживать локальный бизнес.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex justify-center">
             <button className="btn-emerald px-8 py-4 font-manrope font-bold text-base" style={{ color: "white" }}>
               Стать членом кооператива
-            </button>
-            <button className="px-8 py-4 font-manrope font-semibold text-base rounded-xl transition-all duration-200"
-              style={{ border: "1.5px solid rgba(255,255,255,0.25)", color: "white", background: "transparent" }}
-              onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.08)"; }}
-              onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = "transparent"; }}>
-              Узнать подробнее
             </button>
           </div>
           <p className="font-oswald text-sm mt-6" style={{ color: "rgba(255,255,255,0.3)" }}>
