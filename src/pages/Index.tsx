@@ -398,7 +398,8 @@ function Savings({ openModal }: { openModal: OpenModal }) {
     const sum = parseFloat(amount.replace(/\s/g, "")) || 0;
     const months = selectedTerm.monthsNum;
     const income = sum * (rate / 100) * (months / 12);
-    return { income, total: sum + income, rate };
+    const monthly = sum * (rate / 100) / 12;
+    return { income, total: sum + income, rate, monthly };
   };
 
   const result = calcIncome();
@@ -602,23 +603,37 @@ function Savings({ openModal }: { openModal: OpenModal }) {
 
               {/* Result */}
               {result && amountNum >= 10000 ? (
-                <div className="rounded-2xl p-6 grid sm:grid-cols-3 gap-4"
-                  style={{ background: "linear-gradient(135deg, #e63329 0%, #c2251b 100%)" }}>
-                  <div className="text-center">
-                    <div className="font-manrope text-xs mb-1" style={{ color: "rgba(255,255,255,0.7)" }}>Ставка</div>
-                    <div className="font-oswald text-3xl font-bold text-white">{result.rate}%</div>
-                    <div className="font-manrope text-xs" style={{ color: "rgba(255,255,255,0.6)" }}>годовых</div>
+                <div className="space-y-3">
+                  <div className="rounded-2xl p-6 grid sm:grid-cols-3 gap-4"
+                    style={{ background: "linear-gradient(135deg, #e63329 0%, #c2251b 100%)" }}>
+                    <div className="text-center">
+                      <div className="font-manrope text-xs mb-1" style={{ color: "rgba(255,255,255,0.7)" }}>Ставка</div>
+                      <div className="font-oswald text-3xl font-bold text-white">{result.rate}%</div>
+                      <div className="font-manrope text-xs" style={{ color: "rgba(255,255,255,0.6)" }}>годовых</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="font-manrope text-xs mb-1" style={{ color: "rgba(255,255,255,0.7)" }}>Доход за {selectedTerm.months}</div>
+                      <div className="font-oswald text-3xl font-bold text-white">+{fmt(Math.round(result.income))} ₽</div>
+                      <div className="font-manrope text-xs" style={{ color: "rgba(255,255,255,0.6)" }}>чистая прибыль</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="font-manrope text-xs mb-1" style={{ color: "rgba(255,255,255,0.7)" }}>Итого получите</div>
+                      <div className="font-oswald text-3xl font-bold text-white">{fmt(Math.round(result.total))} ₽</div>
+                      <div className="font-manrope text-xs" style={{ color: "rgba(255,255,255,0.6)" }}>вложение + доход</div>
+                    </div>
                   </div>
-                  <div className="text-center">
-                    <div className="font-manrope text-xs mb-1" style={{ color: "rgba(255,255,255,0.7)" }}>Доход за {selectedTerm.months}</div>
-                    <div className="font-oswald text-3xl font-bold text-white">+{fmt(Math.round(result.income))} ₽</div>
-                    <div className="font-manrope text-xs" style={{ color: "rgba(255,255,255,0.6)" }}>чистая прибыль</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="font-manrope text-xs mb-1" style={{ color: "rgba(255,255,255,0.7)" }}>Итого получите</div>
-                    <div className="font-oswald text-3xl font-bold text-white">{fmt(Math.round(result.total))} ₽</div>
-                    <div className="font-manrope text-xs" style={{ color: "rgba(255,255,255,0.6)" }}>вложение + доход</div>
-                  </div>
+                  {!payAtEnd && (
+                    <div className="flex items-center justify-between px-5 py-3.5 rounded-xl"
+                      style={{ background: "#f0fdf4", border: "1.5px solid #bbf7d0" }}>
+                      <div className="flex items-center gap-2">
+                        <Icon name="CalendarCheck" size={16} style={{ color: "#16a34a" }} />
+                        <span className="font-manrope text-sm" style={{ color: "#15803d" }}>Ежемесячная выплата процентов</span>
+                      </div>
+                      <span className="font-oswald text-xl font-bold" style={{ color: "#16a34a" }}>
+                        +{fmt(Math.round(result.monthly))} ₽
+                      </span>
+                    </div>
+                  )}
                 </div>
               ) : (
                 <div className="rounded-2xl p-6 text-center"
