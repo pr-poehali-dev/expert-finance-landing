@@ -1009,7 +1009,7 @@ function Footer() {
   return (
     <footer style={{ background: "#f4f4f5", borderTop: "1px solid #e4e4e7" }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12">
-        <div className="grid md:grid-cols-4 gap-10">
+        <div className="grid md:grid-cols-1 gap-10">
           <div>
             <div className="flex items-center gap-2.5 mb-4">
               <div className="w-9 h-9 rounded-xl flex items-center justify-center"
@@ -1025,28 +1025,7 @@ function Footer() {
               КПК «Эксперт Финанс» — надёжный кооператив для жителей г. Шахты с 2008 года.
             </p>
           </div>
-          {[
-            { title: "Продукты", links: ["Займы", "Сбережения", "Стать пайщиком", "Калькулятор"] },
-            { title: "О нас", links: ["История", "Руководство", "Документы", "Отчётность"] },
-            { title: "Поддержка", links: ["Контакты", "Вопросы и ответы", "Офис", "Режим работы"] },
-          ].map((col) => (
-            <div key={col.title}>
-              <h4 className="font-manrope font-bold text-xs uppercase tracking-widest mb-4" style={{ color: "#94a3b8" }}>
-                {col.title}
-              </h4>
-              <ul className="space-y-2.5">
-                {col.links.map((link) => (
-                  <li key={link}>
-                    <a href="#" className="font-manrope text-sm transition-colors duration-200"
-                      style={{ color: "#64748b" }}
-                      onMouseEnter={(e) => (e.currentTarget.style.color = "#e63329")}
-                      onMouseLeave={(e) => (e.currentTarget.style.color = "#64748b")}
-                    >{link}</a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+
         </div>
         <div className="mt-10 pt-6 flex flex-col md:flex-row items-center justify-between gap-4"
           style={{ borderTop: "1px solid #e2e8f0" }}>
