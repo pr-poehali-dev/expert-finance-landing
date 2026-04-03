@@ -782,6 +782,44 @@ function About() {
           </div>
         </div>
 
+        {/* Membership conditions */}
+        <div className="fade-in-up mb-8 rounded-2xl overflow-hidden" style={{ border: "1px solid #e2e8f0" }}>
+          <div className="px-6 py-5 flex items-center gap-3" style={{ background: "#f8fafc", borderBottom: "1px solid #e2e8f0" }}>
+            <div className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: "#f0fdf9" }}>
+              <Icon name="UserCheck" size={18} style={{ color: "#00a87e" }} />
+            </div>
+            <h3 className="font-oswald text-lg font-bold" style={{ color: "#0A1628" }}>Условия членства в кооперативе</h3>
+          </div>
+          <div className="grid md:grid-cols-2 gap-0">
+            <div className="px-6 py-5" style={{ borderRight: "1px solid #e2e8f0" }}>
+              <p className="font-manrope text-sm leading-relaxed mb-4" style={{ color: "#475569" }}>
+                Чтобы получить финансовую услугу в КПК, необходимо стать членом кооператива (пайщиком). Членство оформляется после оплаты вступительного и обязательного паевого взноса —{" "}
+                <strong style={{ color: "#0A1628" }}>всего 2 500 ₽</strong>.
+              </p>
+              <div className="flex items-center gap-3 px-4 py-3 rounded-xl"
+                style={{ background: "rgba(0,200,150,0.08)", border: "1px solid rgba(0,168,126,0.2)" }}>
+                <Icon name="CreditCard" size={18} style={{ color: "#00a87e", flexShrink: 0 }} />
+                <span className="font-manrope text-sm font-semibold" style={{ color: "#0A1628" }}>Вступительный + паевой взнос = 2 500 ₽</span>
+              </div>
+            </div>
+            <div className="px-6 py-5">
+              <p className="font-manrope text-xs font-semibold uppercase tracking-wide mb-3" style={{ color: "#94a3b8" }}>Обязательные условия</p>
+              <div className="space-y-2.5">
+                {[
+                  "Участие в кооперативе — обязательное",
+                  "Услуги предоставляются только пайщикам",
+                  "Каждый член несёт субсидиарную ответственность в пределах невнесённого доп. взноса",
+                ].map((item) => (
+                  <div key={item} className="flex items-start gap-2.5">
+                    <Icon name="AlertCircle" size={15} style={{ color: "#f59e0b", flexShrink: 0, marginTop: 1 }} />
+                    <span className="font-manrope text-sm leading-relaxed" style={{ color: "#475569" }}>{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* Mission CTA */}
         <div className="fade-in-up rounded-2xl p-8 md:p-12 text-center"
           style={{ background: "linear-gradient(160deg, #0A1628 0%, #0d2040 100%)" }}>
