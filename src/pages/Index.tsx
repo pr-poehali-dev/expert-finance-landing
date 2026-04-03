@@ -276,6 +276,7 @@ function Loans() {
     { title: "Ипотечный займ", period: "до 180 мес.", amount: "до 10 000 000 ₽", icon: "Building2", features: ["Покупка жилья", "Длительный срок", "Гибкие условия"], badge: "Ипотека", color: "#7c3aed", bg: "#faf5ff" },
     { title: "Займ на авто", period: "до 60 мес.", amount: "до 2 000 000 ₽", icon: "Car", features: ["Покупка авто", "Под залог своего авто", "Быстрое решение"], badge: "Авто", color: "#d97706", bg: "#fffbeb" },
     { title: "Рефинансирование", period: "до 60 мес.", amount: "до 3 000 000 ₽", icon: "RefreshCcw", features: ["Снижение ставки", "Объединение займов", "Уменьшение платежа"], badge: "Выгодно", color: "#0891b2", bg: "#f0fdff" },
+    { title: "Займ для самозанятых", period: "до 36 мес.", amount: "до 1 000 000 ₽", icon: "Briefcase", features: ["Для самозанятых", "На развитие бизнеса", "Справка о доходах НПД"], badge: "Бизнес", color: "#be185d", bg: "#fff1f2" },
   ];
 
   return (
