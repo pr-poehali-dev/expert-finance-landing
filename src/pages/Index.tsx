@@ -939,7 +939,7 @@ function Contacts() {
           </p>
           <div className="relative rounded-2xl overflow-hidden mx-auto mt-8 mb-6" style={{ maxWidth: "700px", height: "280px" }}>
             <img
-              src="https://cdn.poehali.dev/projects/33c1de75-9e48-4c11-87d3-f9b410f3f164/files/0ee16bd3-c6d7-42cf-8d34-ec747729cebb.jpg"
+              src="https://cdn.poehali.dev/projects/33c1de75-9e48-4c11-87d3-f9b410f3f164/bucket/f6ca8ec3-2ec2-4a63-a9fd-61f483b49b5f.png"
               alt="Город Шахты"
               className="w-full h-full object-cover"
             />
