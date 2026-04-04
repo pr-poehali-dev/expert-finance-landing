@@ -943,8 +943,8 @@ function Documents() {
                   (e.currentTarget as HTMLElement).style.borderColor = "#e5e7eb";
                   (e.currentTarget as HTMLElement).style.boxShadow = "0 2px 8px rgba(0,0,0,0.04)";
                 }}>
-                <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5" style={{ background: "#fff5f5" }}>
-                  <Icon name={doc.icon as IconName} size={18} style={{ color: "#c2251b" }} />
+                <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5" style={{ background: "#f0fdf4" }}>
+                  <Icon name={doc.icon as IconName} size={18} style={{ color: "#16a34a" }} />
                 </div>
                 <div className="flex-1 min-w-0">
                   <p className="font-manrope font-semibold text-sm leading-snug mb-1" style={{ color: "#1a1a1a" }}>{doc.title}</p>
