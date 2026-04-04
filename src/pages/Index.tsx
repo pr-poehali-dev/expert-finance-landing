@@ -937,7 +937,7 @@ function Documents() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {docs.map((doc, i) => (
               <a key={doc.id} href={doc.file_url} target="_blank" rel="noopener noreferrer"
-                className="fade-in-up group flex items-start gap-3.5 p-5 rounded-2xl cursor-pointer transition-all duration-200 hover:-translate-y-0.5 no-underline"
+                className="group flex items-start gap-3.5 p-5 rounded-2xl cursor-pointer transition-all duration-200 hover:-translate-y-0.5 no-underline"
                 style={{ background: "white", border: "1px solid #e5e7eb", boxShadow: "0 2px 8px rgba(0,0,0,0.04)", transitionDelay: `${i * 50}ms` }}
                 onMouseEnter={(e) => {
                   (e.currentTarget as HTMLElement).style.borderColor = "rgba(194,37,27,0.4)";
