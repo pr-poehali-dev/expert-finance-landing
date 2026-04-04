@@ -907,7 +907,7 @@ function Documents() {
   const [docs, setDocs] = useState<DocItem[]>([]);
 
   useEffect(() => {
-    fetch(DOCS_API)
+    fetch(DOCS_API, { cache: "no-store" })
       .then((r) => r.json())
       .then((data) => setDocs(data.documents || []));
   }, []);

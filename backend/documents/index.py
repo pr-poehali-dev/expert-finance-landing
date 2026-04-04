@@ -52,7 +52,7 @@ def handler(event: dict, context) -> dict:
         return {'statusCode': 200, 'headers': CORS_HEADERS, 'body': json.dumps({"documents": docs})}
 
     body = json.loads(event.get('body') or '{}')
-    token = event.get('headers', {}).get('X-Admin-Token', '')
+    token = body.get('admin_token', '') or event.get('headers', {}).get('X-Admin-Token', '')
 
     if token != ADMIN_PASSWORD:
         return {'statusCode': 403, 'headers': CORS_HEADERS, 'body': json.dumps({"error": "Forbidden"})}

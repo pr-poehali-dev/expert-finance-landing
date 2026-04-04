@@ -16,6 +16,19 @@ const ICON_OPTIONS = [
   "BookOpen", "UserCheck", "AlertCircle", "File", "Folder",
 ];
 
+const ICON_LABELS: Record<string, string> = {
+  FileText: "Документ",
+  Shield: "Защита",
+  FileCheck: "Принят",
+  FileLock2: "Закрытый",
+  Scale: "Закон",
+  BookOpen: "Устав",
+  UserCheck: "Членство",
+  AlertCircle: "Важно",
+  File: "Файл",
+  Folder: "Папка",
+};
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type IconName = any;
 
@@ -110,13 +123,14 @@ export default function Admin() {
       const b64 = (e.target?.result as string).split(",")[1];
       const res = await fetch(API_URL, {
         method: "POST",
-        headers: { "Content-Type": "application/json", "X-Admin-Token": ADMIN_PASSWORD },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           title,
           file_base64: b64,
           file_name: file.name,
           file_type: file.name.split(".").pop()?.toUpperCase() || "PDF",
           icon,
+          admin_token: ADMIN_PASSWORD,
         }),
       });
       const data = await res.json();
@@ -138,8 +152,8 @@ export default function Admin() {
     if (!confirm("Удалить документ?")) return;
     await fetch(API_URL, {
       method: "DELETE",
-      headers: { "Content-Type": "application/json", "X-Admin-Token": ADMIN_PASSWORD },
-      body: JSON.stringify({ id }),
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id, admin_token: ADMIN_PASSWORD }),
     });
     fetchDocs();
   };
@@ -216,17 +230,28 @@ export default function Admin() {
               />
             </div>
             <div>
-              <label className="block font-manrope text-xs mb-1.5" style={{ color: "#64748b" }}>Иконка</label>
-              <select
-                value={icon}
-                onChange={(e) => setIcon(e.target.value)}
-                className="w-full rounded-xl px-4 py-3 font-manrope text-sm outline-none"
-                style={{ border: "1.5px solid #e2e8f0", color: "#475569" }}
-              >
+              <label className="block font-manrope text-xs mb-1.5" style={{ color: "#64748b" }}>Иконка документа</label>
+              <div className="flex flex-wrap gap-2 p-3 rounded-xl" style={{ border: "1.5px solid #e2e8f0", background: "#f8fafc" }}>
                 {ICON_OPTIONS.map((ic) => (
-                  <option key={ic} value={ic}>{ic}</option>
+                  <button
+                    key={ic}
+                    type="button"
+                    title={ICON_LABELS[ic] || ic}
+                    onClick={() => setIcon(ic)}
+                    className="flex flex-col items-center gap-1 p-2 rounded-lg transition-all"
+                    style={{
+                      background: icon === ic ? "rgba(194,37,27,0.12)" : "white",
+                      border: `1.5px solid ${icon === ic ? "#c2251b" : "#e2e8f0"}`,
+                      minWidth: 52,
+                    }}
+                  >
+                    <Icon name={ic as IconName} size={20} style={{ color: icon === ic ? "#c2251b" : "#64748b" }} />
+                    <span className="font-manrope text-xs leading-none" style={{ color: icon === ic ? "#c2251b" : "#94a3b8", fontSize: 10 }}>
+                      {ICON_LABELS[ic] || ic}
+                    </span>
+                  </button>
                 ))}
-              </select>
+              </div>
             </div>
           </div>
           <div className="mb-4">
