@@ -240,9 +240,10 @@ function Hero({ openModal }: { openModal: OpenModal }) {
             <div className="relative rounded-2xl overflow-visible" style={{ boxShadow: "0 24px 60px rgba(0,0,0,0.1)" }}>
               <img
                 src="https://cdn.poehali.dev/projects/33c1de75-9e48-4c11-87d3-f9b410f3f164/bucket/3c215f63-d156-4ddc-b6ef-01c96481426f.png"
-                alt="Эксперт Финанс"
+                alt="КПК Эксперт Финанс — офис кредитного кооператива в г. Шахты"
                 className="w-full h-80 object-cover rounded-2xl"
-                loading="lazy"
+                loading="eager"
+                fetchPriority="high"
                 style={{ maxWidth: "100%" }}
               />
 
@@ -992,7 +993,7 @@ function Contacts() {
           <div className="relative rounded-2xl overflow-hidden mx-auto mt-8 mb-6" style={{ maxWidth: "700px", height: "clamp(180px, 40vw, 280px)" }}>
             <img
               src="https://cdn.poehali.dev/projects/33c1de75-9e48-4c11-87d3-f9b410f3f164/bucket/f6ca8ec3-2ec2-4a63-a9fd-61f483b49b5f.png"
-              alt="Город Шахты"
+              alt="Город Шахты, Ростовская область — место расположения офиса КПК Эксперт Финанс"
               className="w-full h-full object-cover"
               loading="lazy"
               style={{ maxWidth: "100%" }}
