@@ -120,9 +120,42 @@
     border-color: rgba(255, 255, 255, 0.7);
   }
 
+  /* Green button */
+  .btn-green {
+    background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
+    color: white;
+    font-weight: 700;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-green::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .btn-green:hover::before {
+    opacity: 1;
+  }
+
+  .btn-green:hover {
+    box-shadow: 0 0 30px rgba(22, 163, 74, 0.5);
+    transform: translateY(-1px);
+  }
+
   /* Pulse animation for CTA */
   .pulse-ring {
     animation: pulse-ring 2s ease-out infinite;
+  }
+
+  .pulse-ring-green {
+    animation: pulse-ring-green 2s ease-out infinite;
   }
 
   /* Gradient text */
@@ -217,6 +250,18 @@
   }
   100% {
     box-shadow: 0 0 0 0 rgba(230, 51, 41, 0);
+  }
+}
+
+@keyframes pulse-ring-green {
+  0% {
+    box-shadow: 0 0 0 0 rgba(22, 163, 74, 0.6);
+  }
+  70% {
+    box-shadow: 0 0 0 16px rgba(22, 163, 74, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(22, 163, 74, 0);
   }
 }
 

@@ -122,10 +122,8 @@ function Header({ onMember }: { onMember: () => void }) {
 
           <div className="hidden md:flex items-center gap-3">
             <a href="https://mykpk.ru" target="_blank" rel="noopener noreferrer"
-              className="font-manrope text-sm font-semibold px-4 py-2.5 rounded-xl transition-all duration-200 min-h-[44px] flex items-center"
-              style={{ border: "1.5px solid #e2e8f0", color: "#1a1a1a", background: "white", textDecoration: "none" }}
-              onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.borderColor = "#e63329"; }}
-              onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.borderColor = "#e2e8f0"; }}>
+              className="btn-green pulse-ring-green font-manrope text-sm font-semibold px-4 py-2.5 rounded-xl min-h-[44px] flex items-center"
+              style={{ textDecoration: "none", color: "white" }}>
               Личный кабинет
             </a>
             <button onClick={onMember} className="btn-emerald pulse-ring px-5 py-2.5 text-sm font-manrope font-bold min-h-[44px]" style={{ color: "white" }}>
@@ -149,8 +147,8 @@ function Header({ onMember }: { onMember: () => void }) {
             ))}
             <div className="flex gap-3 mt-4">
               <a href="https://mykpk.ru" target="_blank" rel="noopener noreferrer"
-                className="font-manrope text-base font-semibold px-4 py-3 rounded-xl flex-1 text-center min-h-[44px] flex items-center justify-center"
-                style={{ border: "1.5px solid #e2e8f0", color: "#1a1a1a", textDecoration: "none" }}>Личный кабинет</a>
+                className="btn-green pulse-ring-green font-manrope text-base font-semibold px-4 py-3 rounded-xl flex-1 text-center min-h-[44px] flex items-center justify-center"
+                style={{ textDecoration: "none", color: "white" }}>Личный кабинет</a>
               <button onClick={onMember} className="btn-emerald px-4 py-3 text-base font-manrope font-bold flex-1 min-h-[44px]" style={{ color: "white" }}>Стать пайщиком</button>
             </div>
           </div>
@@ -214,10 +212,8 @@ function Hero({ openModal }: { openModal: OpenModal }) {
                 Получить займ
               </button>
               <button onClick={() => openModal("Открыть сберегательный счет", "Укажите контакты — расскажем об условиях вклада", "Открыть счёт", "Главный экран — кнопка «Открыть сберегательный счет»")}
-                className="px-8 py-4 text-base font-manrope font-semibold w-full sm:w-auto flex items-center justify-center gap-2 rounded-xl transition-all duration-200"
-                style={{ border: "2px solid #1a1a1a", color: "#1a1a1a", background: "transparent" }}
-                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = "#1a1a1a"; (e.currentTarget as HTMLElement).style.color = "white"; }}
-                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = "transparent"; (e.currentTarget as HTMLElement).style.color = "#1a1a1a"; }}>Открыть сберегательный счет
+                className="btn-green pulse-ring-green px-8 py-4 text-base font-manrope font-semibold w-full sm:w-auto flex items-center justify-center gap-2"
+                style={{ color: "white" }}>Открыть сберегательный счет
               </button>
             </div>
 
@@ -338,7 +334,7 @@ function Loans({ openModal }: { openModal: OpenModal }) {
             <p className="font-manrope text-sm" style={{ color: "rgba(255,255,255,0.6)" }}>Наши специалисты бесплатно подберут оптимальные условия</p>
           </div>
           <button onClick={() => openModal("Получить консультацию", "Расскажем об индивидуальных условиях займа", "Записаться на консультацию", "Раздел «Кредитные продукты» — баннер «Индивидуальное решение»")}
-            className="btn-emerald px-8 py-3.5 font-manrope font-bold text-sm whitespace-nowrap flex-shrink-0" style={{ color: "white" }}>
+            className="btn-green pulse-ring-green px-8 py-3.5 font-manrope font-bold text-sm whitespace-nowrap flex-shrink-0" style={{ color: "white" }}>
             Получить консультацию
           </button>
         </div>
@@ -510,7 +506,7 @@ function Savings({ openModal }: { openModal: OpenModal }) {
                 </div>
               </div>
               <button onClick={() => openModal("Открыть сберегательный счет", "Укажите контакты — оформим вклад на выгодных условиях", "Открыть счёт", "Раздел «Сбережения» — таблица ставок")}
-                className="btn-emerald px-6 py-3 text-sm font-manrope font-bold whitespace-nowrap" style={{ color: "white" }}>Открыть счет сейчас</button>
+                className="btn-green pulse-ring-green px-6 py-3 text-sm font-manrope font-bold whitespace-nowrap" style={{ color: "white" }}>Открыть счет сейчас</button>
             </div>
           </div>
 
@@ -648,8 +644,8 @@ function Savings({ openModal }: { openModal: OpenModal }) {
               {result && (
                 <button
                   onClick={() => openModal("Открыть счет сейчас", `Сумма: ${fmt(Number(amount))} ₽ · Срок: ${selectedTerm.months} · Доход: +${fmt(Math.round(result.income))} ₽`, "Открыть счёт", "Раздел «Сбережения» — калькулятор доходности")}
-                  className="w-full mt-4 py-3.5 rounded-xl font-manrope font-bold text-sm"
-                  style={{ background: "linear-gradient(135deg, #e63329, #c2251b)", color: "white" }}
+                  className="btn-green pulse-ring-green w-full mt-4 py-3.5 font-manrope font-bold text-sm"
+                  style={{ color: "white" }}
                 >
                   Открыть счет сейчас
                 </button>
@@ -877,7 +873,7 @@ function About({ openModal }: { openModal: OpenModal }) {
           </p>
           <div className="flex justify-center">
             <button onClick={() => openModal("Стать членом кооператива", "Заполните форму — поможем оформить членство в КПК", "Вступить в кооператив", "Раздел «О нас» — блок «Наша миссия»")}
-              className="btn-emerald px-8 py-4 font-manrope font-bold text-base" style={{ color: "white" }}>
+              className="btn-green pulse-ring-green px-8 py-4 font-manrope font-bold text-base" style={{ color: "white" }}>
               Стать членом кооператива
             </button>
           </div>
