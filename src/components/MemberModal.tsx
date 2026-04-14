@@ -44,7 +44,7 @@ export default function MemberModal({
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [errors, setErrors] = useState<{ fio?: string; phone?: string; email?: string; captcha?: string }>({});
-  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error" | "ratelimit">("idle");
   const [captchaToken, setCaptchaToken] = useState<string | null>(null);
   const recaptchaRef = useRef<ReCAPTCHA>(null);
 
@@ -96,6 +96,7 @@ export default function MemberModal({
       });
       const data = await res.json();
       if (data.ok) setStatus("success");
+      else if (res.status === 429) setStatus("ratelimit");
       else setStatus("error");
     } catch {
       setStatus("error");
@@ -201,6 +202,11 @@ export default function MemberModal({
               {status === "error" && (
                 <p className="font-manrope text-xs p-3 rounded-xl" style={{ background: "#fff5f5", color: "#e63329" }}>
                   Не удалось отправить заявку. Позвоните нам: +7 (800) 700-89-09
+                </p>
+              )}
+              {status === "ratelimit" && (
+                <p className="font-manrope text-xs p-3 rounded-xl" style={{ background: "#fff5f5", color: "#e63329" }}>
+                  Вы уже отправили максимальное количество заявок. Попробуйте через час или позвоните нам: +7 (800) 700-89-09
                 </p>
               )}
 

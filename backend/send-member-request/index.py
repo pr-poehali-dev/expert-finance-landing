@@ -3,6 +3,7 @@ import os
 import smtplib
 import urllib.request
 import urllib.parse
+import psycopg2
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from datetime import datetime
@@ -25,6 +26,29 @@ INTEREST_MAP = {
     "Стать членом кооператива": ("👥 Вступление в кооператив", "Клиент хочет стать членом кооператива"),
     "Подать заявку": ("📋 Заявка на займ", "Клиент подаёт заявку на займ"),
 }
+
+
+SCHEMA = os.environ.get('MAIN_DB_SCHEMA', 't_p68343413_expert_finance_landi')
+RATE_LIMIT = 2
+RATE_WINDOW_HOURS = 1
+
+
+def check_rate_limit(ip: str) -> bool:
+    """Возвращает True если лимит не превышен и записывает попытку."""
+    conn = psycopg2.connect(os.environ['DATABASE_URL'])
+    cur = conn.cursor()
+    cur.execute(
+        f"SELECT COUNT(*) FROM {SCHEMA}.rate_limits WHERE ip_address = %s AND created_at > NOW() - INTERVAL '{RATE_WINDOW_HOURS} hour'",
+        (ip,)
+    )
+    count = cur.fetchone()[0]
+    if count >= RATE_LIMIT:
+        conn.close()
+        return False
+    cur.execute(f"INSERT INTO {SCHEMA}.rate_limits (ip_address) VALUES (%s)", (ip,))
+    conn.commit()
+    conn.close()
+    return True
 
 
 def verify_recaptcha(token: str) -> bool:
@@ -59,6 +83,10 @@ def handler(event: dict, context) -> dict:
 
     if not captcha_token or not verify_recaptcha(captcha_token):
         return {'statusCode': 403, 'headers': CORS_HEADERS, 'body': json.dumps({"error": "Проверка капчи не пройдена"})}
+
+    ip = (event.get('requestContext') or {}).get('identity', {}).get('sourceIp', 'unknown')
+    if not check_rate_limit(ip):
+        return {'statusCode': 429, 'headers': CORS_HEADERS, 'body': json.dumps({"error": "Превышен лимит заявок. Попробуйте через час."})}
 
     smtp_host = os.environ.get('SMTP_HOST', '')
     smtp_user = os.environ.get('SMTP_USER', '')
