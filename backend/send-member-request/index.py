@@ -1,6 +1,8 @@
 import json
 import os
 import smtplib
+import urllib.request
+import urllib.parse
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from datetime import datetime
@@ -25,8 +27,20 @@ INTEREST_MAP = {
 }
 
 
+def verify_recaptcha(token: str) -> bool:
+    """Проверяет токен reCAPTCHA через Google API."""
+    secret = os.environ.get('RECAPTCHA_SECRET_KEY', '')
+    if not secret:
+        return False
+    data = urllib.parse.urlencode({'secret': secret, 'response': token}).encode()
+    req = urllib.request.Request('https://www.google.com/recaptcha/api/siteverify', data=data)
+    with urllib.request.urlopen(req, timeout=5) as resp:
+        result = json.loads(resp.read().decode())
+    return result.get('success', False)
+
+
 def handler(event: dict, context) -> dict:
-    """Отправка заявки с сайта КПК на email менеджеру с подробным указанием источника."""
+    """Отправка заявки с сайта КПК на email менеджеру с проверкой reCAPTCHA и подробным указанием источника."""
 
     if event.get('httpMethod') == 'OPTIONS':
         return {'statusCode': 200, 'headers': CORS_HEADERS, 'body': ''}
@@ -38,9 +52,13 @@ def handler(event: dict, context) -> dict:
     source_url = body.get('source_url', 'не указан')
     button_label = body.get('button_label', 'Не указано')
     button_source = body.get('button_source', '')
+    captcha_token = body.get('captcha_token', '')
 
     if not fio or not phone or not email:
         return {'statusCode': 400, 'headers': CORS_HEADERS, 'body': json.dumps({"error": "Заполните все поля"})}
+
+    if not captcha_token or not verify_recaptcha(captcha_token):
+        return {'statusCode': 403, 'headers': CORS_HEADERS, 'body': json.dumps({"error": "Проверка капчи не пройдена"})}
 
     smtp_host = os.environ.get('SMTP_HOST', '')
     smtp_user = os.environ.get('SMTP_USER', '')

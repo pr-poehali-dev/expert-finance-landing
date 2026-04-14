@@ -1,7 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+import ReCAPTCHA from "react-google-recaptcha";
 import Icon from "@/components/ui/icon";
 
 const API_URL = "https://functions.poehali.dev/e26c970b-1482-4b9c-9b6a-f48a7072e5ae";
+const RECAPTCHA_SITE_KEY = "6LeoHbcsAAAAAGL6ubyrv-Elx5f2PL-ojNMQMu14";
 
 interface Props {
   open: boolean;
@@ -41,8 +43,10 @@ export default function MemberModal({
   const [fio, setFio] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
-  const [errors, setErrors] = useState<{ fio?: string; phone?: string; email?: string }>({});
+  const [errors, setErrors] = useState<{ fio?: string; phone?: string; email?: string; captcha?: string }>({});
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [captchaToken, setCaptchaToken] = useState<string | null>(null);
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
 
   useEffect(() => {
     if (open) {
@@ -50,6 +54,8 @@ export default function MemberModal({
     } else {
       document.body.style.overflow = "";
       setFio(""); setPhone(""); setEmail(""); setErrors({}); setStatus("idle");
+      setCaptchaToken(null);
+      recaptchaRef.current?.reset();
     }
     return () => { document.body.style.overflow = ""; };
   }, [open]);
@@ -66,6 +72,7 @@ export default function MemberModal({
     const digits = phone.replace(/\D/g, "");
     if (digits.length < 11) err.phone = "Введите полный номер телефона";
     if (!validateEmail(email)) err.email = "Введите корректный email";
+    if (!captchaToken) err.captcha = "Пожалуйста, подтвердите, что вы не робот";
     setErrors(err);
     return Object.keys(err).length === 0;
   };
@@ -84,6 +91,7 @@ export default function MemberModal({
           source_url: window.location.href,
           button_label: title,
           button_source: source,
+          captcha_token: captchaToken,
         }),
       });
       const data = await res.json();
@@ -177,6 +185,17 @@ export default function MemberModal({
                   style={{ border: `1.5px solid ${errors.email ? "#e63329" : "#e2e8f0"}`, color: "#1a1a1a", fontSize: "16px" }}
                 />
                 {errors.email && <p className="font-manrope text-xs mt-1" style={{ color: "#e63329" }}>{errors.email}</p>}
+              </div>
+
+              <div className="flex flex-col items-center">
+                <ReCAPTCHA
+                  ref={recaptchaRef}
+                  sitekey={RECAPTCHA_SITE_KEY}
+                  onChange={(token) => { setCaptchaToken(token); setErrors((p) => ({ ...p, captcha: undefined })); }}
+                  onExpired={() => setCaptchaToken(null)}
+                  hl="ru"
+                />
+                {errors.captcha && <p className="font-manrope text-xs mt-1" style={{ color: "#e63329" }}>{errors.captcha}</p>}
               </div>
 
               {status === "error" && (
