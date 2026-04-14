@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import Icon from "@/components/ui/icon";
 import MemberModal from "@/components/MemberModal";
+import LoanCalculator from "@/components/LoanCalculator";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type IconName = any;
@@ -322,6 +323,8 @@ function Loans({ openModal }: { openModal: OpenModal }) {
             </div>
           ))}
         </div>
+
+        <LoanCalculator openModal={openModal} />
 
         <div className="mt-10 fade-in-up rounded-2xl p-8 flex flex-col md:flex-row items-center justify-between gap-6"
           style={{ background: "linear-gradient(135deg, #e63329 0%, #c2251b 100%)", border: "none" }}>
