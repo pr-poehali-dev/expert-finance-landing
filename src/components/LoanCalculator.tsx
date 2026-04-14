@@ -67,13 +67,13 @@ export default function LoanCalculator({ openModal }: Props) {
 
   return (
     <div className="fade-in-up mt-10 rounded-2xl overflow-hidden" style={{ border: "1px solid #e2e8f0" }}>
-      <div className="px-6 py-5 flex items-center gap-3" style={{ background: "linear-gradient(135deg, #1a1a1a, #2d2d2d)" }}>
-        <div className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: "rgba(255,255,255,0.1)" }}>
+      <div className="px-6 py-5 flex items-center gap-3" style={{ background: "linear-gradient(135deg, #c2251b, #e63329)" }}>
+        <div className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: "rgba(255,255,255,0.15)" }}>
           <Icon name="Calculator" size={18} style={{ color: "white" }} />
         </div>
         <div>
           <div className="font-oswald text-lg font-bold text-white leading-tight">Калькулятор предварительного расчёта</div>
-          <div className="font-manrope text-xs mt-0.5" style={{ color: "rgba(255,255,255,0.5)" }}>Расчёт носит информационный характер и не является офертой</div>
+          <div className="font-manrope text-xs mt-0.5" style={{ color: "rgba(255,255,255,0.7)" }}>Расчёт носит информационный характер и не является офертой</div>
         </div>
       </div>
 
@@ -88,7 +88,7 @@ export default function LoanCalculator({ openModal }: Props) {
                   onClick={() => setProgramIdx(i)}
                   className="text-left px-4 py-2.5 rounded-xl font-manrope text-sm font-medium transition-all duration-150"
                   style={{
-                    background: programIdx === i ? "linear-gradient(135deg, #c2251b, #e63329)" : "#f8fafc",
+                    background: programIdx === i ? "linear-gradient(135deg, #16a34a, #15803d)" : "#f8fafc",
                     color: programIdx === i ? "white" : "#475569",
                     border: programIdx === i ? "none" : "1px solid #e2e8f0",
                   }}
@@ -153,7 +153,7 @@ export default function LoanCalculator({ openModal }: Props) {
             <div className="rounded-2xl p-5 space-y-3" style={{ background: "#f8fafc", border: "1px solid #e2e8f0" }}>
               <div className="flex items-center justify-between">
                 <span className="font-manrope text-sm" style={{ color: "#64748b" }}>Ежемесячный платёж</span>
-                <span className="font-oswald text-2xl font-bold" style={{ color: "#c2251b" }}>{fmt(Math.round(result.payment))} ₽</span>
+                <span className="font-oswald text-2xl font-bold" style={{ color: "#16a34a" }}>{fmt(Math.round(result.payment))} ₽</span>
               </div>
               <div className="h-px" style={{ background: "#e2e8f0" }} />
               <div className="flex items-center justify-between">
@@ -178,7 +178,7 @@ export default function LoanCalculator({ openModal }: Props) {
           <button
             onClick={() => openModal("Подать заявку", `Заявка на программу: ${program.title}`, "Подать заявку", `Калькулятор займов — программа «${program.title}»`)}
             className="w-full py-3.5 rounded-xl font-manrope font-bold text-sm transition-all duration-200 hover:opacity-90 min-h-[48px]"
-            style={{ background: "linear-gradient(135deg, #e63329, #c2251b)", color: "white", boxShadow: "0 4px 16px rgba(194,37,27,0.3)" }}
+            style={{ background: "linear-gradient(135deg, #16a34a, #15803d)", color: "white", boxShadow: "0 4px 16px rgba(22,163,74,0.3)" }}
           >
             Подать заявку
           </button>
