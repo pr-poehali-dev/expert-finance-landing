@@ -4,12 +4,12 @@ import Icon from "@/components/ui/icon";
 const CBR_RATE_URL = "https://functions.poehali.dev/eef9deed-19ca-4467-9a4f-0337f1ca72fb";
 
 const PROGRAMS = [
-  { title: "Потребительский займ",     maxAmount: 300_000,   maxMonths: 60  },
-  { title: "Под залог недвижимости",   maxAmount: 3_000_000, maxMonths: 180 },
-  { title: "Ипотечный займ",           maxAmount: 3_000_000, maxMonths: 180 },
-  { title: "Займ на авто",             maxAmount: 2_000_000, maxMonths: 84  },
-  { title: "Рефинансирование",         maxAmount: 3_000_000, maxMonths: 180 },
-  { title: "Займ для самозанятых",     maxAmount: 1_000_000, maxMonths: 60  },
+  { title: "Потребительский займ",     hint: "Когда деньги нужны быстро и без залога",    maxAmount: 300_000,   maxMonths: 60  },
+  { title: "Под залог недвижимости",   hint: "Крупные суммы на длительный срок",           maxAmount: 3_000_000, maxMonths: 180 },
+  { title: "Ипотечный займ",           hint: "Реальный шанс купить своё жильё",            maxAmount: 3_000_000, maxMonths: 180 },
+  { title: "Займ на авто",             hint: "Купите авто уже сегодня",                    maxAmount: 2_000_000, maxMonths: 84  },
+  { title: "Рефинансирование",         hint: "Снизьте платёж и объедините долги",          maxAmount: 3_000_000, maxMonths: 180 },
+  { title: "Займ для самозанятых",     hint: "Для тех, кто работает на себя",              maxAmount: 1_000_000, maxMonths: 60  },
 ];
 
 const MIN_MONTHS = 12;
@@ -93,7 +93,8 @@ export default function LoanCalculator({ openModal }: Props) {
                     border: programIdx === i ? "none" : "1px solid #e2e8f0",
                   }}
                 >
-                  {p.title}
+                  <div>{p.title}</div>
+                  <div className="font-manrope text-xs font-normal mt-0.5" style={{ opacity: programIdx === i ? 0.8 : 0.6 }}>{p.hint}</div>
                 </button>
               ))}
             </div>
