@@ -302,13 +302,9 @@ function Loans({ openModal }: { openModal: OpenModal }) {
                   style={{ background: `${p.color}15`, color: p.color }}>{p.badge}</span>
               </div>
               <h3 className="font-manrope font-bold text-base mb-3 leading-snug" style={{ color: "#1a1a1a" }}>{p.title}</h3>
-              <div className="mb-4 flex items-center gap-2 px-3 py-2 rounded-xl" style={{ background: `${p.color}10` }}>
-                <Icon name="Info" size={14} style={{ color: p.color, flexShrink: 0 }} />
-                <span className="font-manrope text-sm font-semibold" style={{ color: p.color }}>Ставка индивидуальна</span>
-              </div>
               <div className="flex gap-2 mb-4 flex-wrap">
-                <span className="text-xs font-manrope px-3 py-1 rounded-full" style={{ background: "rgba(0,0,0,0.05)", color: "#475569" }}>{p.period}</span>
-                <span className="text-xs font-manrope px-3 py-1 rounded-full" style={{ background: "rgba(0,0,0,0.05)", color: "#475569" }}>{p.amount}</span>
+                <span className="font-manrope font-bold px-3 py-1.5 rounded-xl text-sm" style={{ background: "linear-gradient(135deg, #16a34a, #15803d)", color: "white" }}>{p.period}</span>
+                <span className="font-manrope font-bold px-3 py-1.5 rounded-xl text-sm" style={{ background: "linear-gradient(135deg, #16a34a, #15803d)", color: "white" }}>{p.amount}</span>
               </div>
               <ul className="space-y-2 mb-6 flex-1">
                 {p.features.map((f) => (
