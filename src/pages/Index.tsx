@@ -433,9 +433,7 @@ function Savings({ openModal }: { openModal: OpenModal }) {
               style={{ background: "linear-gradient(160deg, #e63329 0%, #c2251b 100%)" }}>
               <div>
                 <div className="font-oswald text-2xl font-bold text-white mb-1">«Динамичный доход»</div>
-                <div className="font-manrope text-sm" style={{ color: "rgba(255,255,255,0.75)" }}>
-                  Сумма: от 10 000 до 30 000 000 ₽ &nbsp;·&nbsp; Расходные операции не предусмотрены
-                </div>
+                <div className="font-manrope text-sm" style={{ color: "rgba(255,255,255,0.75)" }}>Сумма: от 50 000 до 30 000 000 ₽  ·  Расходные операции не предусмотрены</div>
               </div>
               <div className="flex items-center gap-2 px-4 py-2 rounded-xl flex-shrink-0"
                 style={{ background: "rgba(255,255,255,0.15)", border: "1px solid rgba(255,255,255,0.3)" }}>
