@@ -70,6 +70,32 @@ function StatCounter({ target, suffix, label }: { target: number; suffix: string
   );
 }
 
+// ─── TOP BAR ─────────────────────────────────────────────────────────────────
+function TopBar() {
+  return (
+    <div className="fixed top-0 left-0 right-0 z-[60] flex items-center justify-end gap-3 px-4 sm:px-6 py-1.5"
+      style={{ background: "#1a1a1a", minHeight: 38 }}>
+      <a href="tel:88007008909" className="font-manrope text-sm font-semibold flex items-center gap-1.5" style={{ color: "#ffffff", textDecoration: "none" }}>
+        <Icon name="Phone" size={14} style={{ color: "#94a3b8" }} />
+        8 800 700-89-09
+      </a>
+      <div style={{ width: 1, height: 16, background: "#374151" }} />
+      <a href="https://max.ru/u/f9LHodD0cOKlhlHdQBcCTxnF2xJzOrOZrDbcKvHWJZ8kAoLbEol6TCNeJOc" target="_blank" rel="noopener noreferrer"
+        className="font-manrope text-sm font-semibold flex items-center gap-1.5 px-3 py-1 rounded-lg transition-all duration-200"
+        style={{ background: "#0066ff", color: "#ffffff", textDecoration: "none" }}
+        onMouseEnter={(e) => (e.currentTarget.style.background = "#0052cc")}
+        onMouseLeave={(e) => (e.currentTarget.style.background = "#0066ff")}>
+        <svg width="14" height="14" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="32" height="32" rx="8" fill="#0066ff"/>
+          <path d="M6 22V10l10 8 10-8v12" stroke="white" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>
+          <path d="M6 10l10 8 10-8" stroke="white" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+        Консультация в MAX
+      </a>
+    </div>
+  );
+}
+
 // ─── HEADER ──────────────────────────────────────────────────────────────────
 function Header({ onMember }: { onMember: () => void }) {
   const [scrolled, setScrolled] = useState(false);
@@ -433,8 +459,9 @@ function Savings({ openModal }: { openModal: OpenModal }) {
               style={{ background: "linear-gradient(160deg, #e63329 0%, #c2251b 100%)" }}>
               <div>
                 <div className="font-oswald text-2xl font-bold text-white mb-1">«Динамичный доход»</div>
-                <div className="font-manrope text-sm" style={{ color: "rgba(255,255,255,0.75)" }}>Сумма: от 50 000 до 30 000 000 ₽  ·  Расходные операции не предусмотрены</div>
+                <div className="font-manrope text-sm" style={{ color: "rgba(255,255,255,0.75)" }}>{"Сумма: от 50 000 до 30 000 000 \u20BD \u00B7 Расходные операции не предусмотрены"}</div>
               </div>
+ZAPPED2   
               <div className="flex items-center gap-2 px-4 py-2 rounded-xl flex-shrink-0"
                 style={{ background: "rgba(255,255,255,0.15)", border: "1px solid rgba(255,255,255,0.3)" }}>
                 <Icon name="PiggyBank" size={18} style={{ color: "white" }} />
