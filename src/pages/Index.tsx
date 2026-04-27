@@ -465,7 +465,7 @@ function Savings({ openModal }: { openModal: OpenModal }) {
           <h2 className="font-oswald text-3xl md:text-5xl font-bold leading-tight mb-4" style={{ color: "#1a1a1a" }}>
             СБЕРЕЖЕНИЯ ДО{" "}
             <span style={{ background: "linear-gradient(135deg, #c2251b, #e63329)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
-              {keyRate !== null ? `${keyRate + 3.5}% ГОДОВЫХ` : "…% ГОДОВЫХ"}
+              {keyRate !== null ? `${keyRate + 4}% ГОДОВЫХ` : "…% ГОДОВЫХ"}
             </span>
           </h2>
           <p className="font-manrope text-gray-500 text-lg max-w-2xl mx-auto">
