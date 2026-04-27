@@ -70,6 +70,40 @@ function StatCounter({ target, suffix, label }: { target: number; suffix: string
   );
 }
 
+// ─── TOP BAR ─────────────────────────────────────────────────────────────────
+function TopBar() {
+  return (
+    <div
+      className="fixed top-0 left-0 right-0 z-[60] flex items-center justify-end gap-4 px-4 sm:px-6"
+      style={{ background: "#1a1a1a", height: 38 }}
+    >
+      <a
+        href="tel:88007008909"
+        className="font-manrope text-sm font-semibold flex items-center gap-1.5"
+        style={{ color: "#ffffff", textDecoration: "none" }}
+      >
+        <Icon name="Phone" size={13} style={{ color: "#94a3b8" }} />
+        8 800 700-89-09
+      </a>
+      <div style={{ width: 1, height: 16, background: "#374151", flexShrink: 0 }} />
+      <a
+        href="https://max.ru/u/f9LHodD0cOKlhlHdQBcCTxnF2xJzOrOZrDbcKvHWJZ8kAoLbEol6TCNeJOc"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="font-manrope text-xs font-semibold flex items-center gap-1.5 px-2.5 py-1 rounded-md"
+        style={{ background: "#0066ff", color: "#ffffff", textDecoration: "none" }}
+      >
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="24" height="24" rx="6" fill="white" fillOpacity="0.2"/>
+          <path d="M4 7l8 6 8-6" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+          <path d="M4 7v10h16V7" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+        Консультация в MAX
+      </a>
+    </div>
+  );
+}
+
 // ─── HEADER ──────────────────────────────────────────────────────────────────
 function Header({ onMember }: { onMember: () => void }) {
   const [scrolled, setScrolled] = useState(false);
@@ -90,8 +124,8 @@ function Header({ onMember }: { onMember: () => void }) {
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
-      style={{
+    <header className="fixed left-0 right-0 z-50 transition-all duration-300" style={{
+        top: 38,
         background: scrolled ? "rgba(255,255,255,0.95)" : "rgba(255,255,255,0.8)",
         backdropFilter: "blur(20px)",
         borderBottom: scrolled ? "1px solid #e2e8f0" : "1px solid rgba(226,232,240,0.5)",
@@ -146,7 +180,26 @@ function Header({ onMember }: { onMember: () => void }) {
                 onClick={() => setMenuOpen(false)}
               >{l.label}</a>
             ))}
-            <div className="flex gap-3 mt-4">
+            <div className="flex items-center justify-between py-3 mt-2" style={{ borderTop: "1px solid #f1f5f9" }}>
+              <a href="tel:88007008909" className="font-manrope text-base font-semibold flex items-center gap-2" style={{ color: "#1a1a1a", textDecoration: "none" }}>
+                <Icon name="Phone" size={16} style={{ color: "#64748b" }} />
+                8 800 700-89-09
+              </a>
+              <a
+                href="https://max.ru/u/f9LHodD0cOKlhlHdQBcCTxnF2xJzOrOZrDbcKvHWJZ8kAoLbEol6TCNeJOc"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-manrope text-sm font-semibold flex items-center gap-1.5 px-3 py-2 rounded-lg"
+                style={{ background: "#0066ff", color: "#ffffff", textDecoration: "none" }}
+              >
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M4 7l8 6 8-6" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M4 7v10h16V7" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+                Консультация в MAX
+              </a>
+            </div>
+            <div className="flex gap-3 mt-3">
               <a href="https://mykpk.ru" target="_blank" rel="noopener noreferrer"
                 className="btn-green pulse-ring-green font-manrope text-base font-semibold px-4 py-3 rounded-xl flex-1 text-center min-h-[44px] flex items-center justify-center"
                 style={{ textDecoration: "none", color: "white" }}>Личный кабинет</a>
@@ -165,7 +218,7 @@ type OpenModal = (title: string, subtitle: string, buttonLabel: string, source: 
 function Hero({ openModal }: { openModal: OpenModal }) {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden" style={{
-      paddingTop: "80px",
+      paddingTop: "118px",
       background: "linear-gradient(160deg, #fff5f5 0%, #fff0f0 30%, #f8faff 70%, #eff6ff 100%)",
     }}>
       {/* Soft orbs */}
@@ -1112,6 +1165,7 @@ export default function Index() {
 
   return (
     <div className="font-manrope">
+      <TopBar />
       <Header onMember={() => openModal("Стать пайщиком", "Заполните форму — мы свяжемся с вами", "Отправить заявку", "Шапка сайта")} />
       <Hero openModal={openModal} />
       <Loans openModal={openModal} />
