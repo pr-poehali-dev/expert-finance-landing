@@ -346,10 +346,10 @@ function Loans({ openModal }: { openModal: OpenModal }) {
 const CBR_RATE_URL = "https://functions.poehali.dev/eef9deed-19ca-4467-9a4f-0337f1ca72fb";
 
 const TERM_OPTIONS = [
-  { months: "3 мес.", monthsNum: 3, bonus: 0 },
-  { months: "6 мес.", monthsNum: 6, bonus: 1, highlight: true },
-  { months: "12 мес.", monthsNum: 12, bonus: 2, highlight: true },
-  { months: "18 мес.", monthsNum: 18, bonus: 3 },
+  { months: "3 мес.", monthsNum: 3, bonus: 0.5 },
+  { months: "6 мес.", monthsNum: 6, bonus: 1.5, highlight: true },
+  { months: "12 мес.", monthsNum: 12, bonus: 2.5, highlight: true },
+  { months: "18 мес.", monthsNum: 18, bonus: 3.5 },
 ];
 
 function fmt(n: number) {
