@@ -9,9 +9,6 @@ const Maintenance = () => {
         <p className="text-gray-500 text-lg mb-8">
           Сайт временно недоступен. Мы уже работаем над этим и скоро вернёмся.
         </p>
-        <p className="text-gray-400 text-sm">
-          НФО «Финанс» · nfofinans.ru
-        </p>
       </div>
     </div>
   );
