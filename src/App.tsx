@@ -9,6 +9,7 @@ import Admin from "./pages/Admin";
 import LegalPage from "./pages/LegalPage";
 import NotFound from "./pages/NotFound";
 import LoanApplication from "./pages/LoanApplication";
+import Maintenance from "./pages/Maintenance";
 
 const queryClient = new QueryClient();
 
@@ -19,7 +20,7 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Index />} />
+          <Route path="/" element={<Maintenance />} />
           <Route path="/admin" element={<Admin />} />
           <Route path="/legal/:slug" element={<LegalPage />} />
           <Route path="/loan-application" element={<LoanApplication />} />
