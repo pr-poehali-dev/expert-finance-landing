@@ -20,12 +20,9 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Maintenance />} />
           <Route path="/admin" element={<Admin />} />
-          <Route path="/legal/:slug" element={<LegalPage />} />
-          <Route path="/loan-application" element={<LoanApplication />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
+          <Route path="*" element={<Maintenance />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
