@@ -6,7 +6,6 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Admin from "./pages/Admin";
 import Maintenance from "./pages/Maintenance";
-import PasswordGate from "./components/PasswordGate";
 
 const queryClient = new QueryClient();
 
@@ -15,15 +14,13 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <PasswordGate>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/admin" element={<Admin />} />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-            <Route path="*" element={<Maintenance />} />
-          </Routes>
-        </BrowserRouter>
-      </PasswordGate>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/admin" element={<Admin />} />
+          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+          <Route path="*" element={<Maintenance />} />
+        </Routes>
+      </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
 );
